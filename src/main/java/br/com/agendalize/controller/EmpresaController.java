@@ -14,9 +14,9 @@ public class EmpresaController {
 	private EmpresaService empresaService;
 	
 	@GetMapping("/empresa") //nome que eu quiser colocar
-	public String docente(ModelMap model)
+	public String empresa(ModelMap model)
 	{
-		model.addAttribute("docentes", empresaService.findAll());
+	//	model.addAttribute("empresas", empresaService.findAll());
 		
 		return "empresa"; //caminho real do arquivo
 	}
