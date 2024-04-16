@@ -8,4 +8,6 @@ import br.com.agendalize.entity.EmpresaEntity;
 @Repository
 public interface EmpresaRepository extends JpaRepository<EmpresaEntity, Long>{
 	
+	EmpresaEntity getOneByIdEmpresa(Long idEmpresa);
+	
 }

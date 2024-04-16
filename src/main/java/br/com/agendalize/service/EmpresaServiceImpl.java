@@ -13,11 +13,26 @@ public class EmpresaServiceImpl implements EmpresaService {
 	
 	@Autowired
 	private EmpresaRepository empresaRepository;
+	
+	private String mensagem;
 
 	@Override
 	public List<EmpresaEntity> findAll() {
 		
 		return empresaRepository.findAll();
+	}
+
+	@Override
+	public EmpresaEntity getOneByIdEmpresa(Long idEmpresa) {
+		
+		return empresaRepository.getOneByIdEmpresa(idEmpresa);
+	}
+
+	@Override
+	public String save(EmpresaEntity empresaEntity) throws Exception {
+		empresaRepository.saveAndFlush(empresaEntity);
+		this.mensagem = "Empresa cadastrado com sucesso.";
+		return mensagem;
 	}
 
 }

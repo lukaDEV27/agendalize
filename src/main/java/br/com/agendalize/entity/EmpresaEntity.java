@@ -7,17 +7,19 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "empresa", schema = "agendai")
+@Table(name = "empresa", schema = "agendalize")
 public class EmpresaEntity implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "cnpj")
+	@Column(name = "cnpj_empresa")
 	private Long cnpjEmpresa;
 	
 	@Column(name = "nome_empresa")
@@ -26,17 +28,45 @@ public class EmpresaEntity implements Serializable{
 	@Column(name = "email_contato_empresa")
 	private String emailContatoEmpresa;
 	
-	@Column(name = "telefone_empresa")
-	private String telefoneEmpresa;
-	
-	@Column(name = "endereco_empresa")
-	private String enderecoEmpresa;
-	
-	@Column(name = "cep_empresa")
-	private String cepEmpresa;
-	
 	@Column(name = "descricao")
 	private String descricaoEmpresa;
+	
+	@OneToOne()
+    @JoinColumn(name = "telefone_empresa_id", referencedColumnName = "id_telefone")
+    private TelefoneEntity telefone;
+	
+	@OneToOne()
+    @JoinColumn(name = "endereco_empresa_id", referencedColumnName = "id_endereco")
+    private EnderecoEntity endereco;
+	
+	@OneToOne()
+    @JoinColumn(name = "usuario_empresa_id", referencedColumnName = "id_usuario")
+    private UsuarioEntity usuarioLogin;
+	
+
+	public UsuarioEntity getUsuarioLogin() {
+		return usuarioLogin;
+	}
+
+	public void setUsuarioLogin(UsuarioEntity usuarioLogin) {
+		this.usuarioLogin = usuarioLogin;
+	}
+
+	public TelefoneEntity getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(TelefoneEntity telefone) {
+		this.telefone = telefone;
+	}
+
+	public EnderecoEntity getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(EnderecoEntity endereco) {
+		this.endereco = endereco;
+	}
 
 	public Long getCnpjEmpresa() {
 		return cnpjEmpresa;
@@ -62,29 +92,6 @@ public class EmpresaEntity implements Serializable{
 		this.emailContatoEmpresa = emailContatoEmpresa;
 	}
 
-	public String getTelefoneEmpresa() {
-		return telefoneEmpresa;
-	}
-
-	public void setTelefoneEmpresa(String telefoneEmpresa) {
-		this.telefoneEmpresa = telefoneEmpresa;
-	}
-
-	public String getEnderecoEmpresa() {
-		return enderecoEmpresa;
-	}
-
-	public void setEnderecoEmpresa(String enderecoEmpresa) {
-		this.enderecoEmpresa = enderecoEmpresa;
-	}
-
-	public String getCepEmpresa() {
-		return cepEmpresa;
-	}
-
-	public void setCepEmpresa(String cepEmpresa) {
-		this.cepEmpresa = cepEmpresa;
-	}
 
 	public String getDescricaoEmpresa() {
 		return descricaoEmpresa;
