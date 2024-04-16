@@ -20,7 +20,7 @@ public class EmpresaEntity implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "cnpj_empresa")
-	private Long cnpjEmpresa;
+	private Long idEmpresa;
 	
 	@Column(name = "nome_empresa")
 	private String nomeEmpresa;
@@ -68,12 +68,12 @@ public class EmpresaEntity implements Serializable{
 		this.endereco = endereco;
 	}
 
-	public Long getCnpjEmpresa() {
-		return cnpjEmpresa;
+	public Long getIdEmpresa() {
+		return idEmpresa;
 	}
 
-	public void setCnpjEmpresa(Long cnpjEmpresa) {
-		this.cnpjEmpresa = cnpjEmpresa;
+	public void setIdEmpresa(Long idEmpresa) {
+		this.idEmpresa = idEmpresa;
 	}
 
 	public String getNomeEmpresa() {
