@@ -28,7 +28,7 @@ public class EmpresaEntity implements Serializable{
 	@Column(name = "email_contato_empresa")
 	private String emailContatoEmpresa;
 	
-	@Column(name = "descricao")
+	@Column(name = "descricao_empresa")
 	private String descricaoEmpresa;
 	
 	@OneToOne()
@@ -92,7 +92,6 @@ public class EmpresaEntity implements Serializable{
 		this.emailContatoEmpresa = emailContatoEmpresa;
 	}
 
-
 	public String getDescricaoEmpresa() {
 		return descricaoEmpresa;
 	}
@@ -100,5 +99,7 @@ public class EmpresaEntity implements Serializable{
 	public void setDescricaoEmpresa(String descricaoEmpresa) {
 		this.descricaoEmpresa = descricaoEmpresa;
 	}
+
+
 
 }
