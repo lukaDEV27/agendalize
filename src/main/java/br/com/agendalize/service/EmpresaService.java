@@ -9,5 +9,7 @@ public interface EmpresaService {
 	EmpresaEntity getOneByIdEmpresa(Long idEmpresa);
 	String save(EmpresaEntity empresaEntity) throws Exception;
 	List<EmpresaEntity> findAll();
+	String deleteById(Long idEmpresa) throws Exception;
+
 	
 }

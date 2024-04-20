@@ -31,7 +31,21 @@ public class EmpresaServiceImpl implements EmpresaService {
 	@Override
 	public String save(EmpresaEntity empresaEntity) throws Exception {
 		empresaRepository.saveAndFlush(empresaEntity);
-		this.mensagem = "Empresa cadastrado com sucesso.";
+		this.mensagem = "Empresa cadastrada com sucesso.";
+		
+		return mensagem;
+	}
+
+	@Override
+	public String deleteById(Long idEmpresa) throws Exception {
+		try 
+		{
+			empresaRepository.deleteById(idEmpresa);
+			this.mensagem = "Empresa excluída com sucesso.";
+			
+		} catch (Exception e) {
+			throw new Exception(e.getMessage());
+		}
 		return mensagem;
 	}
 

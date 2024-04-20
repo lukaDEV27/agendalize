@@ -1,6 +1,7 @@
 package br.com.agendalize.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -8,6 +9,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
@@ -31,18 +33,28 @@ public class EmpresaEntity implements Serializable{
 	@Column(name = "descricao_empresa")
 	private String descricaoEmpresa;
 	
+	@Column(name = "endreco_empresa")
+	private String enderecoEmpresa;
+	
 	@OneToOne()
     @JoinColumn(name = "telefone_empresa_id", referencedColumnName = "id_telefone")
     private TelefoneEntity telefone;
 	
 	@OneToOne()
-    @JoinColumn(name = "endereco_empresa_id", referencedColumnName = "id_endereco")
-    private EnderecoEntity endereco;
-	
-	@OneToOne()
     @JoinColumn(name = "usuario_empresa_id", referencedColumnName = "id_usuario")
     private UsuarioEntity usuarioLogin;
 	
+	@OneToMany(mappedBy = "empresa")
+    private List<AgendaEntity> agendas;
+	
+
+	public List<AgendaEntity> getAgendas() {
+		return agendas;
+	}
+
+	public void setAgendas(List<AgendaEntity> agendas) {
+		this.agendas = agendas;
+	}
 
 	public UsuarioEntity getUsuarioLogin() {
 		return usuarioLogin;
@@ -58,14 +70,6 @@ public class EmpresaEntity implements Serializable{
 
 	public void setTelefone(TelefoneEntity telefone) {
 		this.telefone = telefone;
-	}
-
-	public EnderecoEntity getEndereco() {
-		return endereco;
-	}
-
-	public void setEndereco(EnderecoEntity endereco) {
-		this.endereco = endereco;
 	}
 
 	public Long getIdEmpresa() {
@@ -98,6 +102,14 @@ public class EmpresaEntity implements Serializable{
 
 	public void setDescricaoEmpresa(String descricaoEmpresa) {
 		this.descricaoEmpresa = descricaoEmpresa;
+	}
+
+	public String getEnderecoEmpresa() {
+		return enderecoEmpresa;
+	}
+
+	public void setEnderecoEmpresa(String enderecoEmpresa) {
+		this.enderecoEmpresa = enderecoEmpresa;
 	}
 
 
