@@ -24,11 +24,11 @@ public class EmpresaController {
 	@Autowired
 	private AgendaService agendaService;
 	
-	@GetMapping("/empresa") //nome que eu quiser colocar
+	@GetMapping("/loginEmpresa") //nome que eu quiser colocar
 	public String empresa(ModelMap model)
 	{
 		
-		return "empresa"; //caminho real do arquivo
+		return "loginEmpresa"; //caminho real do arquivo
 	}
 	
 	@PostMapping("/salvar_empresa")
