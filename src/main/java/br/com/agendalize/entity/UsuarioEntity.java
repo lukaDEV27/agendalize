@@ -33,6 +33,52 @@ public class UsuarioEntity implements Serializable,UserDetails{
 	
 	@Column(name = "senha_usuario") 
 	private String senhaUsuario;
+	
+
+	@Column(name = "cpf") 
+	private String cpf;
+	
+
+	public Long getIdUsuario() {
+		return idUsuario;
+	}
+
+	public void setIdUsuario(Long idUsuario) {
+		this.idUsuario = idUsuario;
+	}
+
+	public String getEmailUsuario() {
+		return emailUsuario;
+	}
+
+	public void setEmailUsuario(String emailUsuario) {
+		this.emailUsuario = emailUsuario;
+	}
+
+	public String getSenhaUsuario() {
+		return senhaUsuario;
+	}
+
+	public void setSenhaUsuario(String senhaUsuario) {
+		this.senhaUsuario = senhaUsuario;
+	}
+
+	public List<PermissaoEntity> getPermissoes() {
+		return permissoes;
+	}
+
+	public void setPermissoes(List<PermissaoEntity> permissoes) {
+		this.permissoes = permissoes;
+	}
+
+
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
 
 	@ManyToMany
 	@JoinTable(name="usuario_permissao",
