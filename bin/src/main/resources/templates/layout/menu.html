@@ -1,66 +1,90 @@
-<nav class="navbar navbar-expand-lg bg-dark">
-	<div class="container-fluid">
-		<a class="navbar-brand" href="#">
-			<img src="https://img.icons8.com/nolan/48/warning-shield.png" width="30" class="logo" />
-		</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-			aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-			<div class="navbar-nav ml-auto">
-				<a class="nav-link active" aria-current="page" href="#">Dashboard</a>
-				<a class="nav-link" href="#">Candidate</a>
-				<a class="nav-link" href="#">training</a>
-				<a class="nav-link" href="#">Reports</a>
-
-				<a class="nav-link" href="#">Meet</a>
-				<a class="nav-link" href="#">Settings</a>
-				<a class="nav-link" href="#">
-					<img src="https://i.imgur.com/C4egmYM.jpg" class="rounded-circle" width="30">
-				</a>
-
-			</div>
-		</div>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark"> <button class="navbar-toggler" type="button"
+		data-target="#navigation"> <span class="navbar-toggler-icon"></span> </button>
+	<div class="collapse navbar-collapse">
+		<ul class="navbar-nav">
+			<li class="nav-item active"> <a href="/principal" class="nav-link"> Principal </a> </li>
+			<li class="nav-item"> <a href="/empresa" class="nav-link"> Empresa </a> </li>
+			<li class="nav-item"> <a href="/cliente" class="nav-link"> Cliente </a> </li>
+			<li class="nav-item"> <a href="/contato" class="nav-link"> Contato </a> </li>
+		</ul>
 	</div>
 </nav>
 <style>
-	body {
-		background-color: #eee;
+	.navbar {
+		background: #000000
+	}
+
+	.nav-item::after {
+		content: '';
+		display: block;
+		width: 0px;
+		height: 2px;
+		background: #fec400;
+		transition: 0.4s
+	}
+
+	.nav-item:hover::after {
+		width: 100%
+	}
+
+	.navbar-dark .navbar-nav .active>.nav-link,
+	.navbar-dark .navbar-nav .nav-link.active,
+	.navbar-dark .navbar-nav .nav-link.show,
+	.navbar-dark .navbar-nav .show>.nav-link,
+	.navbar-dark .navbar-nav .nav-link:focus,
+	.navbar-dark .navbar-nav .nav-link:hover {
+		color: #fec400
 	}
 
 	.nav-link {
-		display: block;
-		padding: .5rem 1rem;
-		text-decoration: none;
-		transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
-		color: #fff;
-		margin-right: 10px;
-		text-transform: uppercase;
-		font-weight: 200 !important;
-		font-size: 14px;
+		padding: 25px 5px;
+		transition: 0.2s
 	}
 
-	.navbar-toggler-icon {
-		background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,102,203, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+	
 
+	@import url('https://fonts.googleapis.com/css?family=Rubik&display=swap');
 
+	body {
+		background: linear-gradient(0deg, #fff, 50%, #DEEEFE);
+		font-family: 'Rubik', sans-serif;
+		background: #455A64;
+		height: 100 !important;
 	}
 
 
-
-	.navbar-nav .active {
-
-		border-bottom: 4px solid #fff;
+	.container-fluid {
+		overflow: hidden;
+		margin-top: 250px;
+		background: #262626;
+		color: #627482 !important;
+		margin-bottom: 0;
+		padding-bottom: 0;
 	}
 
-	.logo {
-		margin-bottom: 7px !important;
+	small {
+		font-size: calc(12px + (15 - 12) * ((100vw - 360px) / (1600 - 360))) !important;
 	}
 
-	.navbar {
+	.bold-text {
+		color: #989c9e !important;
+	}
 
-		padding-top: .5rem;
-		padding-bottom: 0px !important;
+
+	.mt-55 {
+		margin-top: calc(50px + (60 - 50) * ((100vw - 360px) / (1600 - 360))) !important;
+	}
+
+
+	h3 {
+		font-size: calc(34px + (40 - 34) * ((100vw - 360px) / (1600 - 360))) !important;
+	}
+
+	.social {
+		font-size: 21px !important;
+	}
+
+	.rights {
+		font-size: calc(10px + (12 - 10) * ((100vw - 360px) / (1600 - 360))) !important;
 	}
 </style>
