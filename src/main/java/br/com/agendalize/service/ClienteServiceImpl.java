@@ -23,7 +23,7 @@ public class ClienteServiceImpl implements ClienteService {
 	}
 
 	@Override
-	public ClienteEntity getOneByIdCliente(Long idCliente) {
+	public ClienteEntity getOneByIdCliente(String idCliente) {
 		
 		return clienteRepository.getOneByIdCliente(idCliente);
 	}
@@ -37,7 +37,7 @@ public class ClienteServiceImpl implements ClienteService {
 	}
 
 	@Override
-	public String deleteById(Long idCliente) throws Exception {
+	public String deleteById(String idCliente) throws Exception {
 		try 
 		{
 			clienteRepository.deleteById(idCliente);

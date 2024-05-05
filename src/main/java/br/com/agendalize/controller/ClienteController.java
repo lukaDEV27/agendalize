@@ -1,5 +1,6 @@
 package br.com.agendalize.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,13 +10,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-
 import br.com.agendalize.entity.ClienteEntity;
-import br.com.agendalize.entity.EmpresaEntity;
 import br.com.agendalize.service.ClienteService;
 
 @Controller
 public class ClienteController {
+	
+	@Autowired
+	private ClienteService clienteService;
+	
 	
 	@GetMapping("/cliente") //nome que eu quiser colocar
 	public String cliente(ModelMap model)
@@ -28,7 +31,7 @@ public class ClienteController {
 	@PostMapping("/salvar_cliente")
 	public ModelAndView save(
 			ModelMap model,
-			@ModelAttribute("clienteEntity") ClienteEntity clienteaEntity,
+			@ModelAttribute("clienteEntity") ClienteEntity clienteEntity,
 			RedirectAttributes attibutes) throws Exception
 	{
 		ModelAndView mv = new ModelAndView("redirect:/empresa");
@@ -37,7 +40,7 @@ public class ClienteController {
 	}
 	
 	@GetMapping("/alterar_cliente/{idCliente}")
-	public ModelAndView update(ModelMap model,@PathVariable("idCliente") Long idCliente) throws Exception 
+	public ModelAndView update(ModelMap model,@PathVariable("idCliente") String idCliente) throws Exception 
 	{
 		
 		ModelAndView mv = new ModelAndView("alterar_cliente");
@@ -60,7 +63,7 @@ public class ClienteController {
 	}
 	
 	@GetMapping("/excluir_cliente/{idCliente}")
-	public ModelAndView delete(ModelMap model, @PathVariable("idCliente") Long idCliente, RedirectAttributes atributes) throws Exception 
+	public ModelAndView delete(ModelMap model, @PathVariable("idCliente") String idCliente, RedirectAttributes atributes) throws Exception 
 	{
 		ModelAndView mv = new ModelAndView("redirect:/cliente");
 		model.addAttribute("mensagem", clienteService.deleteById(idCliente));

@@ -6,10 +6,10 @@ import br.com.agendalize.entity.EmpresaEntity;
 
 public interface EmpresaService {
 	
-	EmpresaEntity getOneByIdEmpresa(Long idEmpresa);
+	EmpresaEntity getOneByIdEmpresa(String idEmpresa);
 	String save(EmpresaEntity empresaEntity) throws Exception;
 	List<EmpresaEntity> findAll();
-	String deleteById(Long idEmpresa) throws Exception;
+	String deleteById(String idEmpresa) throws Exception;
 
 	
 }

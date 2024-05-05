@@ -22,7 +22,7 @@ public class EmpresaEntity implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "cnpj_empresa")
-	private Long idEmpresa;
+	private String idEmpresa;
 	
 	@Column(name = "nome_empresa")
 	private String nomeEmpresa;
@@ -38,11 +38,11 @@ public class EmpresaEntity implements Serializable{
 	
 	@OneToOne()
     @JoinColumn(name = "telefone_empresa_id", referencedColumnName = "id_telefone")
-    private TelefoneEntity telefone;
+    private TelefoneEntity telefoneEmpresa;
 	
 	@OneToOne()
     @JoinColumn(name = "usuario_empresa_id", referencedColumnName = "id_usuario")
-    private UsuarioEntity usuarioLogin;
+    private UsuarioEntity usuarioEmpresaLogin;
 	
 	@OneToMany(mappedBy = "empresa")
     private List<AgendaEntity> agendas;
@@ -56,27 +56,27 @@ public class EmpresaEntity implements Serializable{
 		this.agendas = agendas;
 	}
 
-	public UsuarioEntity getUsuarioLogin() {
-		return usuarioLogin;
+	public UsuarioEntity getUsuarioEmpresaLogin() {
+		return usuarioEmpresaLogin;
 	}
 
-	public void setUsuarioLogin(UsuarioEntity usuarioLogin) {
-		this.usuarioLogin = usuarioLogin;
+	public void setUsuarioEmpresaLogin(UsuarioEntity usuarioEmpresaLogin) {
+		this.usuarioEmpresaLogin = usuarioEmpresaLogin;
 	}
 
-	public TelefoneEntity getTelefone() {
-		return telefone;
+	public TelefoneEntity getTelefoneEmpresa() {
+		return telefoneEmpresa;
 	}
 
-	public void setTelefone(TelefoneEntity telefone) {
-		this.telefone = telefone;
+	public void setTelefoneEmpresa(TelefoneEntity telefoneEmpresa) {
+		this.telefoneEmpresa = telefoneEmpresa;
 	}
 
-	public Long getIdEmpresa() {
+	public String getIdEmpresa() {
 		return idEmpresa;
 	}
 
-	public void setIdEmpresa(Long idEmpresa) {
+	public void setIdEmpresa(String idEmpresa) {
 		this.idEmpresa = idEmpresa;
 	}
 

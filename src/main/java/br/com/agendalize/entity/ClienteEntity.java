@@ -1,7 +1,6 @@
 package br.com.agendalize.entity;
 
 import java.io.Serializable;
-import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -9,7 +8,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
@@ -22,13 +20,13 @@ public class ClienteEntity implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "cpf_cliente")
-	private Long idCliente;
+	private String idCliente;
 	
-	public Long getIdCliente() {
+	public String getIdCliente() {
 		return idCliente;
 	}
 
-	public void setIdCliente(Long idCliente) {
+	public void setIdCliente(String idCliente) {
 		this.idCliente = idCliente;
 	}
 
@@ -88,7 +86,7 @@ public class ClienteEntity implements Serializable{
 		this.usuarioLogin = usuarioLogin;
 	}
 
-	@Column(name = "nome_cleinte")
+	@Column(name = "nome_cliente")
 	private String nomeCliente;
 	
 	@Column(name = "email_contato_cliente")

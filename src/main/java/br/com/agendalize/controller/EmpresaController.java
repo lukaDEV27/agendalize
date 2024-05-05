@@ -43,7 +43,7 @@ public class EmpresaController {
 	}
 	
 	@GetMapping("/alterar_empresa/{idEmpresa}")
-	public ModelAndView update(ModelMap model,@PathVariable("idEmpresa") Long idEmpresa) throws Exception 
+	public ModelAndView update(ModelMap model,@PathVariable("idEmpresa") String idEmpresa) throws Exception 
 	{
 		
 		ModelAndView mv = new ModelAndView("alterar_empresa");
@@ -66,7 +66,7 @@ public class EmpresaController {
 	}
 	
 	@GetMapping("/excluir_empresa/{idEmpresa}")
-	public ModelAndView delete(ModelMap model, @PathVariable("idEmpresa") Long idEmpresa, RedirectAttributes atributes) throws Exception 
+	public ModelAndView delete(ModelMap model, @PathVariable("idEmpresa") String idEmpresa, RedirectAttributes atributes) throws Exception 
 	{
 		ModelAndView mv = new ModelAndView("redirect:/empresa");
 		model.addAttribute("mensagem", empresaService.deleteById(idEmpresa));
