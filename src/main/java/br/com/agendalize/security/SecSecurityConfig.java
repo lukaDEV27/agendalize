@@ -28,16 +28,16 @@ public class SecSecurityConfig {
 		http.authorizeHttpRequests(
 				auth -> auth
 				//Qualquer tipo de permissão consegue acessar esse @Controller
-				.requestMatchers("/signin", "/signup").permitAll()
+				.requestMatchers("/loginEmpresa").permitAll()
 				.anyRequest().authenticated()
 				)
 				.formLogin(formLogin -> formLogin
 						//Direciona para esse @controller qunado o login esta correto
-						.defaultSuccessUrl("/empresa", true)
+						.defaultSuccessUrl("/", true)
 						.permitAll()
 				)
 				.rememberMe(rememberMe -> rememberMe.key("AbcdEfghIjkl..."))
-				.logout(logout -> logout.logoutUrl("/signout").permitAll());
+				.logout(logout -> logout.logoutUrl("/loginEmpresa").permitAll());
 		return http.build();	
 		
 	}
@@ -47,7 +47,7 @@ public class SecSecurityConfig {
 		throws Exception {
 		//Serve d exemplo para gerar uma senha criptografada
 		BCryptPasswordEncoder b = new BCryptPasswordEncoder();
-		System.out.println(b.encode("123456"));
+		System.out.println(b.encode("admin"));
 		//Criptografa a sebhga oara salvar no banco de dados
 		auth.userDetailsService(userDetailServiceImpl).passwordEncoder(new BCryptPasswordEncoder());
 	}

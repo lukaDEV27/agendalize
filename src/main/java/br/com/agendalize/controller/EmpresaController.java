@@ -37,7 +37,7 @@ public class EmpresaController {
 			@ModelAttribute("empresaEntity") EmpresaEntity empresaEntity,
 			RedirectAttributes attibutes) throws Exception
 	{
-		ModelAndView mv = new ModelAndView("redirect:/empresa");
+		ModelAndView mv = new ModelAndView("redirect:/principal");
 		attibutes.addFlashAttribute("mensagem", empresaService.save(empresaEntity));
 		return mv;
 	}
