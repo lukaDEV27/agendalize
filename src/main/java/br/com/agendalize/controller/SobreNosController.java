@@ -5,13 +5,13 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class ContatoController {
+public class SobreNosController {
 	
-	@GetMapping("/contato") //nome que eu quiser colocar
-	public String contato(ModelMap model)
+	@GetMapping("/sobreNos") //nome que eu quiser colocar
+	public String sobreNos(ModelMap model)
 	{
 		
-		return "contato"; //caminho real do arquivo
+		return "sobreNos"; //caminho real do arquivo
 	}
 
 }

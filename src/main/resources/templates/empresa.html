@@ -50,28 +50,28 @@
 				</div>
 				<div class="two-forms">
 					<div class="input-box">
-						<input type="text" class="input-field" id="idEmpresa" nome="idEmpresa"
+						<input type="text" class="input-field" id="idEmpresa" name="idEmpresa"
 							placeholder="CNPJ Empresa" required>
 						<i class="bx bx-user"></i>
 					</div>
 					<div class="input-box">
-						<input type="text" class="input-field" id="nomeEmpresa" nome="nomeEmpresa"
+						<input type="text" class="input-field" id="nomeEmpresa" name="nomeEmpresa"
 							placeholder="Nome da Empresa" required>
 						<i class="bx bx-user"></i>
 					</div>
 					<div class="input-box">
-						<input type="text" class="input-field" id="emailContatoEmpresa" nome="emailContatoEmpresa"
+						<input type="text" class="input-field" id="emailContatoEmpresa" name="emailContatoEmpresa"
 							placeholder="Email" required>
 						<i class="bx bx-envelope"></i>
 					</div>
 					<div class="input-box">
-						<input type="text" class="input-field" id="telefoneEmpresa" nome="telefoneEmpresa"
-							placeholder="telefone Empresa" required>
+						<input type="text" class="input-field" id="telefoneEmpresa" name="telefoneEmpresa"
+							placeholder="Telefone" required>
 						<i class="bx bx-user"></i>
 					</div>
 					<div class="input-box">
-						<input type="text" class="input-field" id="enderecoEmpresa" nome="enderecoEmpresa"
-							placeholder="Endereço Empresa" required>
+						<input type="text" class="input-field" id="enderecoEmpresa" name="enderecoEmpresa"
+							placeholder="Endereço" required>
 						<i class="bx bx-user"></i>
 					</div>
 
@@ -140,47 +140,14 @@
 
 		</div>
 
-		<h5 class="card-title">Empresas cadastradas</h5>
-		<table id="example" class="table table-striped" style="width:100%">
-			<thead>
-				<tr>
-					<th>ID</th>
-					<th>Nome Empresa</th>
-					<th>Email Empresa</th>
-					<th>Telefone Empresa</th>
-					<th>Endereço Empresa</th>
-					<th class="col-1"></th>
-					<th class="col-1"></th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:each="empresa : ${empresas}">
-					<td th:text="${empresa.idEmpresa}"></td>
-					<td th:text="${empresa.nomeEmpresa}"></td>
-					<td th:text="${empresa.emailContatoEmpresa}"></td>
-					<td th:text="${empresa.telefoneEmpresa}"></td>
-					<td th:text="${empresa.enderecoEmpresa}"></td>
-
-					<td><a class="btn btn-sm btn-warning"
-							th:href="@{alterar_empresa/{idEmpresa}(idEmpresa=${empresa.IdEmpresa})}">Alterar</a>
-					</td>
-
-					<td>
-						<a class="delete btn btn-sm btn-danger"
-							th:href="@{excluir_empresa/{idEmpresa}(idEmpresa=${empresa.IdEmpresa})}"
-							onclick="if (confirm('Deseja realmente excluir a empresa!?')){return true;}else{event.stopPropagation(); event.preventDefault();};">
-							Excluir
-						</a>
-
-					</td>
-
-					<!--Termina Exclusao-->
-				</tr>
-			</tbody>
-	</div>
+		
 
 
-	<div th: insert="~{layout/rodape}"></div>
+	<div th:insert="~{layout/rodape}"></div>
 </body>
 
 </html>
+
+
+
+

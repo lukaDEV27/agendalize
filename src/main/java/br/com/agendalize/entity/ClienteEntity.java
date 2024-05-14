@@ -21,7 +21,26 @@ public class ClienteEntity implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "cpf_cliente")
 	private String idCliente;
+
+	@Column(name = "nome_cliente")
+	private String nomeCliente;
 	
+	@Column(name = "email_contato_cliente")
+	private String emailContatoCliente;
+	
+	@Column(name = "sobrenome_cliente")
+	private String sobrenomeCliente;
+	
+	@Column(name = "endereco_cliente")
+	private String enderecoCliente;
+	
+	@Column(name = "cep_cliente")
+	private String cepCliente;
+	
+	@OneToOne()
+    @JoinColumn(name = "telefone_cliente_id", referencedColumnName = "id_telefone")
+    private TelefoneEntity telefoneCliente;
+
 	public String getIdCliente() {
 		return idCliente;
 	}
@@ -70,43 +89,12 @@ public class ClienteEntity implements Serializable{
 		this.cepCliente = cepCliente;
 	}
 
-	public TelefoneEntity getTelefone() {
-		return telefone;
+	public TelefoneEntity getTelefoneCliente() {
+		return telefoneCliente;
 	}
 
-	public void setTelefone(TelefoneEntity telefone) {
-		this.telefone = telefone;
+	public void setTelefoneCliente(TelefoneEntity telefoneCliente) {
+		this.telefoneCliente = telefoneCliente;
 	}
-
-	public UsuarioEntity getUsuarioLogin() {
-		return usuarioLogin;
-	}
-
-	public void setUsuarioLogin(UsuarioEntity usuarioLogin) {
-		this.usuarioLogin = usuarioLogin;
-	}
-
-	@Column(name = "nome_cliente")
-	private String nomeCliente;
-	
-	@Column(name = "email_contato_cliente")
-	private String emailContatoCliente;
-	
-	@Column(name = "sobrenome_cliente")
-	private String sobrenomeCliente;
-	
-	@Column(name = "endereco_cliente")
-	private String enderecoCliente;
-	
-	@Column(name = "cep_cliente")
-	private String cepCliente;
-	
-	@OneToOne()
-    @JoinColumn(name = "telefone_cliente_id", referencedColumnName = "id_telefone")
-    private TelefoneEntity telefone;
-	
-	@OneToOne()
-    @JoinColumn(name = "usuario_cliente_id", referencedColumnName = "id_usuario")
-    private UsuarioEntity usuarioLogin;
 	
 }

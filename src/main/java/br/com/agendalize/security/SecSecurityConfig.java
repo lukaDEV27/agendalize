@@ -4,11 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
@@ -22,13 +20,13 @@ public class SecSecurityConfig {
 		return new BCryptPasswordEncoder();
 	}
 	
-	@Bean
+	/*@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
 		
 		http.authorizeHttpRequests(
 				auth -> auth
 				//Qualquer tipo de permissão consegue acessar esse @Controller
-				.requestMatchers("/loginEmpresa").permitAll()
+				.requestMatchers("/empresa").permitAll()
 				.anyRequest().authenticated()
 				)
 				.formLogin(formLogin -> formLogin
@@ -37,10 +35,13 @@ public class SecSecurityConfig {
 						.permitAll()
 				)
 				.rememberMe(rememberMe -> rememberMe.key("AbcdEfghIjkl..."))
-				.logout(logout -> logout.logoutUrl("/loginEmpresa").permitAll());
+				.logout(logout -> logout.logoutUrl("/empresa").permitAll());
 		return http.build();	
 		
-	}
+		}
+		*/
+		
+	
 	
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth)
