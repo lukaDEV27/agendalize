@@ -1,1 +1,186 @@
-pagina da empresa
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head th:insert="~{layout/cabecalho}">
+	<title>Login Empresa</title>
+</head>
+
+
+<body>
+	<div th:insert="~{layout/menuLogin}">
+
+		<div class="form-box">
+
+			<div class="alert alert-sucess" th:text="${mensagem}" th:if="${not #strings.isEmpty(mensagem)}"></div>
+
+			<!------------------- login form -------------------------->
+
+			<!--<div class="login-container" id="login">
+				<div class="top">
+					<span>Não tem uma conta? <a href="#" onclick="register()">Cadastrar</a></span>
+					<header>Empresa Login</header>
+				</div>
+				<div class="input-box">
+					<input type="text" class="input-field" placeholder="Username or Email">
+					<i class="bx bx-user"></i>
+				</div>
+				<div class="input-box">
+					<input type="password" class="input-field" placeholder="Password">
+					<i class="bx bx-lock-alt"></i>
+				</div>
+				<div class="input-box">
+					<input type="submit" class="submit" value="Sign In">
+				</div>
+				<div class="two-col">
+					<div class="one">
+						<input type="checkbox" id="login-check">
+						<label for="login-check">Lembrar de Mim</label>
+					</div>
+					<div class="two">
+						<label><a href="#">Esqueseu sua Senha?</a></label>
+					</div>
+				</div>
+			</div>-->
+
+			<!------------------- registration form -------------------------->
+			<div class="register-container" id="register">
+				<div class="top">
+					<span>Tem uma Conta? <a href="#" onclick="login()">Login</a></span>
+					<header>Cadastrar Empresa</header>
+				</div>
+				<div class="two-forms">
+					<div class="input-box">
+						<input type="text" class="input-field" id="idEmpresa" nome="idEmpresa"
+							placeholder="CNPJ Empresa" required>
+						<i class="bx bx-user"></i>
+					</div>
+					<div class="input-box">
+						<input type="text" class="input-field" id="nomeEmpresa" nome="nomeEmpresa"
+							placeholder="Nome da Empresa" required>
+						<i class="bx bx-user"></i>
+					</div>
+					<div class="input-box">
+						<input type="text" class="input-field" id="emailContatoEmpresa" nome="emailContatoEmpresa"
+							placeholder="Email" required>
+						<i class="bx bx-envelope"></i>
+					</div>
+					<div class="input-box">
+						<input type="text" class="input-field" id="telefoneEmpresa" nome="telefoneEmpresa"
+							placeholder="telefone Empresa" required>
+						<i class="bx bx-user"></i>
+					</div>
+					<div class="input-box">
+						<input type="text" class="input-field" id="enderecoEmpresa" nome="enderecoEmpresa"
+							placeholder="Endereço Empresa" required>
+						<i class="bx bx-user"></i>
+					</div>
+
+				</div>
+
+				<!--<div class="input-box">
+					<input type="password" class="input-field" placeholder="Password">
+					<i class="bx bx-lock-alt"></i>
+				</div>-->
+				<div class="input-box">
+					<input type="submit" class="submit" value="Register">
+				</div>
+				<div class="two-col">
+					<div class="one">
+						<!--    <input type="checkbox" id="register-check">
+		                   <label for="register-check"> Remember Me</label>
+		               </div>-->
+						<div class="two">
+							<label><a href="#">Terms & conditions</a></label>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<script>
+
+				function myMenuFunction() {
+					var i = document.getElementById("navMenu");
+
+					if (i.className === "nav-menu") {
+						i.className += " responsive";
+					} else {
+						i.className = "nav-menu";
+					}
+				}
+
+			</script>
+
+			<script>
+
+				var a = document.getElementById("loginBtn");
+				var b = document.getElementById("registerBtn");
+				var x = document.getElementById("login");
+				var y = document.getElementById("register");
+
+				function login() {
+					x.style.left = "4px";
+					y.style.right = "-520px";
+					a.className += " white-btn";
+					b.className = "btn";
+					x.style.opacity = 1;
+					y.style.opacity = 0;
+				}
+
+				function register() {
+					x.style.left = "-510px";
+					y.style.right = "5px";
+					a.className = "btn";
+					b.className += " white-btn";
+					x.style.opacity = 0;
+					y.style.opacity = 1;
+				}
+
+			</script>
+
+		</div>
+
+		<h5 class="card-title">Empresas cadastradas</h5>
+		<table id="example" class="table table-striped" style="width:100%">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Nome Empresa</th>
+					<th>Email Empresa</th>
+					<th>Telefone Empresa</th>
+					<th>Endereço Empresa</th>
+					<th class="col-1"></th>
+					<th class="col-1"></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="empresa : ${empresas}">
+					<td th:text="${empresa.idEmpresa}"></td>
+					<td th:text="${empresa.nomeEmpresa}"></td>
+					<td th:text="${empresa.emailContatoEmpresa}"></td>
+					<td th:text="${empresa.telefoneEmpresa}"></td>
+					<td th:text="${empresa.enderecoEmpresa}"></td>
+
+					<td><a class="btn btn-sm btn-warning"
+							th:href="@{alterar_empresa/{idEmpresa}(idEmpresa=${empresa.IdEmpresa})}">Alterar</a>
+					</td>
+
+					<td>
+						<a class="delete btn btn-sm btn-danger"
+							th:href="@{excluir_empresa/{idEmpresa}(idEmpresa=${empresa.IdEmpresa})}"
+							onclick="if (confirm('Deseja realmente excluir a empresa!?')){return true;}else{event.stopPropagation(); event.preventDefault();};">
+							Excluir
+						</a>
+
+					</td>
+
+					<!--Termina Exclusao-->
+				</tr>
+			</tbody>
+	</div>
+
+
+	<div th: insert="~{layout/rodape}"></div>
+</body>
+
+</html>

@@ -1,45 +1,147 @@
-<div class="container-fluid pb-0 mb-0 justify-content-center text-light ">
-	<footer>
-		<div class="row my-5 justify-content-center py-5">
-			<div class="col-11">
-				<div class="row ">
-					<div class="col-xl-8 col-md-4 col-sm-4 col-12   my-auto mx-auto a">
-						<h3 class="text-muted mb-md-0 mb-5 bold-text">Pepper.</h3>
-					</div>
-					<div class="col-xl-2 col-md-4 col-sm-4 col-12">
-						<h6 class="mb-3 mb-lg-4 bold-text "><b>MENU</b></h6>
-						<ul class="list-unstyled">
-							<li>Home</li>
-							<li>About</li>
-							<li>Blog</li>
-							<li>Portfolio</li>
-						</ul>
-					</div>
-					<div class="col-xl-2 col-md-4 col-sm-4 col-12">
-						<h6 class="mb-3 mb-lg-4 text-muted bold-text mt-sm-0 mt-5"><b>ADDRESS</b></h6>
-						<p class="mb-1">605, RATAN ICON BUILDING</p>
-						<p>SEAWOODS SECTOR</p>
-					</div>
-				</div>
-				<div class="row ">
-					<div class="col-xl-8 col-md-4 col-sm-4 col-auto  my-md-0 mt-5 order-sm-1 order-3 align-self-end">
-						<p class="social text-muted mb-0 pb-0 bold-text"> <span class="mx-2"><i class="fa fa-facebook"
-									aria-hidden="true"></i></span> <span class="mx-2"><i class="fa fa-linkedin-square"
-									aria-hidden="true"></i></span> <span class="mx-2"><i class="fa fa-twitter"
-									aria-hidden="true"></i></span> <span class="mx-2"><i class="fa fa-instagram"
-									aria-hidden="true"></i></span> </p><small class="rights"><span>&#174;</span> Pepper
-							All Rights Reserved.</small>
-					</div>
-					<div class="col-xl-2 col-md-4 col-sm-4 col-auto order-1 align-self-end ">
-						<h6 class="mt-55 mt-2 text-muted bold-text"><b>ANIRUDH SINGLA</b></h6><small> <span><i
-									class="fa fa-envelope" aria-hidden="true"></i></span> anirudh@gmail.com</small>
-					</div>
-					<div class="col-xl-2 col-md-4 col-sm-4 col-auto order-2 align-self-end mt-3   ">
-						<h6 class="text-muted bold-text"><b>RISHABH SHEKHAR</b></h6><small><span><i
-									class="fa fa-envelope" aria-hidden="true"></i></span> rishab@gmail.com</small>
-					</div>
-				</div>
-			</div>
+<style>
+	* {
+		margin: 0;
+		padding: 0;
+
+		font-size: 16px;
+
+	}
+
+	footer {
+		background: #343434;
+		padding-top: 50px;
+	}
+
+	.container {
+		width: 1140px;
+		margin: auto;
+		display: flex;
+		justify-content: center;
+	}
+
+	.footer-content {
+		width: 33.3%;
+	}
+
+	h3 {
+		font-size: 28px;
+		margin-bottom: 15px;
+		text-align: center;
+	}
+
+	.footer-content p {
+		width: 190px;
+		margin: auto;
+		padding: 7px;
+	}
+
+	.footer-content ul {
+		text-align: center;
+	}
+
+	.list {
+		padding: 0;
+	}
+
+	.list li {
+		width: auto;
+		text-align: center;
+		list-style-type: none;
+		padding: 7px;
+		position: relative;
+	}
+
+	.list li::before {
+		content: '';
+		position: absolute;
+		transform: translate(-50%, -50%);
+		left: 50%;
+		top: 100%;
+		width: 0;
+		height: 2px;
+		background: #f18930;
+		transition-duration: .5s;
+	}
+
+	.list li:hover::before {
+		width: 70px;
+	}
+
+	.social-icons {
+		text-align: center;
+		padding: 0;
+	}
+
+	.social-icons li {
+		display: inline-block;
+		text-align: center;
+		padding: 5px;
+	}
+
+	.social-icons i {
+		color: white;
+		font-size: 25px;
+	}
+
+	a {
+		text-decoration: none;
+	}
+
+	a:hover {
+		color: #f18930;
+	}
+
+	.social-icons i:hover {
+		color: #f18930;
+	}
+
+	.bottom-bar {
+		background: #f18930;
+		text-align: center;
+		padding: 10px 0;
+		margin-top: 50px;
+	}
+
+	.bottom-bar p {
+		color: #343434;
+		margin: 0;
+		font-size: 16px;
+		padding: 7px;
+	}
+
+	.titulo-rodape {
+		color: white;
+	}
+</style>
+<footer>
+	<div class="container">
+		<div class="footer-content">
+			<h3 class="titulo-rodape">Contact Us</h3>
+			<p class="titulo-rodape">Email:Info@example.com</p>
+			<p class="titulo-rodape">Phone:+121 56556 565556</p>
+			<p class="titulo-rodape">Address:Your Address 123 street</p>
 		</div>
-	</footer>
-</div>
+		<div class="footer-content">
+			<h3 class="titulo-rodape">Quick Links</h3>
+			<ul class="list">
+				<li><a href="">Home</a></li>
+				<li><a href="">About</a></li>
+				<li><a href="">Services</a></li>
+				<li><a href="">Products</a></li>
+				<li><a href="">Contact</a></li>
+			</ul>
+		</div>
+		<div class="footer-content">
+			<h3 class="titulo-rodape">Follow Us</h3>
+			<ul class="social-icons">
+				<li><a href=""><i class="fab fa-facebook"></i></a></li>
+				<li><a href=""><i class="fab fa-twitter"></i></a></li>
+				<li><a href=""><i class="fab fa-instagram"></i></a></li>
+				<li><a href=""><i class="fab fa-linkedin"></i></a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="bottom-bar">
+		<p>&copy; 2023 your company . All rights reserved</p>
+	</div>
+</footer>
