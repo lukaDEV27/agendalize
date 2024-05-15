@@ -81,4 +81,21 @@ public class UsuarioEntity implements Serializable,UserDetails{
 		return true;
 	}
 
+	public Long getIdUsuario() {
+		return idUsuario;
+	}
+
+	public void setIdUsuario(Long idUsuario) {
+		this.idUsuario = idUsuario;
+	}
+
+
+	public List<PermissaoEntity> getPermissoes() {
+		return permissoes;
+	}
+
+	public void setPermissoes(List<PermissaoEntity> permissoes) {
+		this.permissoes = permissoes;
+	}
+
 }

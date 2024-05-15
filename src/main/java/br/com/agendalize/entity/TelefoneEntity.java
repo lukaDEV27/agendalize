@@ -26,7 +26,7 @@ public class TelefoneEntity implements Serializable {
 	private String telefone;
 	
 	@ManyToOne
-    @JoinColumn(name = "fk_telefone_empresa")
+    @JoinColumn(name = "empresa_id")
     private EmpresaEntity empresa;
 	
 
