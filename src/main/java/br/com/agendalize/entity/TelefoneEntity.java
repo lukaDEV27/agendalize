@@ -7,26 +7,53 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "telefone", schema = "agendalize")
-public class TelefoneEntity implements Serializable{
-	
-private static final long serialVersionUID = 1L;
-	
+public class TelefoneEntity implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_telefone")
 	private Long idTelefone;
+
+	@Column(name = "telefone")
+	private String telefone;
 	
-	@Column(name = "opcao_1")
-	private String opcao1;
+	@ManyToOne
+    @JoinColumn(name = "fk_telefone_empresa")
+    private EmpresaEntity empresa;
 	
-	@Column(name = "opcao_2")
-	private String opcao2;
+
+	public EmpresaEntity getEmpresa() {
+		return empresa;
+	}
+
+	public void setEmpresa(EmpresaEntity empresa) {
+		this.empresa = empresa;
+	}
+
+	public Long getIdTelefone() {
+		return idTelefone;
+	}
+
+	public void setIdTelefone(Long idTelefone) {
+		this.idTelefone = idTelefone;
+	}
+
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+
 	
-	@Column(name = "opcao_3")
-	private String opcao3;
 
 }

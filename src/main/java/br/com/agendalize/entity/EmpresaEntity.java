@@ -33,13 +33,20 @@ public class EmpresaEntity implements Serializable{
 	@Column(name = "descricao_empresa")
 	private String descricaoEmpresa;
 	
-	@Column(name = "endreco_empresa")
+	@Column(name = "endereco_empresa")
 	private String enderecoEmpresa;
 	
-	@OneToOne()
-    @JoinColumn(name = "telefone_empresa_id", referencedColumnName = "id_telefone")
-    private TelefoneEntity telefoneEmpresa;
+	@OneToMany(mappedBy = "empresa")
+    private List<TelefoneEntity> telefones;
 	
+	public List<TelefoneEntity> getTelefones() {
+		return telefones;
+	}
+
+	public void setTelefones(List<TelefoneEntity> telefones) {
+		this.telefones = telefones;
+	}
+
 	@OneToOne()
     @JoinColumn(name = "usuario_empresa_id", referencedColumnName = "id_usuario")
     private UsuarioEntity usuarioEmpresaLogin;
@@ -62,14 +69,6 @@ public class EmpresaEntity implements Serializable{
 
 	public void setUsuarioEmpresaLogin(UsuarioEntity usuarioEmpresaLogin) {
 		this.usuarioEmpresaLogin = usuarioEmpresaLogin;
-	}
-
-	public TelefoneEntity getTelefoneEmpresa() {
-		return telefoneEmpresa;
-	}
-
-	public void setTelefoneEmpresa(TelefoneEntity telefoneEmpresa) {
-		this.telefoneEmpresa = telefoneEmpresa;
 	}
 
 	public String getIdEmpresa() {
