@@ -18,6 +18,7 @@ public interface UsuarioRepository extends JpaRepository<UsuarioEntity, Long>{
 	@Query(value = "update agendalize.usuario"
 			+ " set senha_usuario = ?1 where "
 			+ "email_usuario = ?2", nativeQuery = true)
+	
 	@Transactional
 	void alterarSenha(String novaSenha, String emailUsuario);
 	

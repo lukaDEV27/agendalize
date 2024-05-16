@@ -21,6 +21,8 @@
 
 						<form name="salvar_empresa" class="form-horizontal"
 							method="POST" th:action="@{/salvar_empresa}" th:object="${empresaEntity}">
+							
+							<input class="form-control" type="hidden" maxlength="50" name="usuarioEmpresaLogin" th:value="${idUsuario}">
 
 							<div class="alert alert-sucess" th:text="${mensagem}"
 								th:if="${not #strings.isEmpty(mensagem)}"></div>

@@ -94,6 +94,22 @@ public class UsuarioEntity implements Serializable,UserDetails{
 		return permissoes;
 	}
 
+	public String getEmailUsuario() {
+		return emailUsuario;
+	}
+
+	public void setEmailUsuario(String emailUsuario) {
+		this.emailUsuario = emailUsuario;
+	}
+
+	public String getSenhaUsuario() {
+		return senhaUsuario;
+	}
+
+	public void setSenhaUsuario(String senhaUsuario) {
+		this.senhaUsuario = senhaUsuario;
+	}
+
 	public void setPermissoes(List<PermissaoEntity> permissoes) {
 		this.permissoes = permissoes;
 	}
