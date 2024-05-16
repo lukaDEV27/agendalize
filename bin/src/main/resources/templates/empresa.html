@@ -1,1 +1,89 @@
-pagina da empresa
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head th:insert="~{layout/cabecalho}">
+	<title>Login Empresa</title>
+</head>
+
+
+<body>
+	<div th:insert="~{layout/menu}"></div>
+	<div class="wrapper">
+
+		<div class="container-fluid">
+			<div class="row justify-content-center">
+				<div class="col-12 col-md-6 col-sm-12 col-xs-12">
+					<div class="card p-4 p-md-4 my-4 mx-3 mx-md-0 text-white">
+						<h6>Cadastrar Empresa</h6>
+						<p>Formulario de cadastro de empresas.</p>
+
+
+
+						<form name="salvar_empresa" class="form-horizontal"
+							method="POST" th:action="@{/salvar_empresa}" th:object="${empresaEntity}">
+							
+							<input class="form-control" type="hidden" maxlength="50" name="usuarioEmpresaLogin" th:value="${idUsuario}">
+
+							<div class="alert alert-sucess" th:text="${mensagem}"
+								th:if="${not #strings.isEmpty(mensagem)}"></div>
+
+							<div class="form-group">
+								<label> CNPJ </label>
+								<input type="text" class="form-control" id="idEmpresa" name="idEmpresa"
+									placeholder="CNPJ Empresa" required>
+
+							</div>
+							<div class="form-group">
+								<label> Nome Empresa </label>
+								<input type="text" class="form-control" id="nomeEmpresa" name="nomeEmpresa"
+									placeholder="Nome da Empresa" required>
+
+							</div>
+							<div class="form-group">
+								<label> Email </label>
+								<input type="email" class="form-control" id="emailContatoEmpresa"
+									name="emailContatoEmpresa" placeholder="Email" required>
+
+							</div>
+
+							<div class="form-group">
+								<label> Telefone </label>
+								<input type="text" class="form-control" id="telefones" name="telefones"
+									placeholder="Telefone" required>
+
+							</div>
+							<div class="form-group">
+								<label> Telefone </label>
+								<input type="text" class="form-control" id="telefones" name="telefones"
+									placeholder="Opção 2" required>
+
+							</div>
+							<div class="form-group">
+								<label> Telefone </label>
+								<input type="text" class="form-control" id="telefones" name="telefones"
+									placeholder="Opção 3" required>
+
+							</div>
+
+							<div class="form-group">
+								<label> Endereço </label>
+								<input type="text" class="form-control" id="enderecoEmpresa" name="enderecoEmpresa"
+									placeholder="Endereço" required>
+
+							</div>
+							<button type="submit" class="col-12 btn">Cadastrar</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+	<div th:insert="~{layout/rodape}"></div>
+</body>
+
+</html>

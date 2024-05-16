@@ -1,147 +1,117 @@
 <style>
-	* {
-		margin: 0;
-		padding: 0;
-
-		font-size: 16px;
-
+	@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+	
+	:root{
+	    --primary-color: #e82574;
+	    --primary-color-dark: #bc1c5c;
+	    --text-dark: #0c0a09;
+	    --text-light: #78716c;
+	    --white: #ffffff;
+	    --max-width: 1200px;
 	}
-
-	footer {
-		background: #343434;
-		padding-top: 50px;
+	.footer{
+	    background-color: var(--text-dark);
 	}
-
-	.container {
-		width: 1140px;
-		margin: auto;
-		display: flex;
-		justify-content: center;
+	.footer_container{
+	    display: grid;
+	    gap: 4rem 2rem;
 	}
-
-	.footer-content {
-		width: 33.3%;
+	.footer_col .section_description{
+	    margin-block: 2rem;
 	}
-
-	h3 {
-		font-size: 28px;
-		margin-bottom: 15px;
-		text-align: center;
+	.footer_col h4{
+	    margin-bottom: 2rem;
+	    font-size: 1.2rem;
+	    font-weight: 500;
+	    color: var(--white);
 	}
-
-	.footer-content p {
-		width: 190px;
-		margin: auto;
-		padding: 7px;
+	.footer_links{
+	    list-style: none;
+	    display: grid;
+	    gap: 1rem;
 	}
-
-	.footer-content ul {
-		text-align: center;
+	.footer_links  a{
+	    color: var(--text-light);
+	    transition: 0.3s;
 	}
-
-	.list {
-		padding: 0;
+	.footer_links  a:hover{
+	    color: var(--white);
 	}
-
-	.list li {
-		width: auto;
-		text-align: center;
-		list-style-type: none;
-		padding: 7px;
-		position: relative;
+	.footer_socials{
+	    margin-top: 2rem;
+	    display: flex;
+	    align-items: center;
+	    gap: 1rem;
+	    flex-wrap: wrap;
+	    font-size: 25px;
 	}
-
-	.list li::before {
-		content: '';
-		position: absolute;
-		transform: translate(-50%, -50%);
-		left: 50%;
-		top: 100%;
-		width: 0;
-		height: 2px;
-		background: #f18930;
-		transition-duration: .5s;
+	.footer_socials a:hover{
+	    color: var(--primary-color);
 	}
-
-	.list li:hover::before {
-		width: 70px;
+	.footer_bar{
+	    padding: 1rem;
+	    font-size: 0.9rem;
+	    color: var(--text-light);
+	    text-align: center;
 	}
-
-	.social-icons {
-		text-align: center;
-		padding: 0;
+	@media (width > 576px){
+	    .footer_container{
+	        grid-template-columns: repeat(2, 1fr);
+	    }
 	}
-
-	.social-icons li {
-		display: inline-block;
-		text-align: center;
-		padding: 5px;
+	.section_container{
+	    max-width: var(--max-width);
+	    margin: auto;
+	    padding: 5rem 1rem;
 	}
-
-	.social-icons i {
-		color: white;
-		font-size: 25px;
-	}
-
-	a {
-		text-decoration: none;
-	}
-
-	a:hover {
-		color: #f18930;
-	}
-
-	.social-icons i:hover {
-		color: #f18930;
-	}
-
-	.bottom-bar {
-		background: #f18930;
-		text-align: center;
-		padding: 10px 0;
-		margin-top: 50px;
-	}
-
-	.bottom-bar p {
-		color: #343434;
-		margin: 0;
-		font-size: 16px;
-		padding: 7px;
-	}
-
-	.titulo-rodape {
-		color: white;
+	.section_description{
+	    max-width: 600px;
+	    margin-bottom: 1rem;
+	    color: var(--text-light);
 	}
 </style>
-<footer>
-	<div class="container">
-		<div class="footer-content">
-			<h3 class="titulo-rodape">Contact Us</h3>
-			<p class="titulo-rodape">Email:Info@example.com</p>
-			<p class="titulo-rodape">Phone:+121 56556 565556</p>
-			<p class="titulo-rodape">Address:Your Address 123 street</p>
-		</div>
-		<div class="footer-content">
-			<h3 class="titulo-rodape">Quick Links</h3>
-			<ul class="list">
-				<li><a href="">Home</a></li>
-				<li><a href="">About</a></li>
-				<li><a href="">Services</a></li>
-				<li><a href="">Products</a></li>
-				<li><a href="">Contact</a></li>
-			</ul>
-		</div>
-		<div class="footer-content">
-			<h3 class="titulo-rodape">Follow Us</h3>
-			<ul class="social-icons">
-				<li><a href=""><i class="fab fa-facebook"></i></a></li>
-				<li><a href=""><i class="fab fa-twitter"></i></a></li>
+<footer class="footer" id="contact">
+        <div class="section_container footer_container">
+            <div class="footer_col">
+                <div class="logo">
+                    <a href="main.html" id="home"><img src="css/Agendalize2.png" alt="logo"></a>
+                </div>
+                <p class="section_description">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero explicabo repellendus enim, aut necessitatibus maiores asperiores nihil at minus atque praesentium, quis blanditiis porro? Quis dicta amet numquam molestiae fugiat!
+                </p>
+                <button class="btn">Cadastre-se</button>
+            </div>
+            <div class="footer_col">
+                <h4>LINKS RÁPIDOS</h4>
+                <ul class="footer_links">
+                    <li><a href="main.html">Principal</a></li>
+                    <li><a href="empresa.html">Empresa</a></li>
+                    <li><a href="about.html">Sobre Nós</a></li>
+                    <li><a href="#">Contato</a></li>
+                </ul>
+            </div>
+            <div class="footer_col">
+                <h4>CONTATOS</h4>
+                <ul class="footer_links">
+                    <li><a href="#">kakafig13@gmail.com</a></li>
+                    <li><a href="#">(21)96507-5998</a></li>
+                </ul>
+            </div>
+            <div class="footer_col">
+                <h4>REDES SÓCIAIS</h4>
+            <ul class="footer_links footer_socials">           
+
+                <li><a href=""><i class="fab fa-facebook"></i></a></li>
+				<li><a href=""><i class="fab fa-github"></i></a></li>
 				<li><a href=""><i class="fab fa-instagram"></i></a></li>
 				<li><a href=""><i class="fab fa-linkedin"></i></a></li>
-			</ul>
-		</div>
-	</div>
-	<div class="bottom-bar">
-		<p>&copy; 2023 your company . All rights reserved</p>
-	</div>
-</footer>
+            </ul>
+
+            </div>
+        </div>
+        <div class="footer_bar">
+            Copyright 2024 Web Design Anacleto. All rigths reserved.
+        </div>
+    </footer>
+
+    <script src="https://kit.fontawesome.com/1165876da6.js" crossorigin="anonymous"></script>

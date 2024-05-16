@@ -11,19 +11,21 @@
 
 		<div class="form-box">
 
-			<!------------------- login form -------------------------->
+			<!------------------- login form ------------------------>
 
+			<form name="salvar_empresa" class="form-horizontal" method="POST" th:action="@{/salvar_empresa}"
+					th:object="${empresaEntity}">
 			<div class="login-container" id="login">
 				<div class="top">
 					<span>Não tem uma conta? <a href="#" onclick="register()">Cadastrar</a></span>
 					<header>Empresa Login</header>
 				</div>
 				<div class="input-box">
-					<input type="text" class="input-field" placeholder="Username or Email">
+					<input type="email" name="emailUsuario" class="input-field" placeholder="Email">
 					<i class="bx bx-user"></i>
 				</div>
 				<div class="input-box">
-					<input type="password" class="input-field" placeholder="Password">
+					<input type="password" name="senhaUsuario" class="input-field" placeholder="Password">
 					<i class="bx bx-lock-alt"></i>
 				</div>
 				<div class="input-box">
@@ -41,12 +43,13 @@
 			</div>
 
 			<!------------------- registration form -------------------------->
+			<form name="salvar_empresa" class="form-horizontal" method="POST" th:action="@{/salvar_empresa}" th:object="${empresaEntity}">
 			<div class="register-container" id="register">
 				<div class="top">
 					<span>Tem uma Conta? <a href="#" onclick="login()">Login</a></span>
 					<header>Cadastrar Empresa</header>
 				</div>
-				<div class="two-forms">
+				 <div class="two-forms">
 					<div class="input-box">
 						<input type="text" class="input-field" placeholder="Firstname">
 						<i class="bx bx-user"></i>
@@ -57,11 +60,11 @@
 					</div>
 				</div>
 				<div class="input-box">
-					<input type="text" class="input-field" placeholder="Email">
+					<input type="email" name="emailUsuario" class="input-field" placeholder="Email">
 					<i class="bx bx-envelope"></i>
 				</div>
 				<div class="input-box">
-					<input type="password" class="input-field" placeholder="Password">
+					<input type="password" name="senhaUsuario" class="input-field" placeholder="Password">
 					<i class="bx bx-lock-alt"></i>
 				</div>
 				<div class="input-box">
@@ -69,9 +72,9 @@
 				</div>
 				<div class="two-col">
 					<div class="one">
-						<!--    <input type="checkbox" id="register-check">
+						   <input type="checkbox" id="register-check">
 		                   <label for="register-check"> Remember Me</label>
-		               </div>-->
+		               </div>
 						<div class="two">
 							<label><a href="#">Terms & conditions</a></label>
 						</div>
@@ -80,52 +83,52 @@
 			</div>
 
 
-			<script>
+		<script>
 
-				function myMenuFunction() {
-					var i = document.getElementById("navMenu");
+			function myMenuFunction() {
+				var i = document.getElementById("navMenu");
 
-					if (i.className === "nav-menu") {
-						i.className += " responsive";
-					} else {
-						i.className = "nav-menu";
-					}
+				if (i.className === "nav-menu") {
+					i.className += " responsive";
+				} else {
+					i.className = "nav-menu";
 				}
+			}
 
-			</script>
+		</script>
 
-			<script>
+		<script>
 
-				var a = document.getElementById("loginBtn");
-				var b = document.getElementById("registerBtn");
-				var x = document.getElementById("login");
-				var y = document.getElementById("register");
+			var a = document.getElementById("loginBtn");
+			var b = document.getElementById("registerBtn");
+			var x = document.getElementById("login");
+			var y = document.getElementById("register");
 
-				function login() {
-					x.style.left = "4px";
-					y.style.right = "-520px";
-					a.className += " white-btn";
-					b.className = "btn";
-					x.style.opacity = 1;
-					y.style.opacity = 0;
-				}
+			function login() {
+				x.style.left = "4px";
+				y.style.right = "-520px";
+				a.className += " white-btn";
+				b.className = "btn";
+				x.style.opacity = 1;
+				y.style.opacity = 0;
+			}
 
-				function register() {
-					x.style.left = "-510px";
-					y.style.right = "5px";
-					a.className = "btn";
-					b.className += " white-btn";
-					x.style.opacity = 0;
-					y.style.opacity = 1;
-				}
+			function register() {
+				x.style.left = "-510px";
+				y.style.right = "5px";
+				a.className = "btn";
+				b.className += " white-btn";
+				x.style.opacity = 0;
+				y.style.opacity = 1;
+			}
 
-			</script>
+		</script>
 
 		</div>
-	</div>
+		</div>
 
 
-	<div th: insert="~{layout/rodape}"></div>
+		<div th: insert="~{layout/rodape}"></div>
 </body>
 
 </html>
