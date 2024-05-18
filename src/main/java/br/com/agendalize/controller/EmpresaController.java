@@ -36,6 +36,13 @@ public class EmpresaController {
 		return "empresa"; // caminho real do arquivo
 	}
 //CADASTRO EMPRESA
+	
+	@GetMapping("/cadastroEmpresa") // nome que eu quiser colocar
+	public String cadastroEmpresa(ModelMap model) {
+		
+		return "cadastroEmpresa"; // caminho real do arquivo
+	}
+	
 	@PostMapping("/salvar_empresa")
 	public ModelAndView save(ModelMap model, @ModelAttribute("empresaEntity") EmpresaEntity empresaEntity,
 			RedirectAttributes atributes) throws Exception {
@@ -68,7 +75,7 @@ public class EmpresaController {
 		permissoes.add(permissao);
 		
 		usuarioEntity.setPermissoes(permissoes);
-		ModelAndView mv = new ModelAndView("redirect:/empresa");
+		ModelAndView mv = new ModelAndView("redirect:/login");
 		BCryptPasswordEncoder cript = new BCryptPasswordEncoder();
 		usuarioEntity.setSenhaUsuario(cript.encode(usuarioEntity.getSenhaUsuario()));
 		atributes.addFlashAttribute("mensagem", usuarioService.save(usuarioEntity));

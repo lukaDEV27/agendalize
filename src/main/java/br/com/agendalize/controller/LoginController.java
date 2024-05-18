@@ -16,6 +16,12 @@ public class LoginController {
 		{
 			return "principal"; //caminho real do arquivo
 		}
+		
+		@GetMapping("/login") //nome que eu quiser colocar 
+		public String login()
+		{
+			return "login"; //caminho real do arquivo
+		}
 
 	}
 

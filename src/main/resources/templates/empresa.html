@@ -2,89 +2,61 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head th:insert="~{layout/cabecalho}">
-	<title>Login Empresa</title>
+	<title>Agendalize</title>
 </head>
 
-
 <body>
+
 	<div th:insert="~{layout/menu}"></div>
 
-
-	<div class="container-fluid">
-		<div class="row justify-content-center">
-			<div class="col-12 col-md-6 col-sm-12 col-xs-12">
-				<div class="card p-4 p-md-4 my-4 mx-3 mx-md-0 text-white">
-					<h6>Cadastrar Empresa</h6>
-					<p>Formulario de cadastro de empresas.</p>
-
-
-
-					<form name="salvar_empresa" class="form-horizontal" method="POST" th:action="@{/salvar_empresa}"
-						th:object="${empresaEntity}">
-
-						<input class="form-control" type="hidden" maxlength="50" name="usuarioEmpresaLogin"
-							th:value="${idUsuario}">
-
-						<div class="alert alert-sucess" th:text="${mensagem}" th:if="${not #strings.isEmpty(mensagem)}">
-						</div>
-
-						<div class="form-group">
-							<label> CNPJ </label>
-							<input type="text" class="form-control" id="idEmpresa" name="idEmpresa"
-								placeholder="CNPJ Empresa" required>
-
-						</div>
-						<div class="form-group">
-							<label> Nome Empresa </label>
-							<input type="text" class="form-control" id="nomeEmpresa" name="nomeEmpresa"
-								placeholder="Nome da Empresa" required>
-
-						</div>
-						<div class="form-group">
-							<label> Email </label>
-							<input type="email" class="form-control" id="emailContatoEmpresa" name="emailContatoEmpresa"
-								placeholder="Email" required>
-
-						</div>
-
-						<div class="form-group">
-							<label> Telefone </label>
-							<input type="text" class="form-control" id="telefones" name="telefones"
-								placeholder="Telefone" required>
-
-						</div>
-						<div class="form-group">
-							<label> Telefone </label>
-							<input type="text" class="form-control" id="telefones" name="telefones"
-								placeholder="Opção 2" required>
-
-						</div>
-						<div class="form-group">
-							<label> Telefone </label>
-							<input type="text" class="form-control" id="telefones" name="telefones"
-								placeholder="Opção 3" required>
-
-						</div>
-
-						<div class="form-group">
-							<label> Endereço </label>
-							<input type="text" class="form-control" id="enderecoEmpresa" name="enderecoEmpresa"
-								placeholder="Endereço" required>
-
-						</div>
-						<button type="submit" class="col-12 btn">Cadastrar</button>
-					</form>
-				</div>
+	<section class="empresa" id="empresa">
+		<div class="section_container empresa_container">
+			<div class="empresa_content">
+				<p class="section_subheader">EMPRESA</p>
+				<h2 class="section_header">Utilidades para sua empresa.</h2>
+				<ul class="empresa_list">
+					<li>
+						<span><i class="ri-calendar-line"></i></span>
+						Agenda
+					</li>
+					<li>
+						<span><i class="ri-dashboard-2-line"></i></span>
+						Dashboard
+					</li>
+					<li>
+						<span><i class="ri-survey-line"></i></span>
+						Formulario
+					</li>
+					<li>
+						<span><i class="ri-table-line"></i></span>
+						Tabela
+					</li>
+				</ul>
 			</div>
 		</div>
-	</div>
+	</section>
 
-
+	<section class="section_container about_container" id="about">
+		<div class="about_image">
+			<img src="img/sobrenos.png" alt="about">
+		</div>
+		<div class="about_content">
+			<p class="section_subheader">SOBRE NÓS</p>
+			<h2 class="section_header">As Melhores Agendas você encontra aqui!</h2>
+			<p class="section_description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae veritatis
+				rerum nemo cupiditate ex libero, omnis quo vero dolores iusto dignissimos asperiores accusamus mollitia,
+				repellendus maxime tempore numquam quas! Harum?</p>
+			<div class="about_btn">
+				<button class="btn"><a href="about.html"></a>Leia Mais</button>
+			</div>
+		</div>
+	</section>
 
 
 
 
 	<div th:insert="~{layout/rodape}"></div>
+
 </body>
 
 </html>
