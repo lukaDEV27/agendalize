@@ -27,18 +27,27 @@ public class SecSecurityConfig {
 
 		http.authorizeHttpRequests(auth -> auth
 				// Qualquer tipo de permissão consegue acessar esse @controller
-				.requestMatchers("/login", "/cadastrarUsuario", "/cadastrarEmpresa", "/pricipal", "/", "/sobreNos")
-				.permitAll().requestMatchers("/empresa").hasAnyAuthority("admin", "empresa")
+				.requestMatchers("/").permitAll()
+				.requestMatchers("/principal").permitAll()
+				.requestMatchers("/cadastroUsuario").permitAll()
+				.requestMatchers("/sobreNos").permitAll()
+				.requestMatchers("/login").permitAll()
+				.requestMatchers("/empresa").hasAnyAuthority("admin", "empresa")
+				
+				
 				// Quem possuir algum dos dois perfis pode acessar o @controller
 				// Qualquer requisição ao @controller o usuário precisa estar autenticado
 				.anyRequest().authenticated())
-		
-		
+
+				
+				
 				.formLogin(formLogin -> formLogin
 				// Direciona para esse @controller quando o login está correto
-						.defaultSuccessUrl("/principal", true).permitAll())
-						.rememberMe(rememberMe -> rememberMe.key("AbcdEfghIjkl..."))
-						.logout(logout -> logout.logoutUrl("/sair").permitAll());
+				.defaultSuccessUrl("/principal", true).permitAll()
+				.loginPage("/login"))
+				
+				//.rememberMe(rememberMe -> rememberMe.key("AbcdEfghIjkl..."))
+				.logout(logout -> logout.logoutUrl("/sair").permitAll());
 		return http.build();
 
 	}

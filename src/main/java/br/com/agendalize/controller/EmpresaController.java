@@ -19,6 +19,7 @@ import br.com.agendalize.entity.UsuarioEntity;
 import br.com.agendalize.entity.ePermissao;
 import br.com.agendalize.service.EmpresaService;
 import br.com.agendalize.service.UsuarioService;
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class EmpresaController {
@@ -28,6 +29,8 @@ public class EmpresaController {
 	
 	@Autowired
 	private UsuarioService usuarioService;
+
+	private String loginUsuarioLogado;
 	
 
 	@GetMapping("/empresa") // nome que eu quiser colocar
@@ -37,10 +40,20 @@ public class EmpresaController {
 	}
 //CADASTRO EMPRESA
 	
-	@GetMapping("/cadastroEmpresa") // nome que eu quiser colocar
-	public String cadastroEmpresa(ModelMap model) {
+	@GetMapping("/cadastroEmpresa") 
+	public ModelAndView cadastroEmpresa(ModelMap model,HttpSession session) throws Exception
+	{
+	
+		ModelAndView mv = new ModelAndView("cadastroEmpresa");
+		EmpresaEntity empresa = new EmpresaEntity();
+		//recupera o usuario logado na sessão
+        loginUsuarioLogado = (String)session.getAttribute("loginUsuarioLogado");   
+		empresa = empresaService.getOneByIdEmpresa(loginUsuarioLogado);
+		//model.addAttribute("docente", docente);
+		mv.addObject("empresa", empresa);
+
 		
-		return "cadastroEmpresa"; // caminho real do arquivo
+		return mv; 
 	}
 	
 	@PostMapping("/salvar_empresa")
