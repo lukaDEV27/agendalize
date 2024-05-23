@@ -23,7 +23,7 @@ public class EmpresaServiceImpl implements EmpresaService {
 	}
 
 	@Override
-	public EmpresaEntity getOneByIdEmpresa(String idEmpresa) {
+	public EmpresaEntity getOneByIdEmpresa(Long idEmpresa) {
 		
 		return empresaRepository.getOneByIdEmpresa(idEmpresa);
 	}
@@ -37,7 +37,7 @@ public class EmpresaServiceImpl implements EmpresaService {
 	}
 
 	@Override
-	public String deleteById(String idEmpresa) throws Exception {
+	public String deleteById(Long idEmpresa) throws Exception {
 		try 
 		{
 			empresaRepository.deleteById(idEmpresa);

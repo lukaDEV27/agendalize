@@ -6,8 +6,8 @@ import org.springframework.stereotype.Repository;
 import br.com.agendalize.entity.EmpresaEntity;
 
 @Repository
-public interface EmpresaRepository extends JpaRepository<EmpresaEntity, String>{
+public interface EmpresaRepository extends JpaRepository<EmpresaEntity, Long>{
 	
-	EmpresaEntity getOneByIdEmpresa(String idEmpresa);
+	EmpresaEntity getOneByIdEmpresa(Long idEmpresa);
 	
 }

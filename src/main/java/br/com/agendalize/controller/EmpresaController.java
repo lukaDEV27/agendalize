@@ -47,8 +47,12 @@ public class EmpresaController {
 		ModelAndView mv = new ModelAndView("cadastroEmpresa");
 		EmpresaEntity empresa = new EmpresaEntity();
 		//recupera o usuario logado na sessão
-        loginUsuarioLogado = (String)session.getAttribute("loginUsuarioLogado");   
-		empresa = empresaService.getOneByIdEmpresa(loginUsuarioLogado);
+        loginUsuarioLogado = (String)session.getAttribute("loginUsuarioLogado");
+        UsuarioEntity usuario = new UsuarioEntity();
+        usuario = usuarioService.getOneByUsername(loginUsuarioLogado);
+		//empresa = empresaService.getOneByIdEmpresa(1L);
+		empresa.setUsuarioEmpresaLogin(usuario);
+		System.out.println("Usuário logado" + empresa.getUsuarioEmpresaLogin().getIdUsuario());
 		//model.addAttribute("docente", docente);
 		mv.addObject("empresa", empresa);
 
@@ -89,8 +93,9 @@ public class EmpresaController {
 		
 		usuarioEntity.setPermissoes(permissoes);
 		ModelAndView mv = new ModelAndView("redirect:/login");
+		System.out.println("Entrei");
 		BCryptPasswordEncoder cript = new BCryptPasswordEncoder();
-		usuarioEntity.setSenhaUsuario(cript.encode(usuarioEntity.getSenhaUsuario()));
+		usuarioEntity.setPassword(cript.encode(usuarioEntity.getPassword()));
 		atributes.addFlashAttribute("mensagem", usuarioService.save(usuarioEntity));
 		
 		

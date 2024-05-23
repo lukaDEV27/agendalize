@@ -21,8 +21,11 @@ public class EmpresaEntity implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_empresa")
+	private Long idEmpresa;
+	
 	@Column(name = "cnpj_empresa")
-	private String idEmpresa;
+	private String cnpjEmpresa;
 	
 	@Column(name = "nome_empresa")
 	private String nomeEmpresa;
@@ -36,16 +39,12 @@ public class EmpresaEntity implements Serializable{
 	@Column(name = "endereco_empresa")
 	private String enderecoEmpresa;
 	
-	@OneToMany(mappedBy = "empresa")
-    private List<TelefoneEntity> telefones;
+	@Column(name = "telefone_empresa")
+	private String telefoneEmpresa;
 	
-	public List<TelefoneEntity> getTelefones() {
-		return telefones;
-	}
-
-	public void setTelefones(List<TelefoneEntity> telefones) {
-		this.telefones = telefones;
-	}
+	@Column(name = "cep_empresa")
+	private String cepEmpresa;
+	
 
 	@OneToOne()
     @JoinColumn(name = "usuario_empresa_id", referencedColumnName = "id_usuario")
@@ -54,6 +53,22 @@ public class EmpresaEntity implements Serializable{
 	@OneToMany(mappedBy = "empresa")
     private List<AgendaEntity> agendas;
 	
+
+	public String getCepEmpresa() {
+		return cepEmpresa;
+	}
+
+	public void setCepEmpresa(String cepEmpresa) {
+		this.cepEmpresa = cepEmpresa;
+	}
+
+	public String getTelefoneEmpresa() {
+		return telefoneEmpresa;
+	}
+
+	public void setTelefoneEmpresa(String telefoneEmpresa) {
+		this.telefoneEmpresa = telefoneEmpresa;
+	}
 
 	public List<AgendaEntity> getAgendas() {
 		return agendas;
@@ -71,12 +86,20 @@ public class EmpresaEntity implements Serializable{
 		this.usuarioEmpresaLogin = usuarioEmpresaLogin;
 	}
 
-	public String getIdEmpresa() {
+	public Long getIdEmpresa() {
 		return idEmpresa;
 	}
 
-	public void setIdEmpresa(String idEmpresa) {
+	public void setIdEmpresa(Long idEmpresa) {
 		this.idEmpresa = idEmpresa;
+	}
+
+	public String getCnpjEmpresa() {
+		return cnpjEmpresa;
+	}
+
+	public void setCnpjEmpresa(String cnpjEmpresa) {
+		this.cnpjEmpresa = cnpjEmpresa;
 	}
 
 	public String getNomeEmpresa() {

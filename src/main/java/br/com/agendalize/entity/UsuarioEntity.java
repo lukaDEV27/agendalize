@@ -29,10 +29,10 @@ public class UsuarioEntity implements Serializable,UserDetails{
 	private Long idUsuario;
 
 	@Column(name = "email_usuario") 
-	private String emailUsuario;
+	private String username;
 	
 	@Column(name = "senha_usuario") 
-	private String senhaUsuario;
+	private String password;
 
 	@ManyToMany
 	@JoinTable(name="usuario_permissao",
@@ -48,13 +48,13 @@ public class UsuarioEntity implements Serializable,UserDetails{
 	@Override
 	public String getPassword() {
 		
-		return this.senhaUsuario;
+		return this.password;
 	}
 
 	@Override
 	public String getUsername() {
 		
-		return this.emailUsuario;
+		return this.username;
 	}
 
 	@Override
@@ -94,20 +94,14 @@ public class UsuarioEntity implements Serializable,UserDetails{
 		return permissoes;
 	}
 
-	public String getEmailUsuario() {
-		return emailUsuario;
+	
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
-	public void setEmailUsuario(String emailUsuario) {
-		this.emailUsuario = emailUsuario;
-	}
-
-	public String getSenhaUsuario() {
-		return senhaUsuario;
-	}
-
-	public void setSenhaUsuario(String senhaUsuario) {
-		this.senhaUsuario = senhaUsuario;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public void setPermissoes(List<PermissaoEntity> permissoes) {

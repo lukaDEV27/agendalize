@@ -37,9 +37,10 @@ public class ClienteEntity implements Serializable{
 	@Column(name = "cep_cliente")
 	private String cepCliente;
 	
-	@OneToOne()
-    @JoinColumn(name = "telefone_cliente_id", referencedColumnName = "id_telefone")
-    private TelefoneEntity telefoneCliente;
+	@Column(name = "telefone_cliente")
+	private String telefoneCliente;
+	
+	
 
 	public String getIdCliente() {
 		return idCliente;
@@ -89,12 +90,14 @@ public class ClienteEntity implements Serializable{
 		this.cepCliente = cepCliente;
 	}
 
-	public TelefoneEntity getTelefoneCliente() {
+	public String getTelefoneCliente() {
 		return telefoneCliente;
 	}
 
-	public void setTelefoneCliente(TelefoneEntity telefoneCliente) {
+	public void setTelefoneCliente(String telefoneCliente) {
 		this.telefoneCliente = telefoneCliente;
 	}
+
+	
 	
 }

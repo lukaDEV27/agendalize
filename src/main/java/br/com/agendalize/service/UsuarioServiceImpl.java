@@ -17,9 +17,9 @@ public class UsuarioServiceImpl implements UsuarioService{
 	private String mensagem;
 
 	@Override
-	public UsuarioEntity getOneByIdEmpresa(String idUsuario) {
-		// TODO Auto-generated method stub
-		return null;
+	public UsuarioEntity getOneByUsername(String username) {
+		
+		return usuarioRepository.getOneByUsername(username);
 	}
 
 	@Override

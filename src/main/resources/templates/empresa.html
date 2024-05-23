@@ -15,6 +15,10 @@
 				<p class="section_subheader">EMPRESA</p>
 				<h2 class="section_header">Utilidades para sua empresa.</h2>
 				<ul class="empresa_list">
+					
+					<div class="alert alert-sucess" th:text="${mensagem}"
+													th:if="${not #strings.isEmpty(mensagem)}"></div>
+					
 					<li>
 						<span><i class="ri-calendar-line"></i><a href="/cadastroEmpresa">Cadastro empresa</a></span>
 					</li>

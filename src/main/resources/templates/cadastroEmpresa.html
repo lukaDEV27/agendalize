@@ -22,14 +22,15 @@
 					<form name="salvar_empresa" class="form-horizontal" method="POST" th:action="@{/salvar_empresa}"
 						th:object="${empresaEntity}">
 
-						<input type="hidden" name="usuarioEmpresaLogin" id="usuarioEmpresaLogin" th:value="${usuario.idUsuario}">
+						<input type="hidden" name="usuarioEmpresaLogin" id="usuarioEmpresaLogin"
+							th:value="${empresa.usuarioEmpresaLogin.idUsuario}">
 
 						<div class="alert alert-sucess" th:text="${mensagem}" th:if="${not #strings.isEmpty(mensagem)}">
 						</div>
 
 						<div class="form-group">
 							<label> CNPJ </label>
-							<input type="text" class="form-control" id="idEmpresa" name="idEmpresa"
+							<input type="text" class="form-control" id="cnpjEmpresa" name="cnpjEmpresa"
 								placeholder="CNPJ Empresa" required>
 
 						</div>
@@ -48,27 +49,23 @@
 
 						<div class="form-group">
 							<label> Telefone </label>
-							<input type="text" class="form-control" id="telefones" name="telefones"
+							<input type="text" class="form-control" id="telefoneEmpresa" name="telefoneEmpresa"
 								placeholder="Telefone" required>
 
 						</div>
-						<div class="form-group">
-							<label> Telefone </label>
-							<input type="text" class="form-control" id="telefones" name="telefones"
-								placeholder="Opção 2" required>
 
-						</div>
-						<div class="form-group">
-							<label> Telefone </label>
-							<input type="text" class="form-control" id="telefones" name="telefones"
-								placeholder="Opção 3" required>
-
-						</div>
 
 						<div class="form-group">
 							<label> Endereço </label>
 							<input type="text" class="form-control" id="enderecoEmpresa" name="enderecoEmpresa"
 								placeholder="Endereço" required>
+
+						</div>
+
+						<div class="form-group">
+							<label> cep </label>
+							<input type="text" class="form-control" id="cepEmpresa" name="cepEmpresa"
+								placeholder="CEP da Empresa" required>
 
 						</div>
 						<button type="submit" class="col-12 btn">Cadastrar</button>

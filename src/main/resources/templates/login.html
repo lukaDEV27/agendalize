@@ -10,6 +10,9 @@
 		<div th:if="${param.logout}">
 			You have been logged out.</div>
 		<form th:action="@{/login}" method="post">
+			
+			<div class="alert alert-sucess" th:text="${mensagem}"
+											th:if="${not #strings.isEmpty(mensagem)}"></div>
 			<div>
 			<input type="text" name="username" placeholder="Username"/>
 			</div>

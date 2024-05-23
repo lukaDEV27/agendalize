@@ -11,8 +11,8 @@ import jakarta.transaction.Transactional;
 @Repository
 public interface UsuarioRepository extends JpaRepository<UsuarioEntity, Long>{
 
-	boolean existsByEmailUsuario(String emailUsuario);
-	UsuarioEntity getOneByEmailUsuario(String emailUsuario);
+	boolean existsByUsername(String username);
+	UsuarioEntity getOneByUsername(String username);
 	
 	@Modifying
 	@Query(value = "update agendalize.usuario"
@@ -20,6 +20,6 @@ public interface UsuarioRepository extends JpaRepository<UsuarioEntity, Long>{
 			+ "email_usuario = ?2", nativeQuery = true)
 	
 	@Transactional
-	void alterarSenha(String novaSenha, String emailUsuario);
+	void alterarSenha(String novaSenha, String username);
 	
 }

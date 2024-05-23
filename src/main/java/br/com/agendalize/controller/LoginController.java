@@ -22,6 +22,8 @@ public class LoginController {
 	        String login = auth.getName(); //recupera o login do usuario logado     
 	        
 	        session.setAttribute("loginUsuarioLogado", login); //inclui na sessção o login do usuário
+	        
+	        System.out.println("Usuário logado" + login);
 			return "principal"; //caminho real do arquivo
 		}
 		

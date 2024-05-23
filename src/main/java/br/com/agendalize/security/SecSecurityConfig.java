@@ -32,6 +32,8 @@ public class SecSecurityConfig {
 				.requestMatchers("/cadastroUsuario").permitAll()
 				.requestMatchers("/sobreNos").permitAll()
 				.requestMatchers("/login").permitAll()
+				.requestMatchers("/sair").permitAll()
+				.requestMatchers("/salvar_usuario").permitAll()
 				.requestMatchers("/empresa").hasAnyAuthority("admin", "empresa")
 				
 				
