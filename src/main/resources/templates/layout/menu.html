@@ -14,14 +14,19 @@
 			<li><a href="/sobreNos">Sobre Nós</a></li>
 			<li><a href="#">Contato</a></li>
 			<li>
-				   <form th:action="@{/sair}" method="post">	  
-					   <button type="submit" class="nav-link" sec:authorize="hasAnyAuthority('admin','empresa')">Sair</button>
-				   </form>
-				   </li>
+				<form th:action="@{/sair}" method="post">
+					<button type="submit" class="nav-link"
+						sec:authorize="hasAnyAuthority('admin','empresa')">Sair</button>
+				</form>
+			</li>
 
 		</ul>
+		<div th:if="${login == 'anonymousUser'}">
 		<button class="btn nav_btn"><a href="/login">Login</a></button>
+		</div>
+		<div th:if="${login == 'anonymousUser'}">
 		<button class="btn nav_btn"><a href="/cadastroUsuario">Cadastrar</a></button>
+		</div>
 	</nav>
 	<!--começo conteiner-->
 	<div class="section_container header_container" id="home">

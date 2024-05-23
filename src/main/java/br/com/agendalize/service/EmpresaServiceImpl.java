@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.agendalize.entity.EmpresaEntity;
+import br.com.agendalize.entity.UsuarioEntity;
 import br.com.agendalize.repository.EmpresaRepository;
 
 @Service
@@ -47,6 +48,12 @@ public class EmpresaServiceImpl implements EmpresaService {
 			throw new Exception(e.getMessage());
 		}
 		return mensagem;
+	}
+
+	@Override
+	public EmpresaEntity getOneByUsuarioEmpresaLogin(UsuarioEntity usuarioEmpresaLogin) {
+		// TODO Auto-generated method stub
+		return empresaRepository.getOneByUsuarioEmpresaLogin(usuarioEmpresaLogin);
 	}
 
 }

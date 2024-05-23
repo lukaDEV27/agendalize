@@ -18,10 +18,11 @@
 					
 					<div class="alert alert-sucess" th:text="${mensagem}"
 													th:if="${not #strings.isEmpty(mensagem)}"></div>
-					
+					<div th:if="${empresa == null}">
 					<li>
 						<span><i class="ri-calendar-line"></i><a href="/cadastroEmpresa">Cadastro empresa</a></span>
 					</li>
+					</div>
 					<li>
 						<span><i class="ri-dashboard-2-line"></i></span>
 						Dashboard

@@ -33,10 +33,23 @@ public class EmpresaController {
 	private String loginUsuarioLogado;
 	
 
-	@GetMapping("/empresa") // nome que eu quiser colocar
-	public String empresa(ModelMap model) {
+	@GetMapping("/empresa") 
+	public ModelAndView empresa(ModelMap model,HttpSession session) throws Exception
+	{
+	
+		ModelAndView mv = new ModelAndView("empresa");
+		EmpresaEntity empresa = new EmpresaEntity();
+		//recupera o usuario logado na sessão
+        loginUsuarioLogado = (String)session.getAttribute("loginUsuarioLogado");
+        UsuarioEntity usuario = new UsuarioEntity();
+        usuario = usuarioService.getOneByUsername(loginUsuarioLogado);
+		//empresa = empresaService.getOneByIdEmpresa(1L);
+		empresa = empresaService.getOneByUsuarioEmpresaLogin(usuario);
+		//System.out.println("Usuário logado " + empresa.getIdEmpresa());
+		mv.addObject("empresa", empresa);
+
 		
-		return "empresa"; // caminho real do arquivo
+		return mv; 
 	}
 //CADASTRO EMPRESA
 	

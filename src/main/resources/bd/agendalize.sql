@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `agendalize` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `agendalize`;
 -- MySQL dump 10.13  Distrib 8.0.36, for Win64 (x86_64)
 --
 -- Host: localhost    Database: agendalize
@@ -157,7 +159,7 @@ CREATE TABLE `empresa` (
   UNIQUE KEY `email_contato_empresa_UNIQUE` (`email_contato_empresa`),
   KEY `usuario_empresa_id_idx` (`usuario_empresa_id`),
   CONSTRAINT `usuario_empresa_id` FOREIGN KEY (`usuario_empresa_id`) REFERENCES `usuario` (`id_usuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -166,41 +168,8 @@ CREATE TABLE `empresa` (
 
 LOCK TABLES `empresa` WRITE;
 /*!40000 ALTER TABLE `empresa` DISABLE KEYS */;
-INSERT INTO `empresa` VALUES ('15975365425','burger king','admin@admin.com',NULL,1,'21912345678','jardim america','12345678',1),('79579879578','gusfestas','gustafestas@contatos.com',NULL,11,'21967540521','Rua ierê 273 vicente de carvalho','21370530',2);
+INSERT INTO `empresa` VALUES ('15975365425','burger king','admin@admin.com',NULL,1,'21912345678','jardim america','12345678',1),('79579879578','gusfestas','gustafestas@contatos.com',NULL,11,'21967540521','Rua ierê 273 vicente de carvalho','21370530',2),('13648573165','Testando','testando@contato.com',NULL,7,'14523654781','teste rua 103','25865475',3);
 /*!40000 ALTER TABLE `empresa` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `flyway_schema_history`
---
-
-DROP TABLE IF EXISTS `flyway_schema_history`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `flyway_schema_history` (
-  `installed_rank` int NOT NULL,
-  `version` varchar(50) DEFAULT NULL,
-  `description` varchar(200) NOT NULL,
-  `type` varchar(20) NOT NULL,
-  `script` varchar(1000) NOT NULL,
-  `checksum` int DEFAULT NULL,
-  `installed_by` varchar(100) NOT NULL,
-  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `execution_time` int NOT NULL,
-  `success` tinyint(1) NOT NULL,
-  PRIMARY KEY (`installed_rank`),
-  KEY `flyway_schema_history_s_idx` (`success`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `flyway_schema_history`
---
-
-LOCK TABLES `flyway_schema_history` WRITE;
-/*!40000 ALTER TABLE `flyway_schema_history` DISABLE KEYS */;
-INSERT INTO `flyway_schema_history` VALUES (1,'1','<< Flyway Baseline >>','BASELINE','<< Flyway Baseline >>',NULL,'root','2024-04-16 20:09:41',0,1),(2,'2','agendalize','SQL','V2__agendalize.sql',-717402143,'root','2024-04-20 22:16:19',3555,1),(3,'3','agendalize','SQL','V3__agendalize.sql',1021812080,'root','2024-05-14 17:02:58',2977,1),(4,'4','agendalize','SQL','V4__agendalize.sql',411674160,'root','2024-05-15 21:35:24',642,1);
-/*!40000 ALTER TABLE `flyway_schema_history` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -335,4 +304,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-22 21:16:09
+-- Dump completed on 2024-05-23 15:09:37
