@@ -10,17 +10,17 @@
 		</div>
 		<ul class="nav_links" id="nav-links">
 			<li><a href="/principal">Principal</a></li>
-			<li><a href="/empresa">Empresa</a></li>
+			<li sec:authorize="hasAnyAuthority('admin','empresa')"><a href="/empresa">Empresa</a></li>
 			<li><a href="/sobreNos">Sobre Nós</a></li>
 			<li><a href="#">Contato</a></li>
 			<li>
 				   <form th:action="@{/sair}" method="post">	  
-					   <button type="submit" class="nav-link">Sair</button>
+					   <button type="submit" class="nav-link" sec:authorize="hasAnyAuthority('admin','empresa')">Sair</button>
 				   </form>
 				   </li>
 
 		</ul>
-		<button class="btn nav_btn">Login</button>
+		<button class="btn nav_btn"><a href="/login">Login</a></button>
 		<button class="btn nav_btn"><a href="/cadastroUsuario">Cadastrar</a></button>
 	</nav>
 	<!--começo conteiner-->
