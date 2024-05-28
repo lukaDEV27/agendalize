@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head th:insert="~{layout/cabecalho}">
+	<title>Login Empresa</title>
+</head>
+
+
+<body>
+	<div th:insert="~{layout/menu}"></div>
+
+
+	<div class="container-fluid">
+		<div class="row justify-content-center">
+			<div class="col-12 col-md-6 col-sm-12 col-xs-12">
+				<div class="card p-4 p-md-4 my-4 mx-3 mx-md-0 text-white">
+					<h6>Cadastrar Agenda</h6>
+					<p>Formulario de cadastro de agendas.</p>
+
+
+
+					<form name="salvar_agenda" class="form-horizontal" method="POST" th:action="@{/salvar_agenda}"
+						th:object="${agendaEntity}">
+
+						<input type="hidden" name="empresa" id="empresa"
+							th:value="${empresa.idEmpresa}">
+
+						<div class="alert alert-sucess" th:text="${mensagem}" th:if="${not #strings.isEmpty(mensagem)}">
+						</div>
+
+						<div class="form-group">
+							<label> Nome da agenda </label>
+							<input type="text" class="form-control" id="nomeAgenda" name="nomeAgenda"
+								placeholder="Nome" required>
+
+						</div>
+						<div class="form-group">
+							<label> Data Inicial </label>
+							<input type="date" class="form-control" id="dataDisponivelInicial" name="dataDisponivelInicial"
+								placeholder="yyyy-mm-dd" required>
+
+						</div>
+						<div class="form-group">
+							<label> Data final </label>
+							<input type="date" class="form-control" id="dataDisponivelFinal" name="dataDisponivelFinal"
+								placeholder="yyyy-mm-dd" required>
+
+						</div>
+
+						<div class="form-group">
+							<label> Descrição da Agenda </label>
+							<input type="text" class="form-control" id="descricaoAgenda" name="descricaoAgenda"
+								placeholder="Descrição da agenda" required>
+
+						</div>
+
+						<button type="submit" class="col-12 btn">Cadastrar</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+
+	<div th:insert="~{layout/rodape}"></div>
+</body>
+
+</html>

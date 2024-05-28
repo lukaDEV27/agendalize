@@ -27,17 +27,23 @@ DROP TABLE IF EXISTS `agenda`;
 CREATE TABLE `agenda` (
   `id_agenda` int NOT NULL AUTO_INCREMENT,
   `empresa_agenda_id` int NOT NULL,
-  `agendamento_id` int NOT NULL,
+  `agendamento_id` int DEFAULT NULL,
   `data_disponivel_inicial` date NOT NULL,
   `data_disponivel_final` date NOT NULL,
   `nome_agenda` varchar(45) NOT NULL,
   `descricao_agenda` text,
+  `data_indisponivel_id` int DEFAULT NULL,
+  `semana_id` int DEFAULT NULL,
   PRIMARY KEY (`id_agenda`),
   KEY `agendamento_agenda_id_idx` (`agendamento_id`),
   KEY `empresa_agenda_id_idx` (`empresa_agenda_id`),
+  KEY `data_indisponivel_id_idx` (`data_indisponivel_id`),
+  KEY `semana_id_idx` (`semana_id`),
   CONSTRAINT `agendamento_id` FOREIGN KEY (`agendamento_id`) REFERENCES `agendamento` (`id_agendamento`),
-  CONSTRAINT `empresa_agenda_id` FOREIGN KEY (`empresa_agenda_id`) REFERENCES `empresa` (`id_empresa`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  CONSTRAINT `data_indisponivel_id` FOREIGN KEY (`data_indisponivel_id`) REFERENCES `data_indisponivel` (`id_data_indisponivel`),
+  CONSTRAINT `empresa_agenda_id` FOREIGN KEY (`empresa_agenda_id`) REFERENCES `empresa` (`id_empresa`),
+  CONSTRAINT `semana_id` FOREIGN KEY (`semana_id`) REFERENCES `semana` (`id_semana`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -46,6 +52,7 @@ CREATE TABLE `agenda` (
 
 LOCK TABLES `agenda` WRITE;
 /*!40000 ALTER TABLE `agenda` DISABLE KEYS */;
+INSERT INTO `agenda` VALUES (1,1,NULL,'2024-05-28','2024-10-31','DJ Agendamentos','Testando Agenda',NULL,NULL);
 /*!40000 ALTER TABLE `agenda` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -138,6 +145,30 @@ LOCK TABLES `cliente` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `data_indisponivel`
+--
+
+DROP TABLE IF EXISTS `data_indisponivel`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `data_indisponivel` (
+  `id_data_indisponivel` int NOT NULL AUTO_INCREMENT,
+  `data` date NOT NULL,
+  `descricao` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id_data_indisponivel`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `data_indisponivel`
+--
+
+LOCK TABLES `data_indisponivel` WRITE;
+/*!40000 ALTER TABLE `data_indisponivel` DISABLE KEYS */;
+/*!40000 ALTER TABLE `data_indisponivel` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `empresa`
 --
 
@@ -217,6 +248,31 @@ CREATE TABLE `segmento` (
 LOCK TABLES `segmento` WRITE;
 /*!40000 ALTER TABLE `segmento` DISABLE KEYS */;
 /*!40000 ALTER TABLE `segmento` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `semana`
+--
+
+DROP TABLE IF EXISTS `semana`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `semana` (
+  `id_semana` int NOT NULL,
+  `nome_dia` varchar(45) NOT NULL,
+  `hora_inicial` time NOT NULL,
+  `hora_final` time NOT NULL,
+  PRIMARY KEY (`id_semana`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `semana`
+--
+
+LOCK TABLES `semana` WRITE;
+/*!40000 ALTER TABLE `semana` DISABLE KEYS */;
+/*!40000 ALTER TABLE `semana` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -304,4 +360,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-23 15:09:37
+-- Dump completed on 2024-05-28 16:23:31

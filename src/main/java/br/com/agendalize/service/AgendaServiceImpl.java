@@ -18,7 +18,7 @@ public class AgendaServiceImpl implements AgendaService {
 
 	@Override
 	public AgendaEntity getOneByIdAgenda(Long idAgenda) {
-		// TODO Auto-generated method stub
+		
 		return agendaRepository.getOneByIdAgenda(idAgenda);
 	}
 
@@ -32,7 +32,7 @@ public class AgendaServiceImpl implements AgendaService {
 
 	@Override
 	public List<AgendaEntity> findAll() {
-		// TODO Auto-generated method stub
+		
 		return agendaRepository.findAll();
 	}
 

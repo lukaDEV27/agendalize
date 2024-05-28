@@ -39,7 +39,7 @@ private static final long serialVersionUID = 1L;
 	private String descricaoAgenda;
 	
 	@ManyToOne
-    @JoinColumn(name = "empresa_cnpj_id")
+    @JoinColumn(name = "empresa_agenda_id")
     private EmpresaEntity empresa;
 	
 	@ManyToMany

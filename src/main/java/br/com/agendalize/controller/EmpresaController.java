@@ -32,7 +32,7 @@ public class EmpresaController {
 
 	private String loginUsuarioLogado;
 	
-
+	//PÁGINA PRINCIPAL DE EMPRESA
 	@GetMapping("/empresa") 
 	public ModelAndView empresa(ModelMap model,HttpSession session) throws Exception
 	{
@@ -63,10 +63,10 @@ public class EmpresaController {
         loginUsuarioLogado = (String)session.getAttribute("loginUsuarioLogado");
         UsuarioEntity usuario = new UsuarioEntity();
         usuario = usuarioService.getOneByUsername(loginUsuarioLogado);
-		//empresa = empresaService.getOneByIdEmpresa(1L);
+		
 		empresa.setUsuarioEmpresaLogin(usuario);
 		System.out.println("Usuário logado" + empresa.getUsuarioEmpresaLogin().getIdUsuario());
-		//model.addAttribute("docente", docente);
+		
 		mv.addObject("empresa", empresa);
 
 		
@@ -116,5 +116,8 @@ public class EmpresaController {
 		return mv;
 
 	}
+	
+	
+	
 
 }

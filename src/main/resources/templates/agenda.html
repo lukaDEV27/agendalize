@@ -15,16 +15,11 @@
 				<p class="section_subheader">EMPRESA</p>
 				<h2 class="section_header">Utilidades para sua empresa.</h2>
 				<ul class="empresa_list">
-					
-					<div class="alert alert-sucess" th:text="${mensagem}"
-													th:if="${not #strings.isEmpty(mensagem)}"></div>
-					<div th:if="${empresa == null}">
 					<li>
-						<span><i class="ri-calendar-line"></i><a href="/cadastroEmpresa">Cadastro empresa</a></span>
+						<span><i class="ri-calendar-line"></i><a href="/cadastroAgenda">Cadastre sua agenda</a></span>
 					</li>
-					</div>
 					<li>
-						<span><i class="ri-dashboard-2-line"></i><a href="/agenda">Gerencie suas agendas</a></span>
+						<span><i class="ri-dashboard-2-line"></i></span>
 						Dashboard
 					</li>
 					<li>
@@ -39,6 +34,35 @@
 			</div>
 		</div>
 	</section>
+	
+	<!--Começa lista de docentes -->
+<br>
+<h5 class="card-title">Agendas cadastrados</h5>
+	<table class="table table-sm table-striped table-hover table-bordered">
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>Nome</th>							
+								<th>Data inicial</th>
+								<th>Data final</th>
+								<th>Descrição</th>
+								
+								
+						
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="agenda : ${agendas}" >
+								<td th:text="${agenda.IdAgenda}"></td>
+								<td th:text="${agenda.NomeAgenda}"></td>	
+								<td th:text="${agenda.DataDisponivelInicial}"></td>	
+								<td th:text="${agenda.DataDisponivelFinal}"></td>
+								<td th:text="${agenda.DescricaoAgenda}"></td>	
+							   					
+							</tr>							
+						</tbody>
+</table>
+<!--Termina lista de docentes -->
 
 	<section class="section_container about_container" id="about">
 		<div class="about_image">
