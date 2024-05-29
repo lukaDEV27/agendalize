@@ -45,14 +45,14 @@ public class AgendaController {
         usuario = usuarioService.getOneByUsername(loginUsuarioLogado);
 		
          empresa = empresaService.getOneByUsuarioEmpresaLogin(usuario);
-		System.out.println("Empresa do Usuário logado " + empresa.getAgendas());
+		System.out.println("Agendas do Usuário logado " + empresa.getAgendas());
 		
 		mv.addObject("empresa", empresa);
 		
 		//AgendaEntity agenda = new AgendaEntity();
 		//agenda = agendaService.findAllByEmpresa(empresa);
 
-		model.addAttribute("agendas", agendaService.findAllByEmpresa(empresa));
+		model.addAttribute("agendas", empresa.getAgendas());
 		return mv; // caminho real do arquivo
 	}
 
@@ -69,7 +69,7 @@ public class AgendaController {
         usuario = usuarioService.getOneByUsername(loginUsuarioLogado);
 		
         empresa = empresaService.getOneByUsuarioEmpresaLogin(usuario);
-		System.out.println("Usuário logado " + empresa.getIdEmpresa());
+		System.out.println("Empresa do Usuario Logado " + empresa.getIdEmpresa());
 		
 		mv.addObject("empresa", empresa);
 

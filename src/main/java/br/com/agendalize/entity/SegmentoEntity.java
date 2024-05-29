@@ -25,8 +25,8 @@ private static final long serialVersionUID = 1L;
 	@Column(name = "descricao_segmento")
 	private String descricaoSegmento;
 	
-	@ManyToMany(mappedBy = "segmentos")
-    private List<AgendaEntity> agendas;
+	/*@ManyToMany(mappedBy = "segmentos")
+    private List<AgendaEntity> agendas;*/
 
 	public Long getIdSegmento() {
 		return idSegmento;
@@ -44,12 +44,12 @@ private static final long serialVersionUID = 1L;
 		this.descricaoSegmento = descricaoSegmento;
 	}
 
-	public List<AgendaEntity> getAgendas() {
+	/*public List<AgendaEntity> getAgendas() {
 		return agendas;
 	}
 
 	public void setAgendas(List<AgendaEntity> agendas) {
 		this.agendas = agendas;
-	}
+	}*/
 
 }
