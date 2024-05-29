@@ -34,9 +34,26 @@ public class AgendaController {
 	// CRUD - Agenda
 	// Direcionando para a página agenda
 	@GetMapping("/agenda") // nome que eu quiser colocar
-	public String agenda(ModelMap model) {
-		model.addAttribute("agendas",agendaService.findAll());
-		return "agenda"; // caminho real do arquivo
+	public ModelAndView agenda(ModelMap model, HttpSession session) {
+		
+		
+		ModelAndView mv = new ModelAndView("agenda");
+		EmpresaEntity empresa = new EmpresaEntity();
+		//recupera o usuario logado na sessão
+        loginUsuarioLogado = (String)session.getAttribute("loginUsuarioLogado");
+        UsuarioEntity usuario = new UsuarioEntity();
+        usuario = usuarioService.getOneByUsername(loginUsuarioLogado);
+		
+         empresa = empresaService.getOneByUsuarioEmpresaLogin(usuario);
+		System.out.println("Empresa do Usuário logado " + empresa.getAgendas());
+		
+		mv.addObject("empresa", empresa);
+		
+		//AgendaEntity agenda = new AgendaEntity();
+		//agenda = agendaService.findAllByEmpresa(empresa);
+
+		model.addAttribute("agendas", agendaService.findAllByEmpresa(empresa));
+		return mv; // caminho real do arquivo
 	}
 
 	// Direcionando para a página de cadastro de uma agenda

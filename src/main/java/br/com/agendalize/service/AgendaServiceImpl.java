@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.agendalize.entity.AgendaEntity;
+import br.com.agendalize.entity.EmpresaEntity;
 import br.com.agendalize.repository.AgendaRepository;
 
 @Service
@@ -48,5 +49,13 @@ public class AgendaServiceImpl implements AgendaService {
 		}
 		return mensagem;
 	}
+
+	@Override
+	public List<AgendaEntity> findAllByEmpresa(EmpresaEntity Empresa) {
+		// TODO Auto-generated method stub
+		return agendaRepository.findAllByEmpresa(Empresa);
+	}
+
+	
 
 }
