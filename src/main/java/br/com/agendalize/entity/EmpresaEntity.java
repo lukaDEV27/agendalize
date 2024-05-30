@@ -2,6 +2,7 @@ package br.com.agendalize.entity;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Objects;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -134,6 +135,23 @@ public class EmpresaEntity implements Serializable{
 
 	public void setEnderecoEmpresa(String enderecoEmpresa) {
 		this.enderecoEmpresa = enderecoEmpresa;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(idEmpresa);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		EmpresaEntity other = (EmpresaEntity) obj;
+		return Objects.equals(idEmpresa, other.idEmpresa);
 	}
 
 

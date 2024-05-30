@@ -52,7 +52,7 @@ public class AgendaController {
 		//AgendaEntity agenda = new AgendaEntity();
 		//agenda = agendaService.findAllByEmpresa(empresa);
 
-		model.addAttribute("agendas", agendaService.findAllByEmpresa(empresa));
+		model.addAttribute("agendas", empresa.getAgendas());
 		return mv; // caminho real do arquivo
 	}
 
