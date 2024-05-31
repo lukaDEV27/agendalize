@@ -38,7 +38,7 @@
 
 	<section class="section_container about_container" id="about">
 		<div class="about_image">
-			<img src="img/sobrenos.png" alt="about">
+			<img src="/img/sobrenos.png" alt="about">
 		</div>
 		<div class="about_content">
 			<p class="section_subheader">SOBRE NÓS</p>
@@ -58,5 +58,39 @@
 	<div th:insert="~{layout/rodape}"></div>
 
 </body>
+<script>
+	
+	//about script
+	ScrollReveal().reveal(".about_image img", {
+	    ...scrollRevealOption,
+	    origin: "left",
+	});
+	
+	ScrollReveal().reveal(".about_content .section_subheader", {
+	    ...scrollRevealOption,
+	    delay: 500,
+	});
+	
+	ScrollReveal().reveal(".about_content .section_header", {
+	    ...scrollRevealOption,
+	    delay: 1000,
+	});
+	
+	ScrollReveal().reveal(".about_content .section_description", {
+	    ...scrollRevealOption,
+	    delay: 1500,
+	});
+	
+	ScrollReveal().reveal(".about_btn", {
+	    ...scrollRevealOption,
+	    delay: 2000,
+	});
+	// empresa container
+	ScrollReveal().reveal(".empresa_list li", {
+	    ...scrollRevealOption,
+	    interval: 500,
+	    origin: "right",
+	});
+</script>
 
 </html>

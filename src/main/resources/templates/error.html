@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+		<head th:insert="~{layout/cabecalho}">
+        <title>Página de Erro</title>      		
+  </head>
+    <body>
+		<!-- Importa o menu padrao do sistema -->
+		<div th:insert="~{layout/menu}"></div>
+		<div class="alert alert-danger" role="alert">
+		      <p th:utext="${errorMessage}"></p>
+        	  <a href="principal.html" th:href="@{/}">Home</a>
+		</div>
+  
+   
+        
+  
+        
+    </body>
+    <div th:insert="~{layout/rodape}"></div>
+</html>

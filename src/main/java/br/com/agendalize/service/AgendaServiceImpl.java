@@ -25,7 +25,7 @@ public class AgendaServiceImpl implements AgendaService {
 
 	@Override
 	public String save(AgendaEntity agendaEntity) throws Exception {
-		agendaRepository.saveAndFlush(agendaEntity);
+		agendaRepository.save(agendaEntity);
 		this.mensagem = "Agenda cadastrada com sucesso.";
 		
 		return mensagem;
