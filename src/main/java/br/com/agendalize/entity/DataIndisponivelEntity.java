@@ -25,7 +25,7 @@ private static final long serialVersionUID = 1L;
 	@Column(name = "id_data_indisponivel")
 	private Long idDataIndisponivel;
 	
-	@Column(name = "id_data_indisponivel")
+	@Column(name = "data")
 	private Date data;
 	
 	@Column(name = "descricao")

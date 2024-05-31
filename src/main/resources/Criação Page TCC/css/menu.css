@@ -29,6 +29,9 @@
 .btn:hover{
     background-color: var(--primary-color-dark);
 }
+.link-description{
+    color: var(--white);
+}
 img{
     width: 100%;
     display: flex;

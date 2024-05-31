@@ -6,60 +6,11 @@
 </head>
 
 <body>
+<div th:insert="~{layout/menuEmpresa}"></div>
 
-	<div th:insert="~{layout/menu}"></div>
-
-	<section class="empresa" id="empresa">
-		<div class="section_container empresa_container">
-			<div class="empresa_content">
-				<p class="section_subheader">EMPRESA</p>
-				<h2 class="section_header">Utilidades para sua empresa.</h2>
-				<ul class="empresa_list">
-					
-					<div class="alert alert-sucess" th:text="${mensagem}"
-													th:if="${not #strings.isEmpty(mensagem)}"></div>
-					<div th:if="${empresa == null}">
-					<li>
-						<span><i class="ri-calendar-line"></i><a href="/cadastroEmpresa">Cadastro empresa</a></span>
-					</li>
-					</div>
-					<li>
-						<span><i class="ri-dashboard-2-line"></i><a href="/agenda">Gerencie suas agendas</a></span>
-						Dashboard
-					</li>
-					<li>
-						<span><i class="ri-survey-line"></i></span>
-						Formulario
-					</li>
-					<li>
-						<span><i class="ri-table-line"></i></span>
-						Tabela
-					</li>
-				</ul>
-			</div>
-		</div>
-	</section>
-
-	<section class="section_container about_container" id="about">
-		<div class="about_image">
-			<img src="img/sobrenos.png" alt="about">
-		</div>
-		<div class="about_content">
-			<p class="section_subheader">SOBRE NÓS</p>
-			<h2 class="section_header">As Melhores Agendas você encontra aqui!</h2>
-			<p class="section_description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae veritatis
-				rerum nemo cupiditate ex libero, omnis quo vero dolores iusto dignissimos asperiores accusamus mollitia,
-				repellendus maxime tempore numquam quas! Harum?</p>
-			<div class="about_btn">
-				<button class="btn"><a href="about.html"></a>Leia Mais</button>
-			</div>
-		</div>
-	</section>
-
-
-
-
-	<div th:insert="~{layout/rodape}"></div>
+<main>
+	<h1>Main</h1>
+</main>
 
 </body>
 
