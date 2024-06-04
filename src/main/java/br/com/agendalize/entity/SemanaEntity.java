@@ -5,11 +5,12 @@ import java.sql.Time;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -32,8 +33,8 @@ private static final long serialVersionUID = 1L;
 	@Column(name = "hora_final")
 	private Time horaFinal;
 	
-	@OneToOne()
-    @JoinColumn(name = "agenda_semana_id", referencedColumnName = "id_agenda")
+	@ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "agenda_semana_id")
     private AgendaEntity agenda;
 
 	public Long getIdSemana() {

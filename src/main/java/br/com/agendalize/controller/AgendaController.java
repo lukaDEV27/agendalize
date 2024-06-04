@@ -1,19 +1,30 @@
 package br.com.agendalize.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.agendalize.entity.AgendaEntity;
+import br.com.agendalize.entity.DataIndisponivelEntity;
 import br.com.agendalize.entity.EmpresaEntity;
+import br.com.agendalize.entity.PermissaoEntity;
+import br.com.agendalize.entity.SemanaEntity;
 import br.com.agendalize.entity.UsuarioEntity;
+import br.com.agendalize.entity.ePermissao;
+import br.com.agendalize.entity.eSemana;
 import br.com.agendalize.service.AgendaService;
+import br.com.agendalize.service.DataIndisponivelService;
 import br.com.agendalize.service.EmpresaService;
+import br.com.agendalize.service.SemanaService;
 import br.com.agendalize.service.UsuarioService;
 import jakarta.servlet.http.HttpSession;
 
@@ -28,6 +39,12 @@ public class AgendaController {
 	
 	@Autowired
 	private UsuarioService usuarioService;
+	
+	@Autowired
+	private DataIndisponivelService dataIndisponivelService;
+	
+	@Autowired
+	private SemanaService semanaService;
 
 	private String loginUsuarioLogado;
 
@@ -76,9 +93,10 @@ public class AgendaController {
 		
 		return mv; 
 	}
-	
+	//Salvando uma agenda no BD
 	@PostMapping("/salvar_agenda")
-	public ModelAndView save(ModelMap model, @ModelAttribute("agendaEntity") AgendaEntity agendaEntity,
+	public ModelAndView save(ModelMap model, 
+			@ModelAttribute("agendaEntity") AgendaEntity agendaEntity,
 			RedirectAttributes atributes) throws Exception {
 		
 		
@@ -87,5 +105,37 @@ public class AgendaController {
 		return mv;
 
 	}
+	
+	//Configurar a rotina semanal
+	@GetMapping("/configurar_semana/{idAgenda}")
+	public ModelAndView configurarSemana(ModelMap model,@PathVariable("idAgenda") Long idAgenda) throws Exception
+	{
+		SemanaEntity semana = new SemanaEntity();
+		semana.setNomeDia(eSemana.SEGUNDA.getValor() );
+		
+		List<PermissaoEntity> permissoes = new ArrayList<>();
+		permissoes.add(permissao);
+		
+		usuarioEntity.setPermissoes(permissoes);
+		ModelAndView mv = new ModelAndView("configurar_semana");
+		
+		model.addAttribute("idAgenda",idAgenda);		
+		model.addAttribute("agenda", agendaService.getOneByIdAgenda(idAgenda));
+		
+		return mv;
+	
+	}
+	@PostMapping("/configurar_semana")
+	public ModelAndView save(ModelMap model, 
+			@ModelAttribute("dataIndisponivelEntity") DataIndisponivelEntity dataIndisponivelEntity,
+			RedirectAttributes atributes) throws Exception {
+		
+		
+		ModelAndView mv = new ModelAndView("redirect:/agenda");
+		atributes.addFlashAttribute("mensagem", dataIndisponivelService.save(dataIndisponivelEntity));
+		return mv;
+	
+	} 
+	
 
 }

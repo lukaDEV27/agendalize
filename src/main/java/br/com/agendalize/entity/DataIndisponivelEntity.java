@@ -32,7 +32,7 @@ private static final long serialVersionUID = 1L;
 	private String descricao;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "agenda_dataInd_id")
+    @JoinColumn(name = "agenda_ind_id")
     private AgendaEntity agenda;
 
 	@Override

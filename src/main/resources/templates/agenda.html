@@ -8,6 +8,15 @@
 <body>
 
 	<div th:insert="~{layout/menuEmpresa}"></div>
+	
+	<h1>Gerencie suas Agendas</h1>
+	<br>
+	
+	<div>
+		<p>Cadastre aqui as suas agendas!</p>
+		<button class="btn"><a class="link-description" href="/cadastroAgenda">Cadastrar Agenda</a></button>
+	</div>
+	<br>
 
 	
 	<!--Começa lista de docentes -->
@@ -21,6 +30,10 @@
 								<th>Data inicial</th>
 								<th>Data final</th>
 								<th>Descrição</th>
+								<th class="col-1"></th>
+								<th class="col-1"></th>
+								<th class="col-1"></th>
+								<th class="col-1"></th>
 								
 								
 						
@@ -33,7 +46,9 @@
 								<td th:text="${agenda.DataDisponivelInicial}"></td>	
 								<td th:text="${agenda.DataDisponivelFinal}"></td>
 								<td th:text="${agenda.DescricaoAgenda}"></td>	
-							   					
+							   	<!--<td><a class="btn btn-sm btn-warning" th:href="@{alterar_agenda/{idAgenda}(idAgenda=${agenda.IdAgenda})}" >Alterar</a></td> -->
+							   	<td><a class="btn btn-sm btn-warning" th:href="@{configurar_semana/{idAgenda}(idAgenda=${agenda.IdAgenda})}" >Configurar a rotina semanal</a></td> 
+							   	<!--<td><a class="btn btn-sm btn-warning" th:href="@{cadastrar_datas_indisponiveis/{idAgenda}(idAgenda=${agenda.IdAgenda})}" >Cadastrar datas indisponiveis</a></td>--> 				
 							</tr>							
 						</tbody>
 </table>
