@@ -7,14 +7,14 @@
 
 
 <body>
-	
-<header class="header-form">
-	<div th:insert="~{layout/menuCadastro}"></div>
+
+	<header class="header-form">
+		<div th:insert="~{layout/menuCadastro}"></div>
 
 		<div class="section_container header_container" id="home">
 
-			<form id="login_form" name="salvar_empresa" class="form-horizontal" method="POST"
-				th:action="@{/salvar_empresa}" th:object="${empresaEntity}">
+			<form id="login_form" name="configurar_semana" class="form-horizontal" method="POST"
+				th:action="@{/configurar_semana}" th:object="${semanaEntity}">
 
 
 				<div id="form_header">
@@ -22,71 +22,90 @@
 
 				</div>
 
-<div id="inputs">
+				<div id="inputs">
 
-		<input type="hidden" name="agenda" id="agenda" th:value="${agenda.idAgenda}">
+					<input type="text" name="idAgenda" id="idAgenda" th:value="${agenda.idAgenda}">
 
 
-	<div class="alert alert-sucess" th:text="${mensagem}" th:if="${not #strings.isEmpty(mensagem)}"></div>
-
-					<div class="input-box">
-						<div class="input-field">
-							
-							<h5>Segunda-feira</h5>
-							<label> Hora-Inicial
-								<input type="time" class="form-control" id="hora" name="cnpjEmpresa"
-									placeholder="CNPJ Empresa" required>
-							</label>
-						</div>
+					<div class="alert alert-sucess" th:text="${mensagem}" th:if="${not #strings.isEmpty(mensagem)}">
 					</div>
-					
+
+					<h1>Configure sua rotina semanal por cada dia da semana</h1>
 					<div class="input-box">
 						<div class="input-field">
-							<label> Nome Empresa </label>
-							<input type="text" class="form-control" id="nomeEmpresa" name="nomeEmpresa"
-								placeholder="Nome da Empresa" required>
-						</div>
-					</div>
-					
-					<div class="input-box">
-						<div class="input-field">
-							<label> Email </label>
-							<input type="email" class="form-control" id="emailContatoEmpresa" name="emailContatoEmpresa"
-								placeholder="Email" required>
+							<label>Escolha do dia da semana</label>
+							<select name="nomeDia" id="nomeDia">
+								<option value="Segunda">Segunda-feira</option>
+								<option value="Terça">Terça-feira</option>
+								<option value="Quarta">Quarta-feira</option>
+								<option value="Quinta">Quinta-feira</option>
+								<option value="Sexta">Sexta-feira</option>
+								<option value="Sábado">Sábado</option>
+								<option value="Domingo">Domingo</option>
+							</select>
 						</div>
 					</div>
 
 					<div class="input-box">
 						<div class="input-field">
-							<label> Telefone </label>
-							<input type="text" class="form-control" id="telefoneEmpresa" name="telefoneEmpresa"
-								placeholder="Telefone" required>
+							<label> Horário de abertura do dia</label>
+							<input type="time" class="form-control" id="horaInicial" name="horaInicial" required>
 						</div>
 					</div>
 
 					<div class="input-box">
 						<div class="input-field">
-							<label> Endereço </label>
-							<input type="text" class="form-control" id="enderecoEmpresa" name="enderecoEmpresa"
-								placeholder="Endereço" required>
+							<label> Horário de fechamento do dia</label>
+							<input type="time" class="form-control" id="horaFinal" name="horaFinal" required>
 						</div>
 					</div>
 
-					<div class="input-box">
-						<div class="input-field">
-							<label> CEP </label>
-							<input type="text" class="form-control" id="cepEmpresa" name="cepEmpresa"
-								placeholder="CEP da Empresa" required>
-						</div>
 
-					</div>
-</div>
-				<br>
 
-				<button type="submit" class=" btn nav_btn" id="login_button">Cadastrar</button>
-
-			</form>
+				</div>
 		</div>
+		<br>
+
+		<button type="submit" class=" btn nav_btn" id="login_button">Cadastrar</button>
+
+		</form>
+		
+		<div>
+				<!--Começa lista de docentes -->
+				<br>
+				<h5 class="card-title">Agendas cadastrados</h5>
+					<table class="table table-sm table-striped table-hover table-bordered">
+										<thead>
+											<tr>
+												<th>ID</th>
+												<th>Dia da Semana</th>							
+												<th>Hora inicial</th>
+												<th>Hora final</th>
+												
+												<th class="col-1"></th>
+												<th class="col-1"></th>
+												
+												
+										
+											</tr>
+										</thead>
+										<tbody>
+											<tr th:each="agenda : ${agendas.DiasDaSemana}" >
+												<td th:text="${agenda.NomeDia}"></td>
+												<td th:text="${agenda.HoraInicial}"></td>	
+												<td th:text="${agenda.HoraFinal}"></td>	
+													
+											   	<!--<td><a class="btn btn-sm btn-warning" th:href="@{alterar_agenda/{idAgenda}(idAgenda=${agenda.IdAgenda})}" >Alterar</a></td> -->
+											   	<td><a>teste</a></td> 
+												<td><a>teste</a></td>
+											   	<!--<td><a class="btn btn-sm btn-warning" th:href="@{cadastrar_datas_indisponiveis/{idAgenda}(idAgenda=${agenda.IdAgenda})}" >Cadastrar datas indisponiveis</a></td>--> 				
+											</tr>							
+										</tbody>
+				</table>
+				</div>
+				<!--Termina lista de docentes -->
+		</div>
+		
 	</header>
 
 
@@ -140,12 +159,13 @@
 			padding: 0;
 			box-sizing: border-box;
 		}
+
 		.header-form {
-				background-image: url(https://i.pinimg.com/474x/b0/07/e0/b007e08eb23b802a48d919a2dba97fea.jpg);
-				background-position: center center;
-				background-size: cover;
-				background-repeat: no-repeat;
-			}
+			background-image: url(https://i.pinimg.com/474x/b0/07/e0/b007e08eb23b802a48d919a2dba97fea.jpg);
+			background-position: center center;
+			background-size: cover;
+			background-repeat: no-repeat;
+		}
 
 		#container {
 			height: 100vh;

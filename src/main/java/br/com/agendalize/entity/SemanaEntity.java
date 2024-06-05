@@ -1,7 +1,6 @@
 package br.com.agendalize.entity;
 
 import java.io.Serializable;
-import java.sql.Time;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -28,10 +27,10 @@ private static final long serialVersionUID = 1L;
 	private String nomeDia;
 	
 	@Column(name = "hora_inicial")
-	private Time horaInicial;
+	private String horaInicial;
 	
 	@Column(name = "hora_final")
-	private Time horaFinal;
+	private String horaFinal;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "agenda_semana_id")
@@ -53,19 +52,19 @@ private static final long serialVersionUID = 1L;
 		this.nomeDia = nomeDia;
 	}
 
-	public Time getHoraInicial() {
+	public String getHoraInicial() {
 		return horaInicial;
 	}
 
-	public void setHoraInicial(Time horaInicial) {
+	public void setHoraInicial(String horaInicial) {
 		this.horaInicial = horaInicial;
 	}
 
-	public Time getHoraFinal() {
+	public String getHoraFinal() {
 		return horaFinal;
 	}
 
-	public void setHoraFinal(Time horaFinal) {
+	public void setHoraFinal(String horaFinal) {
 		this.horaFinal = horaFinal;
 	}
 

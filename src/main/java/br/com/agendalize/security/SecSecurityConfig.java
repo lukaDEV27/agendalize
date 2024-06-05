@@ -28,6 +28,7 @@ public class SecSecurityConfig {
 		http.authorizeHttpRequests(auth -> auth
 				// Qualquer tipo de permissão consegue acessar esse @controller
 				.requestMatchers("/").permitAll()
+				.requestMatchers("/img/*").permitAll()
 				.requestMatchers("/principal").permitAll()
 				.requestMatchers("/cadastroUsuario").permitAll()
 				.requestMatchers("/sobreNos").permitAll()

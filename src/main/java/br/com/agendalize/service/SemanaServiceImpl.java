@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.agendalize.entity.AgendaEntity;
 import br.com.agendalize.entity.SemanaEntity;
 import br.com.agendalize.repository.SemanaRepository;
 
@@ -24,8 +25,20 @@ public class SemanaServiceImpl implements SemanaService{
 
 	@Override
 	public String save(SemanaEntity semanaEntity) throws Exception {
-		semanaRepository.save(semanaEntity);
-		this.mensagem = "Rotina semanal cadastrada com sucesso.";
+		
+		
+		
+		if (semanaRepository.existsByNomeDiaAndAgenda(semanaEntity.getNomeDia(), semanaEntity.getAgenda()) == true) {
+			
+			this.mensagem = "Você ja cadastrou a rotina desse dia.";
+		
+		} else {
+			
+			semanaRepository.save(semanaEntity);
+			this.mensagem = "Rotina do dia cadastrada com sucesso.";
+			
+		}
+		
 		return mensagem;
 	}
 
@@ -46,6 +59,12 @@ public class SemanaServiceImpl implements SemanaService{
 			throw new Exception(e.getMessage());
 		}
 		return mensagem;
+	}
+
+	@Override
+	public boolean existsByNomeDiaAndAgenda(String nomeDia, AgendaEntity agenda) {
+		
+		return semanaRepository.existsByNomeDiaAndAgenda(nomeDia, agenda);
 	}
 
 }

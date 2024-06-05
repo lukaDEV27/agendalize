@@ -66,7 +66,7 @@ public class AgendaController {
 		
 		mv.addObject("empresa", empresa);
 		
-		//AgendaEntity agenda = new AgendaEntity();
+		//
 		//agenda = agendaService.findAllByEmpresa(empresa);
 
 		model.addAttribute("agendas", empresa.getAgendas());
@@ -109,30 +109,40 @@ public class AgendaController {
 	//Configurar a rotina semanal
 	@GetMapping("/configurar_semana/{idAgenda}")
 	public ModelAndView configurarSemana(ModelMap model,@PathVariable("idAgenda") Long idAgenda) throws Exception
-	{
-		SemanaEntity semana = new SemanaEntity();
-		semana.setNomeDia(eSemana.SEGUNDA.getValor() );
+	{ 
 		
-		List<PermissaoEntity> permissoes = new ArrayList<>();
-		permissoes.add(permissao);
-		
-		usuarioEntity.setPermissoes(permissoes);
 		ModelAndView mv = new ModelAndView("configurar_semana");
 		
+		//AgendaEntity agenda = new AgendaEntity();
+		
+		
+		
 		model.addAttribute("idAgenda",idAgenda);		
-		model.addAttribute("agenda", agendaService.getOneByIdAgenda(idAgenda));
+		model.addAttribute("agendas", agendaService.getOneByIdAgenda(idAgenda));
+		
+		//agenda = agendaService.getOneByIdAgenda(idAgenda);
+		//model.addAttribute(agenda.getDiasDaSemana());
+		
+		
+		
 		
 		return mv;
 	
 	}
+	
 	@PostMapping("/configurar_semana")
 	public ModelAndView save(ModelMap model, 
-			@ModelAttribute("dataIndisponivelEntity") DataIndisponivelEntity dataIndisponivelEntity,
+			@ModelAttribute("semanaEntity") SemanaEntity semanaEntity, @ModelAttribute("idAgenda") Long idAgenda,
 			RedirectAttributes atributes) throws Exception {
 		
 		
-		ModelAndView mv = new ModelAndView("redirect:/agenda");
-		atributes.addFlashAttribute("mensagem", dataIndisponivelService.save(dataIndisponivelEntity));
+		semanaEntity.setAgenda(agendaService.getOneByIdAgenda(idAgenda));
+				
+		model.addAttribute("agenda", agendaService.getOneByIdAgenda(idAgenda));
+		
+		ModelAndView mv = new ModelAndView("redirect:/configurar_semana/" + idAgenda);
+		
+		atributes.addFlashAttribute("mensagem", semanaService.save(semanaEntity));
 		return mv;
 	
 	} 
