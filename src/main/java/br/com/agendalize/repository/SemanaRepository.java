@@ -11,5 +11,7 @@ public interface SemanaRepository extends JpaRepository<SemanaEntity, Long>{
 	
 	SemanaEntity getOneByIdSemana(Long idSemana);
 	boolean existsByNomeDiaAndAgenda(String nomeDia, AgendaEntity agenda);
+	
+	
 
 }

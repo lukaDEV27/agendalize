@@ -34,7 +34,7 @@ public class SemanaServiceImpl implements SemanaService{
 		
 		} else {
 			
-			semanaRepository.save(semanaEntity);
+			semanaRepository.saveAndFlush(semanaEntity);
 			this.mensagem = "Rotina do dia cadastrada com sucesso.";
 			
 		}
@@ -65,6 +65,15 @@ public class SemanaServiceImpl implements SemanaService{
 	public boolean existsByNomeDiaAndAgenda(String nomeDia, AgendaEntity agenda) {
 		
 		return semanaRepository.existsByNomeDiaAndAgenda(nomeDia, agenda);
+	}
+
+	@Override
+	public String update(SemanaEntity semanaEntity) throws Exception {
+		
+		semanaRepository.saveAndFlush(semanaEntity);
+		this.mensagem = "Dia atualizado com sucesso.";
+		
+		return mensagem;
 	}
 
 }

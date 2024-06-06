@@ -1,8 +1,5 @@
 package br.com.agendalize.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -14,13 +11,9 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.agendalize.entity.AgendaEntity;
-import br.com.agendalize.entity.DataIndisponivelEntity;
 import br.com.agendalize.entity.EmpresaEntity;
-import br.com.agendalize.entity.PermissaoEntity;
 import br.com.agendalize.entity.SemanaEntity;
 import br.com.agendalize.entity.UsuarioEntity;
-import br.com.agendalize.entity.ePermissao;
-import br.com.agendalize.entity.eSemana;
 import br.com.agendalize.service.AgendaService;
 import br.com.agendalize.service.DataIndisponivelService;
 import br.com.agendalize.service.EmpresaService;
@@ -47,6 +40,8 @@ public class AgendaController {
 	private SemanaService semanaService;
 
 	private String loginUsuarioLogado;
+	
+	
 
 	// CRUD - Agenda
 	// Direcionando para a página agenda
@@ -145,7 +140,35 @@ public class AgendaController {
 		atributes.addFlashAttribute("mensagem", semanaService.save(semanaEntity));
 		return mv;
 	
-	} 
+	}
+	
+	@GetMapping("/alterar_dia_da_semana/{idSemana}")
+	public ModelAndView update(ModelMap model,@PathVariable("idSemana") Long idSemana) throws Exception
+	{
+		ModelAndView mv = new ModelAndView("alterar_dia_da_semana");
+		
+		model.addAttribute("idSemana",idSemana);		
+		model.addAttribute("semana", semanaService.getOneByIdSemana(idSemana));
+		
+		return mv;
+	
+	}
+	
+	@PostMapping("/alterar_dia_da_semana")
+	public ModelAndView update(
+			ModelMap model,
+			@ModelAttribute("semanaEntity") SemanaEntity semanaEntity,
+			RedirectAttributes atributes) throws Exception
+	{
+		
+		
+		ModelAndView mv = new ModelAndView("redirect:/agenda");
+		atributes.addFlashAttribute("mensagem",semanaService.update(semanaEntity));
+		
+		
+		return mv;
+	
+	}
 	
 
 }
