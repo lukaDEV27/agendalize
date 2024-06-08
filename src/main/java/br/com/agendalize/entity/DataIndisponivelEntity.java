@@ -31,7 +31,7 @@ private static final long serialVersionUID = 1L;
 	@Column(name = "descricao")
 	private String descricao;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "agenda_ind_id")
     private AgendaEntity agenda;
 

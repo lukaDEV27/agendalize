@@ -1,10 +1,12 @@
 package br.com.agendalize.service;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.agendalize.entity.AgendaEntity;
 import br.com.agendalize.entity.DataIndisponivelEntity;
 import br.com.agendalize.repository.DataIndisponivelRepository;
 
@@ -24,14 +26,26 @@ public class DataIndisponivelServiceImpl implements DataIndisponivelService{
 
 	@Override
 	public String save(DataIndisponivelEntity dataIndisponivelEntity) throws Exception {
-		dataIndisponivelRepository.save(dataIndisponivelEntity);
-		this.mensagem = "Data indisponivel cadastrada cadastrada com sucesso.";
+		
+
+		if (dataIndisponivelRepository.existsByDataAndAgenda(dataIndisponivelEntity.getData(), dataIndisponivelEntity.getAgenda()) == true) {
+			
+			this.mensagem = "Você ja cadastrou a rotina desse dia.";
+		
+		} else {
+			
+			dataIndisponivelRepository.save(dataIndisponivelEntity);
+			this.mensagem = "Data indisponivel cadastrada cadastrada com sucesso.";
+			
+		}
+		
+		
 		return mensagem;
 	}
 
 	@Override
 	public List<DataIndisponivelEntity> findAll() {
-		// TODO Auto-generated method stub
+		
 		return dataIndisponivelRepository.findAll();
 	}
 
@@ -47,5 +61,21 @@ public class DataIndisponivelServiceImpl implements DataIndisponivelService{
 		}
 		return mensagem;
 	}
+
+	@Override
+	public String update(DataIndisponivelEntity dataIndisponivelEntity) throws Exception {
+		
+		dataIndisponivelRepository.saveAndFlush(dataIndisponivelEntity);
+		this.mensagem = "Data atualizada com sucesso.";
+		
+		return mensagem;
+	}
+
+	@Override
+	public boolean existsByDataAndAgenda(Date data, AgendaEntity agenda) {
+		
+		return dataIndisponivelRepository.existsByDataAndAgenda(data, agenda);
+	}
+	
 
 }

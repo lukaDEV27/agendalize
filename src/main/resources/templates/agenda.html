@@ -48,7 +48,7 @@
 								<td th:text="${agenda.DescricaoAgenda}"></td>	
 							   	<!--<td><a class="btn btn-sm btn-warning" th:href="@{alterar_agenda/{idAgenda}(idAgenda=${agenda.IdAgenda})}" >Alterar</a></td> -->
 							   	<td><a class="btn btn-sm btn-warning" th:href="@{configurar_semana/{idAgenda}(idAgenda=${agenda.IdAgenda})}" >Configurar a rotina semanal</a></td> 
-							   	<!--<td><a class="btn btn-sm btn-warning" th:href="@{cadastrar_datas_indisponiveis/{idAgenda}(idAgenda=${agenda.IdAgenda})}" >Cadastrar datas indisponiveis</a></td>--> 				
+							   	<td><a class="btn btn-sm btn-warning" th:href="@{configurar_data_indisponivel/{idAgenda}(idAgenda=${agenda.IdAgenda})}" >Cadastrar datas indisponiveis</a></td>				
 							</tr>							
 						</tbody>
 </table>
