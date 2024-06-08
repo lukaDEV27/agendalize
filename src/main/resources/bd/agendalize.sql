@@ -34,7 +34,7 @@ CREATE TABLE `agenda` (
   PRIMARY KEY (`id_agenda`),
   KEY `empresa_agenda_id_idx` (`empresa_agenda_id`),
   CONSTRAINT `empresa_agenda_id` FOREIGN KEY (`empresa_agenda_id`) REFERENCES `empresa` (`id_empresa`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,7 +43,7 @@ CREATE TABLE `agenda` (
 
 LOCK TABLES `agenda` WRITE;
 /*!40000 ALTER TABLE `agenda` DISABLE KEYS */;
-INSERT INTO `agenda` VALUES (1,1,'2024-05-28','2024-10-31','DJ Agendamentos','Testando Agenda'),(2,1,'2024-05-09','2024-05-09','dfsf','festa'),(3,1,'2024-05-09','2024-05-09','salacao','festa'),(4,5,'2024-05-11','2024-05-31','ttest consulkta','testando consulta');
+INSERT INTO `agenda` VALUES (1,1,'2024-05-28','2024-10-31','DJ Agendamentos','Testando Agenda'),(2,1,'2024-05-09','2024-05-09','dfsf','festa'),(3,1,'2024-05-09','2024-05-09','salacao','festa'),(4,5,'2024-05-11','2024-05-31','ttest consulkta','testando consulta'),(5,15,'2024-05-31','2024-07-31','espetinhos','teste espetinhos'),(6,16,'2024-06-30','2024-08-31','teste','teste'),(7,1,'2024-07-31','2024-08-31','bsaudbhsuay','adsadsa'),(8,17,'2024-06-29','2024-08-29','adsadsa','adsadsa');
 /*!40000 ALTER TABLE `agenda` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -149,10 +149,10 @@ CREATE TABLE `data_indisponivel` (
   `id_data_indisponivel` int NOT NULL AUTO_INCREMENT,
   `data` date NOT NULL,
   `descricao` varchar(100) DEFAULT NULL,
-  `agenda_dataInd_id` int NOT NULL,
+  `agenda_ind_id` int NOT NULL,
   PRIMARY KEY (`id_data_indisponivel`),
-  KEY `agenda_dataInd_id_idx` (`agenda_dataInd_id`),
-  CONSTRAINT `agenda_dataInd_id` FOREIGN KEY (`agenda_dataInd_id`) REFERENCES `agenda` (`id_agenda`)
+  KEY `agenda_dataInd_id_idx` (`agenda_ind_id`),
+  CONSTRAINT `agenda_ind_id` FOREIGN KEY (`agenda_ind_id`) REFERENCES `agenda` (`id_agenda`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -187,7 +187,7 @@ CREATE TABLE `empresa` (
   UNIQUE KEY `email_contato_empresa_UNIQUE` (`email_contato_empresa`),
   KEY `usuario_empresa_id_idx` (`usuario_empresa_id`),
   CONSTRAINT `usuario_empresa_id` FOREIGN KEY (`usuario_empresa_id`) REFERENCES `usuario` (`id_usuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -196,7 +196,7 @@ CREATE TABLE `empresa` (
 
 LOCK TABLES `empresa` WRITE;
 /*!40000 ALTER TABLE `empresa` DISABLE KEYS */;
-INSERT INTO `empresa` VALUES ('15975365425','burger king','admin@admin.com',NULL,1,'21912345678','jardim america','12345678',1),('79579879578','gusfestas','gustafestas@contatos.com',NULL,11,'21967540521','Rua ierê 273 vicente de carvalho','21370530',2),('13648573165','Testando','testando@contato.com',NULL,7,'14523654781','teste rua 103','25865475',3),('75867567','Isas espaco','isabela@gmaill.com',NULL,13,'21912345678','jardim america','12345678',5),('1234567891054','Isas espaco','aluno@gmail.com',NULL,14,'21912345678','jardim america','12345678',8);
+INSERT INTO `empresa` VALUES ('15975365425','burger king','admin@admin.com',NULL,1,'21912345678','jardim america','12345678',1),('79579879578','gusfestas','gustafestas@contatos.com',NULL,11,'21967540521','Rua ierê 273 vicente de carvalho','21370530',2),('13648573165','Testando','testando@contato.com',NULL,7,'14523654781','teste rua 103','25865475',3),('75867567','Isas espaco','isabela@gmaill.com',NULL,13,'21912345678','jardim america','12345678',5),('1234567891054','Isas espaco','aluno@gmail.com',NULL,14,'21912345678','jardim america','12345678',8),('25647856312451','Novidades Usuais','contatoNoviades@contato.com',NULL,15,'21258478632','Rua da novidade 32, Bairro novo','32560800',14),('25485421523214','Espertinhos','contato@contato.com',NULL,16,'21584552365','espetinho 32','21548769',15),('12365696325415','mais um teste','teste@contato.com',NULL,17,'21258741236','test tetst','23654125',16),('12536245698735','asdasda','asdsa@adsa.com',NULL,19,'21563254786','Rua sdbaydbisad','23152428',17);
 /*!40000 ALTER TABLE `empresa` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -255,15 +255,15 @@ DROP TABLE IF EXISTS `semana`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `semana` (
-  `id_semana` int NOT NULL,
+  `id_semana` int NOT NULL AUTO_INCREMENT,
   `nome_dia` varchar(45) NOT NULL,
-  `hora_inicial` time NOT NULL,
-  `hora_final` time NOT NULL,
+  `hora_inicial` time NOT NULL DEFAULT '00:00:00',
+  `hora_final` time NOT NULL DEFAULT '00:00:00',
   `agenda_semana_id` int NOT NULL,
   PRIMARY KEY (`id_semana`),
   KEY `agenda_semana_id_idx` (`agenda_semana_id`),
   CONSTRAINT `agenda_semana_id` FOREIGN KEY (`agenda_semana_id`) REFERENCES `agenda` (`id_agenda`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -272,6 +272,7 @@ CREATE TABLE `semana` (
 
 LOCK TABLES `semana` WRITE;
 /*!40000 ALTER TABLE `semana` DISABLE KEYS */;
+INSERT INTO `semana` VALUES (3,'Segunda','07:00:00','08:00:00',2);
 /*!40000 ALTER TABLE `semana` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -311,7 +312,7 @@ CREATE TABLE `usuario` (
   `senha_usuario` varchar(100) NOT NULL,
   PRIMARY KEY (`id_usuario`),
   UNIQUE KEY `email_usuario_UNIQUE` (`email_usuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -320,7 +321,7 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (1,'admin@admin.com','$2a$10$Q0lQAqnjcKus7LpxI.MoUO5ek6kiF1oTdRAtAJPSQgWRPd8pdzZvG'),(3,'aluno@gmail.com','aluno'),(4,'lucasteste@gmail.com','123456'),(5,'mariahnegerente@gmail.com','159357'),(6,'teste@gmail.com','123369'),(7,'teste2@gmail.com','$2a$10$IdYjS8ft8wZKJS/y690DdezTKHIfUllDKBuYSNYaq7LRJrYhON336'),(8,'novo@gmail.com','$2a$10$QeZb8viUrycOLvjT.1iDE.mUTMfKx4wdsBChof3idjjCiUzcYFXSu'),(10,'a@a.com','$2a$10$7uU9WP/sM3.VRjzBdBbcieoKbagEoM5I959OR2Rql7HKF4xn0lexK'),(11,'gustateste@gmail.com','$2a$10$TBgYonIX83q9Fw4YzoEYOenJlknYgx4cnXvrYFbU8kDyV4Y0bgLAy'),(13,'testando@gamil.com','$2a$10$9vVg4pEfEEFpybtdc/MvdeJrFXFCSRyZ8U5kaJAnYzsU3d7wR0kli'),(14,'exemplo03@gmail.com','$2a$10$uUsUBxVGCWjuXgj6JjYea.BoLpAg0lKfriW98MkdXgzIUhezC6NoS');
+INSERT INTO `usuario` VALUES (1,'admin@admin.com','$2a$10$Q0lQAqnjcKus7LpxI.MoUO5ek6kiF1oTdRAtAJPSQgWRPd8pdzZvG'),(3,'aluno@gmail.com','aluno'),(4,'lucasteste@gmail.com','123456'),(5,'mariahnegerente@gmail.com','159357'),(6,'teste@gmail.com','123369'),(7,'teste2@gmail.com','$2a$10$IdYjS8ft8wZKJS/y690DdezTKHIfUllDKBuYSNYaq7LRJrYhON336'),(8,'novo@gmail.com','$2a$10$QeZb8viUrycOLvjT.1iDE.mUTMfKx4wdsBChof3idjjCiUzcYFXSu'),(10,'a@a.com','$2a$10$7uU9WP/sM3.VRjzBdBbcieoKbagEoM5I959OR2Rql7HKF4xn0lexK'),(11,'gustateste@gmail.com','$2a$10$TBgYonIX83q9Fw4YzoEYOenJlknYgx4cnXvrYFbU8kDyV4Y0bgLAy'),(13,'testando@gamil.com','$2a$10$9vVg4pEfEEFpybtdc/MvdeJrFXFCSRyZ8U5kaJAnYzsU3d7wR0kli'),(14,'exemplo03@gmail.com','$2a$10$uUsUBxVGCWjuXgj6JjYea.BoLpAg0lKfriW98MkdXgzIUhezC6NoS'),(15,'novousuario@novo.com','$2a$10$3LpXVW1HlQoTXNmjK0yovuXPVyM.EFUpYPpkfyOckJcRsbXDtwLpu'),(16,'testandonovo@fluxo.com','$2a$10$mVsyZ/Qg//7jS6Q/FQz60uoLWhbLEJmMhMSJTumeGB4gLcRi/Z8Cq'),(17,'maisumteste@gmail.com','$2a$10$w8sDAg8kMJbt4dw/1nwXqewCUak1I6PxrlbVvCuWLfrOtML7MxTp.'),(18,'testeprint@gmail.com','$2a$10$bZMmOeTFDDiDqbBOudKQQ.uMHAUWfcx8ZEkOHpE2sl9lzneQP6p2a'),(19,'vamove@gmail.com','$2a$10$1fp3kJINkLSN8rpn9F5W4eUwKGw8DBy94wR/8kzMtnLzyX5DBfNLS');
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -347,7 +348,7 @@ CREATE TABLE `usuario_permissao` (
 
 LOCK TABLES `usuario_permissao` WRITE;
 /*!40000 ALTER TABLE `usuario_permissao` DISABLE KEYS */;
-INSERT INTO `usuario_permissao` VALUES (1,3),(3,4),(4,4),(5,4),(6,4),(7,4),(8,4),(10,4),(11,4),(13,4),(14,4);
+INSERT INTO `usuario_permissao` VALUES (1,3),(3,4),(4,4),(5,4),(6,4),(7,4),(8,4),(10,4),(11,4),(13,4),(14,4),(15,4),(16,4),(17,4),(18,4),(19,4);
 /*!40000 ALTER TABLE `usuario_permissao` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -360,4 +361,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-28 21:30:31
+-- Dump completed on 2024-06-08 15:32:00
