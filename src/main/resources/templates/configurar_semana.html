@@ -18,7 +18,7 @@
 
 
 				<div id="form_header">
-					<h1 class="titulo-h1">Cadastrar Empresa</h1>
+					<h1 class="titulo-h1">Cadastrar rotina semanal da agenda</h1>
 
 				</div>
 
@@ -31,6 +31,9 @@
 					</div>
 
 					<h1>Configure sua rotina semanal por cada dia da semana</h1>
+					<br>
+					<p>Caso não queria agendamento em determinado dia da semana, basta não cadastra-lo.</p>
+
 					<div class="input-box">
 						<div class="input-field">
 							<label>Escolha do dia da semana</label>
@@ -69,43 +72,53 @@
 		<button type="submit" class=" btn nav_btn" id="login_button">Cadastrar</button>
 
 		</form>
-		
+
 		<div>
-				<!--Começa lista de docentes -->
-				<br>
-				<h5 class="card-title">Agendas cadastrados</h5>
-					<table class="table table-sm table-striped table-hover table-bordered">
-										<thead>
-											<tr>
-												<th>ID</th>
-												<th>Dia da Semana</th>							
-												<th>Hora inicial</th>
-												<th>Hora final</th>
-												
-												<th class="col-1"></th>
-												<th class="col-1"></th>
-												
-												
-										
-											</tr>
-										</thead>
-										<tbody>
-											<tr th:each="agenda : ${agendas.DiasDaSemana}" >
-												<td th:text="${agenda.idSemana}"></td>
-												<td th:text="${agenda.NomeDia}"></td>
-												<td th:text="${agenda.HoraInicial}"></td>	
-												<td th:text="${agenda.HoraFinal}"></td>	
-													
-											   	<td><a class="btn btn-sm btn-warning" th:href="@{../alterar_dia_da_semana/{idSemana}(idSemana=${agenda.IdSemana})}" >Alterar</a></td>
-												<td><a>teste</a></td>
-											   	<!--<td><a class="btn btn-sm btn-warning" th:href="@{cadastrar_datas_indisponiveis/{idAgenda}(idAgenda=${agenda.IdAgenda})}" >Cadastrar datas indisponiveis</a></td>--> 				
-											</tr>							
-										</tbody>
-				</table>
-				</div>
-				<!--Termina lista de docentes -->
+			<!--Começa lista de docentes -->
+			<br>
+			<h5 class="card-title">Agendas cadastrados</h5>
+			<table class="table table-sm table-striped table-hover table-bordered">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Dia da Semana</th>
+						<th>Hora inicial</th>
+						<th>Hora final</th>
+
+						<th class="col-1"></th>
+						<th class="col-1"></th>
+
+
+
+
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="agenda : ${agendas.DiasDaSemana}">
+						<td th:text="${agenda.IdSemana}"></td>
+						<td th:text="${agenda.NomeDia}"></td>
+						<td th:text="${agenda.HoraInicial}"></td>
+						<td th:text="${agenda.HoraFinal}"></td>
+
+						<td><a class="btn btn-sm btn-warning"
+								th:href="@{../alterar_dia_da_semana/{idSemana}(idSemana=${agenda.IdSemana})}">Alterar</a>
+						</td>
+
+						<td>
+							<a class="delete btn btn-sm btn-danger"
+								th:href="@{../excluir_dia_da_semana/{idSemana}(idSemana=${agenda.IdSemana})}"
+								onclick="if (confirm('Deseja realmente excluir o dia da semana?')){return true;}else{event.stopPropagation(); event.preventDefault();};">
+								Excluir
+							</a>
+							
+						</td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
-		
+		<!--Termina lista de docentes -->
+		</div>
+
 	</header>
 
 

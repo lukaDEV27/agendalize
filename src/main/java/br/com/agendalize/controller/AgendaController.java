@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -157,18 +158,63 @@ public class AgendaController {
 	@PostMapping("/alterar_dia_da_semana")
 	public ModelAndView update(
 			ModelMap model,
-			@ModelAttribute("semanaEntity") SemanaEntity semanaEntity,
+			@ModelAttribute("semanaEntity") SemanaEntity semanaEntity, @ModelAttribute("idAgenda") Long idAgenda,
 			RedirectAttributes atributes) throws Exception
 	{
 		
+		semanaEntity.setAgenda(agendaService.getOneByIdAgenda(idAgenda));
 		
-		ModelAndView mv = new ModelAndView("redirect:/agenda");
+		model.addAttribute("agenda", agendaService.getOneByIdAgenda(idAgenda));
+		
+		
+		ModelAndView mv = new ModelAndView("redirect:/configurar_semana/" + idAgenda);
 		atributes.addFlashAttribute("mensagem",semanaService.update(semanaEntity));
 		
 		
 		return mv;
 	
 	}
+	
+	//Exclusão de um dia da semana
+	/*	@GetMapping("/excluir_dia_da_semana/{idSemana}")
+		public ModelAndView delete(ModelMap model,
+				@ModelAttribute("semanaEntity") SemanaEntity semanaEntity, 
+				@ModelAttribute("idAgenda") Long idAgenda,
+				@PathVariable("idSemana") Long idSemana,
+				RedirectAttributes atributes) throws Exception
+		{
+			
+			semanaEntity.setAgenda(agendaService.getOneByIdAgenda(idAgenda));
+			
+			model.addAttribute("agenda", agendaService.getOneByIdAgenda(idAgenda));
+			
+			
+			ModelAndView mv = new ModelAndView("agenda");
+			atributes.addFlashAttribute("mensagem",semanaService.deleteById(idSemana));
+			//após a exclusão de um docente eu preciso atualizar a listagem na página
+			//por isso eu realizo uma nova consulta findall
+			
+			
+			return mv;
+		
+		}*/
+		
+		@GetMapping("/excluir_dia_da_semana/{idSemana}")
+		public ModelAndView delete(ModelMap model, 
+				@PathVariable("idSemana") Long idSemana,
+				RedirectAttributes atributes) throws Exception
+		{
+			
+			ModelAndView mv = new ModelAndView("redirect:/agenda");
+			
+			model.addAttribute("idSemana",idSemana);		
+			model.addAttribute("semana", semanaService.getOneByIdSemana(idSemana));
+			
+			atributes.addFlashAttribute("mensagem",semanaService.deleteById(idSemana));
+			
+			return mv;
+		
+		}
 	
 
 }

@@ -32,7 +32,7 @@ private static final long serialVersionUID = 1L;
 	@Column(name = "hora_final")
 	private String horaFinal;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "agenda_semana_id")
     private AgendaEntity agenda;
 
