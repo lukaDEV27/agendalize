@@ -32,6 +32,7 @@ public class SecSecurityConfig {
 				.requestMatchers("/principal").permitAll()
 				.requestMatchers("/cadastroUsuario").permitAll()
 				.requestMatchers("/sobreNos").permitAll()
+				.requestMatchers("/contato").permitAll()
 				.requestMatchers("/login").permitAll()
 				.requestMatchers("/sair").permitAll()
 				.requestMatchers("/salvar_usuario").permitAll()

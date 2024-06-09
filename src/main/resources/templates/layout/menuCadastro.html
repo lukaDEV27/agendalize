@@ -12,7 +12,7 @@
 			<li><a href="/principal">Principal</a></li>
 			<li sec:authorize="hasAnyAuthority('admin','empresa')"><a href="/empresa">Empresa</a></li>
 			<li><a href="/sobreNos">Sobre Nós</a></li>
-			<li><a href="#">Contato</a></li>
+			<li><a href="/contato">Contato</a></li>
 			<li>
 				<form th:action="@{/sair}" method="post">
 					<button type="submit" class="btn nav_btn nav-link"

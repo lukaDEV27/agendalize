@@ -2,7 +2,7 @@
 	<nav>
 		<div class="nav_bar">
 			<div class="logo">
-				<a href="/principal"><img src="/img/Logo1.png" alt="logo"></a>
+				<a href="/principal"><img src="/img/logo1.png" alt="logo"></a>
 			</div>
 			<div class="nav_menu_btn" id="menu-btn">
 				<i class="ri-menu-line"></i>
@@ -12,7 +12,7 @@
 			<li><a href="/principal">Principal</a></li>
 			<li sec:authorize="hasAnyAuthority('admin','empresa')"><a href="/empresa">Empresa</a></li>
 			<li><a href="/sobreNos">Sobre Nós</a></li>
-			<li><a href="#">Contato</a></li>
+			<li><a href="/contato">Contato</a></li>
 			<li>
 				<form th:action="@{/sair}" method="post">
 					<button type="submit" class="btn nav_btn nav-link"
@@ -31,7 +31,7 @@
 	<!--começo conteiner-->
 	<div class="section_container header_container" id="home">
 		<p>Simples - Prático - Objetivo</p>
-		<h1>Organize suas <span><strong>Agendas</strong></span> e <span><strong>Agendamentos</strong></span>!</h1>
+		<h1>Gerencie suas <span><strong>Agendas</strong></span> e <span><strong>Agendamentos</strong></span>!</h1>
 	</div>
 	<script>
 

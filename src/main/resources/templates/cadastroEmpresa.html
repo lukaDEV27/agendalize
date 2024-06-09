@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head th:insert="~{layout/cabecalho}">
-	<title>Login Empresa</title>
+	<title>Cadastro Empresa</title>
 </head>
 
 
 <body>
-	
-<header class="header-form">
-	<div th:insert="~{layout/menuCadastro}"></div>
+
+	<header class="header-form">
+		<div th:insert="~{layout/menuCadastro}"></div>
 
 		<div class="section_container header_container" id="home">
 
@@ -22,12 +22,14 @@
 
 				</div>
 
-<div id="inputs">
+				<div id="inputs">
 
-		<input type="hidden" name="usuarioEmpresaLogin" id="usuarioEmpresaLogin" th:value="${empresa.usuarioEmpresaLogin.idUsuario}">
+					<input type="hidden" name="usuarioEmpresaLogin" id="usuarioEmpresaLogin"
+						th:value="${empresa.usuarioEmpresaLogin.idUsuario}">
 
 
-	<div class="alert alert-sucess" th:text="${mensagem}" th:if="${not #strings.isEmpty(mensagem)}"></div>
+					<div class="alert alert-sucess" th:text="${mensagem}" th:if="${not #strings.isEmpty(mensagem)}">
+					</div>
 
 					<div class="input-box">
 						<div class="input-field">
@@ -37,7 +39,7 @@
 							</label>
 						</div>
 					</div>
-					
+
 					<div class="input-box">
 						<div class="input-field">
 							<label> Nome Empresa </label>
@@ -45,7 +47,7 @@
 								placeholder="Nome da Empresa" required>
 						</div>
 					</div>
-					
+
 					<div class="input-box">
 						<div class="input-field">
 							<label> Email </label>
@@ -78,7 +80,7 @@
 						</div>
 
 					</div>
-</div>
+				</div>
 				<br>
 
 				<button type="submit" class=" btn nav_btn" id="login_button">Cadastrar</button>
@@ -138,12 +140,13 @@
 			padding: 0;
 			box-sizing: border-box;
 		}
+
 		.header-form {
-				background-image: url(https://i.pinimg.com/474x/b0/07/e0/b007e08eb23b802a48d919a2dba97fea.jpg);
-				background-position: center center;
-				background-size: cover;
-				background-repeat: no-repeat;
-			}
+			background-image: url(https://i.pinimg.com/474x/b0/07/e0/b007e08eb23b802a48d919a2dba97fea.jpg);
+			background-position: center center;
+			background-size: cover;
+			background-repeat: no-repeat;
+		}
 
 		#container {
 			height: 100vh;
