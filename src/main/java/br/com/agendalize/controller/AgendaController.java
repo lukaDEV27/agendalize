@@ -97,6 +97,42 @@ public class AgendaController {
 
 	}
 
+	@GetMapping("/alterar_agenda/{idAgenda}")
+	public ModelAndView updateAgenda(ModelMap model, @PathVariable("idAgenda") Long idAgenda) throws Exception {
+		ModelAndView mv = new ModelAndView("alterar_agenda");
+
+		model.addAttribute("idAgenda", idAgenda);
+		model.addAttribute("agenda", agendaService.getOneByIdAgenda(idAgenda));
+
+		return mv;
+
+	}
+
+	@PostMapping("/alterar_agenda")
+	public ModelAndView updateAgenda(ModelMap model, @ModelAttribute("agendaEntity") AgendaEntity agendaEntity,
+			RedirectAttributes atributes) throws Exception {
+		ModelAndView mv = new ModelAndView("redirect:/agenda");
+		atributes.addFlashAttribute("mensagem", agendaService.save(agendaEntity));
+
+		return mv;
+
+	}
+
+	// Começa Exclusão
+	@GetMapping("/excluir_agenda/{idAgenda}")
+	public ModelAndView deleteAgenda(ModelMap model, @PathVariable("idAgenda") Long idAgenda,
+			RedirectAttributes atributes) throws Exception {
+		ModelAndView mv = new ModelAndView("redirect:/agenda");
+
+		model.addAttribute("mensagem", agendaService.deleteById(idAgenda));
+		// após a exclusão de um docente eu preciso atualizar a listagem na página
+		// por isso eu realizo uma nova consulta findall
+
+		return mv;
+
+	}
+	// Termina Exclusão
+
 	// Configurar a rotina semanal
 	@GetMapping("/configurar_semana/{idAgenda}")
 	public ModelAndView configurarSemana(ModelMap model, @PathVariable("idAgenda") Long idAgenda) throws Exception {
@@ -205,10 +241,9 @@ public class AgendaController {
 	}
 
 	@GetMapping("/alterar_data_indisponivel/{idDataIndisponivel}")
-	public ModelAndView updateDataIndisponivel(ModelMap model, @PathVariable("idDataIndisponivel") Long idDataIndisponivel)
-			throws Exception 
-	{
-		
+	public ModelAndView updateDataIndisponivel(ModelMap model,
+			@PathVariable("idDataIndisponivel") Long idDataIndisponivel) throws Exception {
+
 		ModelAndView mv = new ModelAndView("alterar_data_indisponivel");
 
 		model.addAttribute("idDataIndisponivel", idDataIndisponivel);
@@ -219,9 +254,9 @@ public class AgendaController {
 	}
 
 	@PostMapping("/alterar_data_indisponivel")
-	public ModelAndView updateDataIndisponivel(ModelMap model, @ModelAttribute("dataIndisponivelEntity") DataIndisponivelEntity dataIndisponivelEntity,
-			@ModelAttribute("idAgenda") Long idAgenda, 
-			RedirectAttributes atributes) throws Exception {
+	public ModelAndView updateDataIndisponivel(ModelMap model,
+			@ModelAttribute("dataIndisponivelEntity") DataIndisponivelEntity dataIndisponivelEntity,
+			@ModelAttribute("idAgenda") Long idAgenda, RedirectAttributes atributes) throws Exception {
 
 		dataIndisponivelEntity.setAgenda(agendaService.getOneByIdAgenda(idAgenda));
 
@@ -233,11 +268,10 @@ public class AgendaController {
 		return mv;
 
 	}
-	
+
 	@GetMapping("/excluir_data_indisponivel/{idDataInsiponivel}")
-	public ModelAndView deleteDataIndisponivel(ModelMap model, @PathVariable("idDataInsiponivel") Long idDataInsiponivel,
-			RedirectAttributes atributes)
-			throws Exception {
+	public ModelAndView deleteDataIndisponivel(ModelMap model,
+			@PathVariable("idDataInsiponivel") Long idDataInsiponivel, RedirectAttributes atributes) throws Exception {
 
 		ModelAndView mv = new ModelAndView("redirect:/agenda");
 
