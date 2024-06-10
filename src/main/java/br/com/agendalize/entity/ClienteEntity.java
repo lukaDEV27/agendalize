@@ -7,8 +7,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -19,8 +17,11 @@ public class ClienteEntity implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_cliente")
+	private Long idCliente;
+	
 	@Column(name = "cpf_cliente")
-	private String idCliente;
+	private String cpfCliente;
 
 	@Column(name = "nome_cliente")
 	private String nomeCliente;
@@ -40,13 +41,19 @@ public class ClienteEntity implements Serializable{
 	@Column(name = "telefone_cliente")
 	private String telefoneCliente;
 	
-	
+	public String getCpfCliente() {
+		return cpfCliente;
+	}
 
-	public String getIdCliente() {
+	public void setCpfCliente(String cpfCliente) {
+		this.cpfCliente = cpfCliente;
+	}
+
+	public Long getIdCliente() {
 		return idCliente;
 	}
 
-	public void setIdCliente(String idCliente) {
+	public void setIdCliente(Long idCliente) {
 		this.idCliente = idCliente;
 	}
 
