@@ -9,7 +9,7 @@ public interface UsuarioService {
 	UsuarioEntity getOneByUsername(String username);
 	String save(UsuarioEntity usuarioEntity) throws Exception;
 	List<UsuarioEntity> findAll();
-	String deleteById(String idUsuario) throws Exception;
+	String deleteById(Long idUsuario) throws Exception;
 
 	
 }

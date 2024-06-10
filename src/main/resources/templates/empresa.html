@@ -6,11 +6,17 @@
 </head>
 
 <body>
-<div th:insert="~{layout/menuEmpresa}"></div>
+	<div th:insert="~{layout/menuEmpresa}"></div>
 
-<main>
-	<h1>Main</h1>
-</main>
+	<main>
+		<h1>Main</h1>
+		<a class="btn btn-sm btn-warning" th:href="@{alterar_empresa}">Alterar</a>
+		
+		<a class="delete btn btn-sm btn-danger" th:href="@{excluir_usuario}"
+			onclick="if (confirm('Deseja realmente excluir a sua conta? Ela será excluída permanentemente ao clicar confirmar!')){return true;}else{event.stopPropagation(); event.preventDefault();};">
+			Excluir
+		</a>
+	</main>
 
 </body>
 
