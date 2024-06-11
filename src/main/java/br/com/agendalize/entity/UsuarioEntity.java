@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -34,7 +35,7 @@ public class UsuarioEntity implements Serializable,UserDetails{
 	@Column(name = "senha_usuario") 
 	private String password;
 
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name="usuario_permissao",
     joinColumns={@JoinColumn(name="usuario_id_usuario", referencedColumnName = "id_usuario")},
     inverseJoinColumns={@JoinColumn(name="permissao_id_permissao", referencedColumnName = "id_permissao")})
