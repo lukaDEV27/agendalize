@@ -14,6 +14,9 @@ public class AgendamentoServiceImpl implements AgendamentoService{
 	@Autowired
 	private AgendamentoRepository agendamentoRepository;
 	
+	@Autowired
+	private AgendaService agendaService;
+	
 	private String mensagem;
 	
 	@Override
@@ -24,8 +27,12 @@ public class AgendamentoServiceImpl implements AgendamentoService{
 
 	@Override
 	public String save(AgendamentoEntity agendamentoEntity) throws Exception {
+	
+		
+		
+		
 		agendamentoRepository.saveAndFlush(agendamentoEntity);
-		this.mensagem = "Cliente cadastrado com sucesso.";
+		this.mensagem = "Agendamento cadastrado com sucesso.";
 		
 		return mensagem;
 	}

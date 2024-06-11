@@ -1,12 +1,16 @@
 package br.com.agendalize.entity;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -41,6 +45,35 @@ public class ClienteEntity implements Serializable{
 	@Column(name = "telefone_cliente")
 	private String telefoneCliente;
 	
+	@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "empresa_cliente_id")
+    private EmpresaEntity empresa;
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(idCliente);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ClienteEntity other = (ClienteEntity) obj;
+		return Objects.equals(idCliente, other.idCliente);
+	}
+
+	public EmpresaEntity getEmpresa() {
+		return empresa;
+	}
+
+	public void setEmpresa(EmpresaEntity empresa) {
+		this.empresa = empresa;
+	}
+
 	public String getCpfCliente() {
 		return cpfCliente;
 	}

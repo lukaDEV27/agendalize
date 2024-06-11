@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head th:insert="~{layout/cabecalho}">
+	<title>Alterar agenda</title>
+</head>
+
+
+<body>
+	<div th:insert="~{layout/menu}"></div>
+
+
+	<div class="container-fluid">
+		<div class="row justify-content-center">
+			<div class="col-12 col-md-6 col-sm-12 col-xs-12">
+				<div class="card p-4 p-md-4 my-4 mx-3 mx-md-0 text-white">
+					<h6>Alterar Cliente</h6>
+					<p>Formulario de Alteração da cliente.</p>
+
+
+
+					<form name="alterar_cliente" class="form-horizontal" method="POST" th:action="@{/alterar_cliente}"
+						th:object="${clienteEntity}">
+
+						<input type="hidden" name="empresa" id="empresa"
+							th:value="${cliente.empresa.idEmpresa}">
+							<input type="hidden" name="idCliente" id="idCliente"
+							th:value="${cliente.idCliente}">
+
+						<div class="alert alert-sucess" th:text="${mensagem}" th:if="${not #strings.isEmpty(mensagem)}">
+						</div>
+
+						<div class="form-group">
+							<label> CPF do cliente </label>
+							<input type="text" class="form-control" id="cpfCliente" name="cpfCliente"
+								placeholder="Digite somente números" th:value="${cliente.cpfCliente}">
+
+						</div>
+						<div class="form-group">
+							<label> Nome </label>
+							<input type="text" class="form-control" id="nomeCliente" name="nomeCliente" th:value="${cliente.nomeCliente}">
+
+						</div>
+						<div class="form-group">
+							<label> Sobrenome </label>
+							<input type="text" class="form-control" id="sobrenomeCliente" name="sobrenomeCliente "th:value="${cliente.sobrenomeCliente}">
+
+						</div>
+
+						<div class="form-group">
+							<label> Email pra contato(Opcional) </label>
+							<input type="email" class="form-control" id="emailContatoCliente" name="emailContatoCliente"
+								placeholder="exemplo@exemplo.com" th:value="${cliente.emailContatoCliente}">
+
+						</div>
+						
+						<div class="form-group">
+							<label> Endereço do cliente </label>
+							<input type="text" class="form-control" id="enderecoCliente" name="enderecoCliente" th:value="${cliente.enderecoCliente}">
+
+						</div>
+						
+						<div class="form-group">
+							<label> CEP do cliente </label>
+							<input type="text" class="form-control" id="cepCliente" name="cepCliente" th:value="${cliente.cepCliente}">
+
+						</div>
+						
+						<div class="form-group">
+							<label> Telefone do cliente </label>
+							<input type="text" class="form-control" id="telefoneCliente" name="telefoneCliente" th:value="${cliente.telefoneCliente}">
+
+						</div>
+
+						<button type="submit" class="col-12 btn">alterar</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+
+	<div th:insert="~{layout/rodape}"></div>
+</body>
+
+</html>
