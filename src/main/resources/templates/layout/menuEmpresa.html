@@ -1,7 +1,7 @@
 <nav id="sidebar">
 	<div id="sidebar_content">
 		<div id="user">
-			<img src="/img/Agendalizelogoo-transformed.png" id="user_avatar" alt="Avatar">
+			<img src="/img/logo2.png" id="user_avatar" alt="Avatar">
 
 			<p id="user_infos">
 				<span class="item-description">
@@ -16,7 +16,7 @@
 		<ul id="side_items">
 			<li class="side-item">
 				<a href="/empresa">
-					<i class="fa-solid fa-chart-line"></i>
+					<i id="icone_menu" class="fa-solid fa-chart-line"></i>
 					<span class="item-description">
 						Dashboard
 					</span>
@@ -25,7 +25,7 @@
 
 			<li class="side-item">
 				<a href="/agenda">
-					<i class="ri-calendar-line"></i>
+					<i id="icone_menu" class="ri-calendar-line"></i>
 					<span class="item-description">
 						Agenda
 					</span>
@@ -33,17 +33,17 @@
 			</li>
 
 			<li class="side-item">
-				<a href="/cadastroEmpresa">
-					<i class="ri-survey-line"></i>
+				<a href="/cliente">
+					<i id="icone_menu" class="ri-survey-line"></i>
 					<span class="item-description">
-						Formulario
+						Clientes
 					</span>
 				</a>
 			</li>
 
 			<li class="side-item">
 				<a href="#">
-					<i class="ri-table-line"></i>
+					<i id="icone_menu" class="ri-table-line"></i>
 					<span class="item-description">
 						Tabela
 					</span>
@@ -62,16 +62,16 @@
 
 	<div id="logout">
 		<button id="logout_btn">
-			<i class="ri-home-2-line"></i>
+			<i id="icone_menu" class="ri-home-2-line"></i>
 			<span class="item-description">
 				<a class="link-description" href="/principal">Principal</a>
 			</span>
 		</button>
 	
 		<form th:action="@{/sair}" method="post">
-			<button id="logout_btn" type="submit" class="btn nav_btn nav-link"
+			<button id="logout_btn" type="submit"
 				sec:authorize="hasAnyAuthority('admin','empresa')">
-				<i class="fa-solid fa-right-from-bracket"></i>
+				<i id="icone_menu" class="fa-solid fa-right-from-bracket"></i>
 				<span class="item-description">
 					<a class="link-description">Logout</a>
 				</span>
@@ -108,7 +108,7 @@
 
 	main {
 		padding: 20px;
-		position: fixed;
+		position: relative;
 		z-index: 1;
 		padding-left: calc(82px + 20px);
 	}
@@ -194,6 +194,7 @@
 		justify-content: center;
 		width: 20px;
 		height: 20px;
+		color: #0a0a0a;
 	}
 
 	#logout {

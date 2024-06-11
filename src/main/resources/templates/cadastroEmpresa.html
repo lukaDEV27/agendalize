@@ -5,11 +5,11 @@
 	<title>Cadastro Empresa</title>
 </head>
 
+<div th:insert="~{layout/menuCadastro}"></div>
 
 <body>
 
 	<header class="header-form">
-		<div th:insert="~{layout/menuCadastro}"></div>
 
 		<div class="section_container header_container" id="home">
 
@@ -142,7 +142,7 @@
 		}
 
 		.header-form {
-			background-image: url(https://i.pinimg.com/474x/b0/07/e0/b007e08eb23b802a48d919a2dba97fea.jpg);
+			background-image: url(https://i.pinimg.com/564x/53/91/41/539141b5fe0f63e041492e2fb2a77264.jpg);
 			background-position: center center;
 			background-size: cover;
 			background-repeat: no-repeat;
@@ -214,6 +214,31 @@
 			transform: scale(1.2);
 		}
 
+
+
+		/* Forgot password */
+		#forgot_password a {
+			text-decoration: none;
+			color: var(--color-dark-50);
+			font-size: 12px;
+		}
+
+		#forgot_password a:hover {
+			color: var(--color-purple-50);
+		}
+
+		/* Login Button */
+		#login_button {
+			border: none;
+			background: var(--color-gradient);
+			padding: 7px;
+			border-radius: 3px;
+			color: var(--color-light-50);
+			font-weight: bold;
+			font-size: 18px;
+			cursor: pointer;
+		}
+
 		/* Inputs */
 		#inputs {
 			display: flex;
@@ -253,29 +278,6 @@
 
 		.input-field input:focus {
 			outline: none;
-		}
-
-		/* Forgot password */
-		#forgot_password a {
-			text-decoration: none;
-			color: var(--color-dark-50);
-			font-size: 12px;
-		}
-
-		#forgot_password a:hover {
-			color: var(--color-purple-50);
-		}
-
-		/* Login Button */
-		#login_button {
-			border: none;
-			background: var(--color-gradient);
-			padding: 7px;
-			border-radius: 3px;
-			color: var(--color-light-50);
-			font-weight: bold;
-			font-size: 18px;
-			cursor: pointer;
 		}
 
 		#login_button:hover {

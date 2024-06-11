@@ -9,10 +9,11 @@
 			</div>
 		</div>
 		<ul class="nav_links" id="nav-links">
-			<li><a href="/principal">Principal</a></li>
+			<li><a href="/principal" class="active">Principal</a></li>
 			<li sec:authorize="hasAnyAuthority('admin','empresa')"><a href="/empresa">Empresa</a></li>
-			<li><a href="/sobreNos">Sobre Nós</a></li>
-			<li><a href="/contato">Contato</a></li>
+			<li><a href="#servicos">Serviços</a></li>
+			<li><a href="#about">Sobre Nós</a></li>
+			<li><a href="#contato">Contato</a></li>
 			<li>
 				<form th:action="@{/sair}" method="post">
 					<button type="submit" class="btn nav_btn nav-link"
@@ -171,7 +172,7 @@
 		}
 
 		.header {
-			background-image: url(https://i.pinimg.com/474x/b0/07/e0/b007e08eb23b802a48d919a2dba97fea.jpg);
+			background-image: url(https://i.pinimg.com/564x/53/91/41/539141b5fe0f63e041492e2fb2a77264.jpg);
 			background-position: center center;
 			background-size: cover;
 			background-repeat: no-repeat;

@@ -9,7 +9,7 @@
 
 	<div th:insert="~{layout/menu}"></div>
 
-	<section class="empresa" id="empresa">
+	<section class="empresa" id="servicos">
 		<div class="section_container empresa_container">
 			<div class="empresa_content">
 				<div th:if="${empresa == null}" sec:authorize="hasAnyAuthority('admin','empresa')">
@@ -17,7 +17,7 @@
 					<button class="btn"><a class="link-description" href="/cadastroEmpresa">Cadastrar
 							Empresa</a></button>
 				</div>
-				<p class="section_subheader">EMPRESA</p>
+				<p class="section_subheader">SERVIÇOS</p>
 				<h2 class="section_header">Utilidades para sua empresa.</h2>
 				<ul class="empresa_list">
 					<li>
@@ -61,6 +61,30 @@
 			</div>
 		</div>
 	</section>
+	
+	<section class="contact" id="contato">
+	        <div class="container">
+	            <div class="row">
+	                <div class="contact-left">
+	                    <h2 class="sub-title">Contate-Me</h2>
+	                    <p><i class="fa-solid fa-paper-plane"></i> Agendalize@gmail.com</p>
+	                    <p><i class="fa-solid fa-phone"></i> Telefone: 99999-9999</p>
+	                    
+	                </div>
+	                <div class="contact-right">
+	                    <form action="">
+	                        <input type="text" name="name" placeholder="Seu Nome:" required>
+	                        <input type="email" name="email" placeholder="Seu Email:" required>
+	                        <textarea name="Massage" id="" rows="4" placeholder="Sua mensagem:"></textarea>
+	                        <button class="btn nav_btn">
+	                            <p>Enviar</p>
+	                        </button>
+	                    </form>
+	                </div>
+	            </div>
+	        </div>
+	    </section>
+		<br>
 
 
 
@@ -102,5 +126,112 @@
 		origin: "right",
 	});
 </script>
+<script>
+	let menuIcon = document.querySelector('#menu-icon')
+	let navbar = document.querySelector('.navbar')
+	
+	let sections = document.querySelectorAll('section')
+	let navLinks = document.querySelectorAll('header nav a')
+	
+	
+	window.onscroll = () => {
+	    sections.forEach(sec => {
+	        let top = window.scrollY;
+	        let offset = sec.offsetTop - 150;  
+	        let height = sec.offsetHeight;
+	        let id = sec.getAttribute('id');
+	
+	        if (top >= offset && top < offset + height) {
+	            navLinks.forEach(link => {
+	                link.classList.remove('active')
+	                document.querySelector('header nav a[href*=' + id + ']').classList.add('active')
+	            }) 
+	        }
+	    })
+	}
+	
+	menuIcon.onclick = () => {
+	    menuIcon.classList.toggle('bx-x')
+	    navbar.classList.toggle('active')
+	}
+
+</script>
+<style>
+	:root{
+	    --bg-color: #000000;
+	    --second-bg-color: whitesmoke;
+	    --text-color: #fff;
+	    --main-color:#e82574;
+	}
+	/*Contact*/
+	
+	h2{
+		color: var(--main-color);
+	}
+	.contact .container{
+	    padding: 2rem;
+	    width: 90%;
+	    margin: auto;
+	    margin-top: 2rem;
+		border-radius: 15px;
+	    background: var(--second-bg-color);
+		box-shadow: 0, 0, 25px, 0 #000000;
+	}
+	.contact .container .row{
+	    display: grid;
+	    grid-template-columns: repeat(2, 1fr);
+	    flex-wrap: wrap;
+	}
+	.contact-left{
+	    flex-basis: 35%;
+	}
+	.contact-right{
+	    flex-basis: 60%;
+	}
+	.contact .contact-left .sub-title{
+	    font-size: 4rem;
+	}
+	.contact .contact-left p{
+	    margin-top: 30px;
+	    font-size: 16px;
+	
+	}
+	.contact .contact-left p i{
+	    color: var(--main-color);
+	    margin-left: 15px;
+	    font-size: 25px;
+	}
+	.contact .contact-right form{
+	    width: 100%;
+	}
+	form input, form textarea{
+	    width: 100%;
+	    border: 0;
+	    outline: none;
+	    background: var(--text-color);
+	    padding: 15px;
+	    margin: 15px 0;
+	    color: #fff;
+	    font-size: 18px;
+	    border-radius: 6px;
+	    resize: none;
+	}
+	.contact .button p{
+	    font-size: 2rem;
+	    font-weight: 400;
+	}
+	@media screen and (max-width:600px) {
+	    .contact .container{
+	        margin: 0;
+	        padding: 0;
+	    }
+	    .contact .container .row{
+	        grid-template-columns: repeat(1, 1fr);
+	        margin: 1rem;
+	        padding: 2rem 0.2rem 2rem 0.2rem;
+	        gap: 1rem;
+	    }
+	}
+</style>
 
 </html>

@@ -9,64 +9,93 @@
 
 	<div th:insert="~{layout/menuEmpresa}"></div>
 
-	<h1>Gerencie suas Agendas</h1>
-	<br>
 
-	<div>
-		<p>Cadastre aqui as suas agendas!</p>
-		<button class="btn"><a class="link-description" href="/cadastroAgenda">Cadastrar Agenda</a></button>
-	</div>
-	<br>
-
-
-	<!--Começa lista de docentes -->
-	<br>
-	<h5 class="card-title">Agendas cadastrados</h5>
-	<table class="table table-sm table-striped table-hover table-bordered">
-		<thead>
-			<tr>
-				<th>ID</th>
-				<th>Nome</th>
-				<th>Data inicial</th>
-				<th>Data final</th>
-				<th>Descrição</th>
-				<th class="col-1"></th>
-				<th class="col-1"></th>
-				<th class="col-1"></th>
-				<th class="col-1"></th>
+	<main>
+		
+		<div>
+			<h1>Gerencie suas Agendas</h1>
+			<p>Cadastre aqui as suas agendas!</p>
+			<button class="btn"><a class="link-description" href="/cadastroAgenda">Cadastrar Agenda</a></button>
+		</div>
 
 
+		
+			<!--Começa lista de agendas -->
+			<br>
+			<h5 class="card-title">Agendas cadastradas</h5>
+			<table id="example" class="display" style="width:100%">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Nome</th>
+						<th>Data inicial</th>
+						<th>Data final</th>
+						<th>Descrição</th>
+						<th class="col-1"></th>
+						<th class="col-1"></th>
+						<th class="col-1"></th>
+						<th class="col-1"></th>
 
-			</tr>
-		</thead>
-		<tbody>
-			<tr th:each="agenda : ${agendas}">
-				<td th:text="${agenda.IdAgenda}"></td>
-				<td th:text="${agenda.NomeAgenda}"></td>
-				<td th:text="${agenda.DataDisponivelInicial}"></td>
-				<td th:text="${agenda.DataDisponivelFinal}"></td>
-				<td th:text="${agenda.DescricaoAgenda}"></td>
-				<td><a class="btn btn-sm btn-warning"
-						th:href="@{alterar_agenda/{idAgenda}(idAgenda=${agenda.IdAgenda})}">Alterar</a></td>
-				<td><a class="btn btn-sm btn-warning"
-						th:href="@{configurar_semana/{idAgenda}(idAgenda=${agenda.IdAgenda})}">Configurar a rotina
-						semanal</a></td>
-				<td><a class="btn btn-sm btn-warning"
-						th:href="@{configurar_data_indisponivel/{idAgenda}(idAgenda=${agenda.IdAgenda})}">Cadastrar
-						datas indisponiveis</a></td>
-				<td>
-					<a class="delete btn btn-sm btn-danger"
-						th:href="@{excluir_agenda/{idAgenda}(idAgenda=${agenda.IdAgenda})}"
-						onclick="if (confirm('Deseja realmente excluir a agenda?')){return true;}else{event.stopPropagation(); event.preventDefault();};">
-						Excluir
-					</a>
-				</td>
-			</tr>
-		</tbody>
-	</table>
-	<!--Termina lista de docentes -->
 
+
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="agenda : ${agendas}">
+						<td th:text="${agenda.IdAgenda}"></td>
+						<td th:text="${agenda.NomeAgenda}"></td>
+						<td th:text="${agenda.DataDisponivelInicial}"></td>
+						<td th:text="${agenda.DataDisponivelFinal}"></td>
+						<td th:text="${agenda.DescricaoAgenda}"></td>
+						<td><a class="btn btn-sm btn-warning"
+								th:href="@{alterar_agenda/{idAgenda}(idAgenda=${agenda.IdAgenda})}">Alterar</a></td>
+						<td><a class="btn btn-sm btn-warning"
+								th:href="@{configurar_semana/{idAgenda}(idAgenda=${agenda.IdAgenda})}">Configurar a
+								rotina
+								semanal</a></td>
+						<td><a class="btn btn-sm btn-warning"
+								th:href="@{configurar_data_indisponivel/{idAgenda}(idAgenda=${agenda.IdAgenda})}">Cadastrar
+								datas indisponiveis</a></td>
+						<td>
+							<a class="delete btn btn-sm btn-danger"
+								th:href="@{excluir_agenda/{idAgenda}(idAgenda=${agenda.IdAgenda})}"
+								onclick="if (confirm('Deseja realmente excluir a agenda?')){return true;}else{event.stopPropagation(); event.preventDefault();};">
+								Excluir
+							</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<!--Termina lista de docentes -->
+		
+	</main>
 
 </body>
+<script>
+	new DataTable('#example', {
+		layout: {
+			topStart: {
+				buttons: [
+					{
+						extend: 'print',
+						exportOptions: {
+							columns: ':visible'
+						}
+					},
+					'colvis'
+				]
+			}
+		},
+		columnDefs: [
+			{
+				targets: -1,
+				visible: false
+			}
+		]
+	});
+</script>
+<style>
+		
+</style>
 
 </html>
