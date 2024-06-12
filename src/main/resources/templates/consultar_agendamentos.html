@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head th:insert="~{layout/cabecalho}">
+	<title>Agendalize</title>
+</head>
+
+<body>
+
+	<div th:insert="~{layout/menuEmpresa}"></div>
+
+	<h1>Gerencie seus Agendamentos</h1>
+	<br>
+
+
+	<!--Começa lista de docentes -->
+	<br>
+	<h5 class="card-title">Agendamentos cadastrados</h5>
+	<table class="table table-sm table-striped table-hover table-bordered">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Data</th>
+				<th>Hora inicial</th>
+				<th>Hora Final</th>
+				<th>Status</th>
+				
+				<th class="col-1"></th>
+
+
+
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="agenda : ${agenda.agendamentos}">
+				<td th:text="${agenda.IdAgendamento}"></td>
+				<td th:text="${agenda.DataAgendamento}"></td>
+				<td th:text="${agenda.HoraInicioAgendamento}"></td>
+				<td th:text="${agenda.HoraFinalAgendamento}"></td>
+				<td th:text="${agenda.StatusAgendamento.Descricao}"></td>
+				<td><a class="btn btn-sm btn-warning"
+						th:href="@{../alterar_status_agendamento/{idAgendamento}(idAgendamento=${agenda.IdAgendamento})}">Alterar Status</a></td>
+						<td><a class="btn btn-sm btn-warning"
+						th:href="@{../alterar_agendamento/{idAgendamento}(idAgendamento=${agenda.IdAgendamento})}">Alterar Agendamento</a></td>
+				
+			</tr>
+		</tbody>
+	</table>
+	<!--Termina lista de docentes -->
+
+
+</body>
+
+</html>

@@ -19,56 +19,56 @@
 		</div>
 
 
-		
-			<!--Começa lista de agendas -->
-			<br>
-			<h5 class="card-title">Agendas cadastradas</h5>
-			<table id="example" class="display" style="width:100%">
-				<thead>
-					<tr>
-						<th>ID</th>
-						<th>Nome</th>
-						<th>Data inicial</th>
-						<th>Data final</th>
-						<th>Descrição</th>
-						<th class="col-1"></th>
-						<th class="col-1"></th>
-						<th class="col-1"></th>
-						<th class="col-1"></th>
+	<!--Começa lista de docentes -->
+	<br>
+	<h5 class="card-title">Agendas cadastrados</h5>
+	<table class="table table-sm table-striped table-hover table-bordered">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Nome</th>
+				<th>Data inicial</th>
+				<th>Data final</th>
+				<th>Descrição</th>
+				<th class="col-1"></th>
+				<th class="col-1"></th>
+				<th class="col-1"></th>
+				<th class="col-1"></th>
+				<th class="col-1"></th>
 
 
 
-					</tr>
-				</thead>
-				<tbody>
-					<tr th:each="agenda : ${agendas}">
-						<td th:text="${agenda.IdAgenda}"></td>
-						<td th:text="${agenda.NomeAgenda}"></td>
-						<td th:text="${agenda.DataDisponivelInicial}"></td>
-						<td th:text="${agenda.DataDisponivelFinal}"></td>
-						<td th:text="${agenda.DescricaoAgenda}"></td>
-						<td><a class="btn btn-sm btn-warning"
-								th:href="@{alterar_agenda/{idAgenda}(idAgenda=${agenda.IdAgenda})}">Alterar</a></td>
-						<td><a class="btn btn-sm btn-warning"
-								th:href="@{configurar_semana/{idAgenda}(idAgenda=${agenda.IdAgenda})}">Configurar a
-								rotina
-								semanal</a></td>
-						<td><a class="btn btn-sm btn-warning"
-								th:href="@{configurar_data_indisponivel/{idAgenda}(idAgenda=${agenda.IdAgenda})}">Cadastrar
-								datas indisponiveis</a></td>
-						<td>
-							<a class="delete btn btn-sm btn-danger"
-								th:href="@{excluir_agenda/{idAgenda}(idAgenda=${agenda.IdAgenda})}"
-								onclick="if (confirm('Deseja realmente excluir a agenda?')){return true;}else{event.stopPropagation(); event.preventDefault();};">
-								Excluir
-							</a>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-			<!--Termina lista de docentes -->
-		
-	</main>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="agenda : ${agendas}">
+				<td th:text="${agenda.IdAgenda}"></td>
+				<td th:text="${agenda.NomeAgenda}"></td>
+				<td th:text="${agenda.DataDisponivelInicial}"></td>
+				<td th:text="${agenda.DataDisponivelFinal}"></td>
+				<td th:text="${agenda.DescricaoAgenda}"></td>
+				<td><a class="btn btn-sm btn-warning"
+						th:href="@{alterar_agenda/{idAgenda}(idAgenda=${agenda.IdAgenda})}">Alterar</a></td>
+				<td><a class="btn btn-sm btn-warning"
+						th:href="@{configurar_semana/{idAgenda}(idAgenda=${agenda.IdAgenda})}">Configurar a rotina
+						semanal</a></td>
+				<td><a class="btn btn-sm btn-warning"
+						th:href="@{configurar_data_indisponivel/{idAgenda}(idAgenda=${agenda.IdAgenda})}">Cadastrar
+						datas indisponiveis</a></td>
+				<td>
+					<a class="delete btn btn-sm btn-danger"
+						th:href="@{excluir_agenda/{idAgenda}(idAgenda=${agenda.IdAgenda})}"
+						onclick="if (confirm('Deseja realmente excluir a agenda?')){return true;}else{event.stopPropagation(); event.preventDefault();};">
+						Excluir
+					</a>
+				</td>
+				<td><a class="btn btn-sm btn-warning"
+						th:href="@{consultar_agendamentos/{idAgenda}(idAgenda=${agenda.IdAgenda})}">Consultar Agendamentos</a></td>
+			</tr>
+		</tbody>
+	</table>
+	<!--Termina lista de docentes -->
+
 
 </body>
 <script>

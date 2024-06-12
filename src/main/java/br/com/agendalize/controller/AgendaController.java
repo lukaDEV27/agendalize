@@ -11,14 +11,17 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.agendalize.entity.AgendaEntity;
+import br.com.agendalize.entity.AgendamentoEntity;
 import br.com.agendalize.entity.DataIndisponivelEntity;
 import br.com.agendalize.entity.EmpresaEntity;
 import br.com.agendalize.entity.SemanaEntity;
 import br.com.agendalize.entity.UsuarioEntity;
 import br.com.agendalize.service.AgendaService;
+import br.com.agendalize.service.AgendamentoService;
 import br.com.agendalize.service.DataIndisponivelService;
 import br.com.agendalize.service.EmpresaService;
 import br.com.agendalize.service.SemanaService;
+import br.com.agendalize.service.StatusAgendamentoService;
 import br.com.agendalize.service.UsuarioService;
 import jakarta.servlet.http.HttpSession;
 
@@ -30,6 +33,12 @@ public class AgendaController {
 
 	@Autowired
 	private AgendaService agendaService;
+	
+	@Autowired
+	private AgendamentoService agendamentoService;
+	
+	@Autowired
+	private StatusAgendamentoService statusAgendamentoService;
 
 	@Autowired
 	private UsuarioService usuarioService;
@@ -282,5 +291,87 @@ public class AgendaController {
 		return mv;
 
 	}
+	
+	//BOTÃO COM QUE CONSULTA OS AGENDAMENTOS
+	@GetMapping("/consultar_agendamentos/{idAgenda}")
+	public ModelAndView consultarAgendamentos(ModelMap model, @PathVariable("idAgenda") Long idAgenda)
+			throws Exception {
 
+		ModelAndView mv = new ModelAndView("consultar_agendamentos");
+		AgendaEntity agenda = new AgendaEntity();
+		agenda = agendaService.getOneByIdAgenda(idAgenda);
+		agenda.getAgendamentos();
+		
+
+		model.addAttribute("idAgenda", idAgenda);
+		mv.addObject("agenda", agenda);
+
+		
+
+		return mv;
+	}
+	
+	//ALTERAR O STATUS DO AGENDAMENTO
+	@GetMapping("/alterar_status_agendamento/{idAgendamento}")
+	public ModelAndView alterarStatusAgendamento(ModelMap model,
+			@PathVariable("idAgendamento") Long idAgendamento) throws Exception {
+
+		ModelAndView mv = new ModelAndView("alterar_status_agendamento");
+		
+		model.addAttribute("status",statusAgendamentoService.findAll());
+		model.addAttribute("idAgendamento", idAgendamento);
+		model.addAttribute("agendamento", agendamentoService.getOneByIdAgendamento(idAgendamento));
+
+		return mv;
+
+	}
+	
+	//ALTERAR O STATUS DO AGENDAMENTO
+	@PostMapping("/alterar_status_agendamento")
+	public ModelAndView alterarStatusAgendamento(ModelMap model,
+			@ModelAttribute("agendamentoEntity") AgendamentoEntity agendamentoEntity,
+			@ModelAttribute("idAgenda") Long idAgenda, RedirectAttributes atributes) throws Exception {
+
+		agendamentoEntity.setAgenda(agendaService.getOneByIdAgenda(idAgenda));
+
+		model.addAttribute("agenda", agendaService.getOneByIdAgenda(idAgenda));
+
+		ModelAndView mv = new ModelAndView("redirect:/consultar_agendamentos/" + idAgenda);
+		atributes.addFlashAttribute("mensagem", agendamentoService.save(agendamentoEntity));
+
+		return mv;
+	
+	}
+	
+	//ALTERAR AGENDAMENTO
+		@GetMapping("/alterar_agendamento/{idAgendamento}")
+		public ModelAndView alterarAgendamento(ModelMap model,
+				@PathVariable("idAgendamento") Long idAgendamento) throws Exception {
+
+			ModelAndView mv = new ModelAndView("alterar_agendamento");
+			
+			
+			model.addAttribute("idAgendamento", idAgendamento);
+			model.addAttribute("agendamento", agendamentoService.getOneByIdAgendamento(idAgendamento));
+
+			return mv;
+
+		}
+		
+		//ALTERAR  AGENDAMENTO
+		@PostMapping("/alterar_agendamento")
+		public ModelAndView alterarAgendamento(ModelMap model,
+				@ModelAttribute("agendamentoEntity") AgendamentoEntity agendamentoEntity,
+				@ModelAttribute("idAgenda") Long idAgenda, RedirectAttributes atributes) throws Exception {
+
+			agendamentoEntity.setAgenda(agendaService.getOneByIdAgenda(idAgenda));
+
+			model.addAttribute("agenda", agendaService.getOneByIdAgenda(idAgenda));
+
+			ModelAndView mv = new ModelAndView("redirect:/consultar_agendamentos/" + idAgenda);
+			atributes.addFlashAttribute("mensagem", agendamentoService.save(agendamentoEntity));
+
+			return mv;
+		
+		}
 }
