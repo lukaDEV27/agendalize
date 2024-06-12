@@ -12,4 +12,5 @@ public interface EmpresaRepository extends JpaRepository<EmpresaEntity, Long>{
 	EmpresaEntity getOneByIdEmpresa(Long idEmpresa);
 	EmpresaEntity getOneByUsuarioEmpresaLogin(UsuarioEntity usuarioEmpresaLogin);
 	
+	
 }
