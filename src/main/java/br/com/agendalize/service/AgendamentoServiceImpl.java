@@ -88,7 +88,7 @@ public class AgendamentoServiceImpl implements AgendamentoService {
 			}
 		}
 		
-		int hora;
+		/*int hora;
 		
 		//VALIDAÇÃO DE O HORÁRIO DO DIA É DISPONÍVEL
 		boolean horaDisponivel = false;
@@ -98,7 +98,7 @@ public class AgendamentoServiceImpl implements AgendamentoService {
 				
 
 			}
-		}
+		}*/
 		
 		
 
