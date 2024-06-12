@@ -10,4 +10,7 @@ public interface AgendamentoRepository extends JpaRepository<AgendamentoEntity, 
 
 	AgendamentoEntity getOneByIdAgendamento(Long idAgendamento);
 	
+	
+	
+	
 }

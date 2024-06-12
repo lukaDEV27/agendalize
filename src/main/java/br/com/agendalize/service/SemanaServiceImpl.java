@@ -27,7 +27,6 @@ public class SemanaServiceImpl implements SemanaService{
 	public String save(SemanaEntity semanaEntity) throws Exception {
 		
 		
-		
 		if (semanaRepository.existsByNomeDiaAndAgenda(semanaEntity.getNomeDia(), semanaEntity.getAgenda()) == true) {
 			
 			this.mensagem = "Você ja cadastrou a rotina desse dia.";
