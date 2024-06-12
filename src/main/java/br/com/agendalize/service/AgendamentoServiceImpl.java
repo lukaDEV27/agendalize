@@ -20,8 +20,6 @@ public class AgendamentoServiceImpl implements AgendamentoService {
 	@Autowired
 	private AgendaRepository agendaRepository;
 
-	@Autowired
-	private AgendaService agendaService;
 
 	private String mensagem;
 
@@ -87,19 +85,6 @@ public class AgendamentoServiceImpl implements AgendamentoService {
 
 			}
 		}
-		
-		/*int hora;
-		
-		//VALIDAÇÃO DE O HORÁRIO DO DIA É DISPONÍVEL
-		boolean horaDisponivel = false;
-		for (int i = 0; i < ag.getDiasDaSemana().size(); i++) {
-
-			if (ag.getDiasDaSemana().get(i).getHoraInicial().compareTo(agendamentoEntity.getHoraInicioAgendamento())) {
-				
-
-			}
-		}*/
-		
 		
 
 		if (dataIgual == true) {

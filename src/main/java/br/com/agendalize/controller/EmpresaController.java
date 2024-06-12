@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.agendalize.entity.AgendaEntity;
+import br.com.agendalize.entity.AgendamentoEntity;
 import br.com.agendalize.entity.EmpresaEntity;
 import br.com.agendalize.entity.PermissaoEntity;
 import br.com.agendalize.entity.UsuarioEntity;
@@ -49,6 +50,9 @@ public class EmpresaController {
 		empresa = empresaService.getOneByUsuarioEmpresaLogin(usuario);
 		//System.out.println("Usuário logado " + empresa.getIdEmpresa());
 		mv.addObject("empresa", empresa);
+		
+		
+		model.addAttribute("agendas", empresa.getAgendas());
 
 		
 		return mv; 
