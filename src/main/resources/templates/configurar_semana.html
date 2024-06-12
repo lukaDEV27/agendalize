@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head th:insert="~{layout/cabecalho}">
-	<title>Configurar semana</title>
+	<title>Configurar Semana</title>
 </head>
 
 
@@ -12,7 +12,7 @@
 
 
 
-	<main id="container">
+	<main>
 
 		<form id="login_form" name="configurar_semana" class="form-horizontal" method="POST"
 			th:action="@{/configurar_semana}" th:object="${semanaEntity}">
@@ -62,6 +62,12 @@
 						<input type="time" class="form-control" id="horaFinal" name="horaFinal" required>
 					</div>
 				</div>
+				<!-- FORGOT PASSWORD -->
+				<div id="forgot_password">
+					<a href="/agenda">
+						Agenda
+					</a>
+				</div>
 
 				<button type="submit" class=" btn nav_btn" id="login_button">Cadastrar</button>
 
@@ -71,7 +77,9 @@
 
 
 		<!--Começa lista de docentes -->
+		<br>
 		<form id="login_form" class="form-horizontal">
+
 			<h5 class="card-title">Agendas cadastrados</h5>
 			<table id="example" class="display" style="width:90%">
 				<thead>
@@ -81,8 +89,8 @@
 						<th>Hora inicial</th>
 						<th>Hora final</th>
 
-						<th class="col-1"></th>
-						<th class="col-1"></th>
+						<th class="col-1">Alterar</th>
+						<th class="col-1">Excluir</th>
 
 
 
@@ -96,12 +104,12 @@
 						<td th:text="${agenda.HoraInicial}"></td>
 						<td th:text="${agenda.HoraFinal}"></td>
 
-						<td><a class="btn1" id="btn2"
+						<td><a class="btn" id="btn1"
 								th:href="@{../alterar_dia_da_semana/{idSemana}(idSemana=${agenda.IdSemana})}">Alterar</a>
 						</td>
 
 						<td>
-							<a class="btn2" id="btn4"
+							<a class=" btn nav_btn" id="btn4"
 								th:href="@{../excluir_dia_da_semana/{idSemana}(idSemana=${agenda.IdSemana})}"
 								onclick="if (confirm('Deseja realmente excluir o dia da semana?')){return true;}else{event.stopPropagation(); event.preventDefault();};">
 								Excluir
@@ -111,33 +119,11 @@
 					</tr>
 				</tbody>
 			</table>
-			<!--Termina lista de docentes -->
-
-
-
 		</form>
+		<!--Termina lista de docentes -->
 
-		<!-- JAVASCRIPT -->
-		<script>
-			const mode = document.getElementById('mode_icon');
 
-			mode.addEventListener('click', () => {
-				const form = document.getElementById('login_form');
 
-				if (mode.classList.contains('fa-moon')) {
-					mode.classList.remove('fa-moon');
-					mode.classList.add('fa-sun');
-
-					form.classList.add('dark');
-					return;
-				}
-
-				mode.classList.remove('fa-sun');
-				mode.classList.add('fa-moon');
-
-				form.classList.remove('dark');
-			});
-		</script>
 		<script>
 			new DataTable('#example', {
 				layout: {
@@ -156,7 +142,7 @@
 				},
 				columnDefs: [
 					{
-						targets: -1,
+						targets: 0,
 						visible: false
 					}
 				]
@@ -193,28 +179,16 @@
 				box-sizing: border-box;
 			}
 
-			.btn1 {
-				
+			.btn {
+
 				font-size: 15px;
 				border-radius: 5px;
 				cursor: pointer;
 				transition: 0, 3s;
 				text-decoration: none;
-				
+
 			}
-			.btn2 {
-							
-							font-size: 15px;
-							border-radius: 5px;
-							cursor: pointer;
-							transition: 0, 3s;
-							text-decoration: none;
-							
-						}
 
-			
-
-			
 
 			#btn1 {
 				background-color: yellow;

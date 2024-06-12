@@ -10,7 +10,7 @@
 	<div th:insert="~{layout/menuEmpresa}"></div>
 
 
-	<main>
+	<main id="container">
 
 		<div>
 			<h1>Gerencie seus Clientes</h1>
@@ -22,7 +22,7 @@
 		<!--Começa lista de clientes -->
 		<br>
 		<h5 class="card-title">Clientes cadastrados</h5>
-		<table id="example" class="display" style="width:100%">
+		<table id="example" class="display" style="width:90%">
 			<thead>
 				<tr>
 					<th>ID</th>
@@ -31,8 +31,9 @@
 					<th>Email</th>
 					<th>Endereço</th>
 					<th>Telefone</th>
-					<th class="col-1"></th>
-					<th class="col-1"></th>
+					<th class="col-1">Alterar</th>
+					<th class="col-1">Excluir</th>
+					<th class="col-1">Realizar Agendamentos</th>
 
 				</tr>
 			</thead>
@@ -54,8 +55,7 @@
 						</a>
 					</td>
 					<td><a class="btn btn-sm btn-warning"
-							th:href="@{cadastro_agendamento/{idCliente}(idCliente=${cliente.idCliente})}">Realizar
-							Agendamento</a></td>
+							th:href="@{cadastro_agendamento/{idCliente}(idCliente=${cliente.idCliente})}">Realizar</a></td>
 				</tr>
 			</tbody>
 		</table>
@@ -88,6 +88,9 @@
 	});
 </script>
 <style>
+	main{
+		padding: 15px;
+	}
 
 </style>
 
