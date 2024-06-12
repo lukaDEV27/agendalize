@@ -2,6 +2,7 @@ package br.com.agendalize.service;
 
 import java.util.List;
 
+import br.com.agendalize.entity.ClienteEntity;
 import br.com.agendalize.entity.EmpresaEntity;
 import br.com.agendalize.entity.UsuarioEntity;
 
@@ -12,6 +13,5 @@ public interface EmpresaService {
 	List<EmpresaEntity> findAll();
 	String deleteById(Long idEmpresa) throws Exception;
 	EmpresaEntity getOneByUsuarioEmpresaLogin(UsuarioEntity usuarioEmpresaLogin);
-
 	
 }

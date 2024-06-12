@@ -76,28 +76,36 @@
 
 
 				<div>
-					<table id="example" class="table table-striped" style="width:100%">
+					<!--<table id="example" class="table table-striped" style="width:100%">
 
 						<thead>
 							<tr>
+<<<<<<< Updated upstream
 								<th>#</th>
 								<th>CLIENTE</th>
 								<th>TOTAL</th>
 								<th>Data Agendamento</th>
 								<th>STATUS</th>
+=======
+								<th><span class="las la-sort"></span> Cliente</th>
+								<th><span class="las la-sort"></span> CPF</th>
+								<th><span class="las la-sort"></span> Agenda</th>
+								<th><span class="las la-sort"></span> Data do Agendamento</th>
+								<th><span class="las la-sort"></span> Status do Agendamento</th>
+>>>>>>> Stashed changes
 							</tr>
 						</thead>
 						<tbody>
-							<tr th:each="agenda : ${agendas}">
-								<td th:text="${agenda.IdAgenda}"></td>
+							<tr th:each="agenda : ${agendas.Agendamentos}">
+								<td th:text="${agenda.Cliente.NomeCliente + ' ' + agenda.Cliente.SobrenomeCliente}"></td>
+								<td th:text="${agenda.Cliente.CpfCliente}"></td>
 								<td th:text="${agenda.NomeAgenda}"></td>
-								<td th:text="${agenda.DataDisponivelInicial}"></td>
-								<td th:text="${agenda.DataDisponivelFinal}"></td>
-								<td th:text="${agenda.DescricaoAgenda}"></td>
+								<td th:text="${agenda.DataAgendamento}"></td>
+								<td th:text="${agenda.StatusAgendamento}"></td>
 							</tr>
 
 						</tbody>
-					</table>
+					</table>-->
 				</div>
 
 			</div>
