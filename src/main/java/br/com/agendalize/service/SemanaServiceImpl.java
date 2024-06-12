@@ -32,7 +32,8 @@ public class SemanaServiceImpl implements SemanaService{
 			
 			this.mensagem = "Você ja cadastrou a rotina desse dia.";
 		
-		} else {
+		} 
+		else {
 			
 			semanaRepository.saveAndFlush(semanaEntity);
 			this.mensagem = "Rotina do dia cadastrada com sucesso.";
