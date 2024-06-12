@@ -5,68 +5,302 @@
 	<title>Cadastrar agendamento</title>
 </head>
 
+<div th:insert="~{layout/menuEmpresa}"></div>
+
 
 <body>
-	<div th:insert="~{layout/menu}"></div>
+	<main id="container">
+		<form name="cadastro_agendamento" class="form-horizontal" id="login_form" method="POST" th:action="@{/cadastro_agendamento}"
+			th:object="${agendamentoEntity}">
+			<!-- FORM HEADER -->
+			<div id="form_header">
+				<h1>Cadastrar agendamento</h1>
+
+			</div>
 
 
-	<div class="container-fluid">
-		<div class="row justify-content-center">
-			<div class="col-12 col-md-6 col-sm-12 col-xs-12">
-				<div class="card p-4 p-md-4 my-4 mx-3 mx-md-0 text-white">
-					<h6>Cadastrar Agendamento</h6>
 
-					<form name="cadastro_agendamento" class="form-horizontal" method="POST"
-						th:action="@{/cadastro_agendamento}" th:object="${agendamentoEntity}">
 
-						<input type="hidden" name="cliente" id="cliente" th:value="${cliente.idCliente}">
 
-						<div class="alert alert-sucess" th:text="${mensagem}" th:if="${not #strings.isEmpty(mensagem)}">
-						</div>
 
-						<div class="form-group">
-							<label for="agenda" class="form-label">Agenda</label>
+			<!-- INPUTS -->
+			<div id="inputs">
+				<input type="hidden" name="cliente" id="cliente" th:value="${cliente.idCliente}">
+
+				<div class="alert alert-sucess" th:text="${mensagem}" th:if="${not #strings.isEmpty(mensagem)}">
+				</div>
+
+
+				<!-- EMAIL -->
+				<div class="input-box">
+					<div class="input-field">
+						<label for="agenda" class="form-label">Agenda</label>
 							<select class="form-select" aria-label="Selecione a agenda" id="agenda" name="agenda"
 								required>
 								<option value="">Selecione a agenda</option>
 								<option th:each="agenda : ${agendas}" th:text="${agenda.nomeAgenda}"
 									th:value="${agenda.idAgenda}">
 							</select>
-						</div>
 
-						<div class="form-group">
-							<label> Data do agendamento </label>
+					</div>
+				</div>
+
+				<div class="input-box">
+					<div class="input-field">
+						<label> Data do agendamento </label>
 							<input type="date" class="form-control" id="dataAgendamento" name="dataAgendamento"
 								required>
+					</div>
+				</div>
 
-						</div>
-						<div class="form-group">
-							<label> Hora inicio Agendamento </label>
+				<div class="input-box">
+					<div class="input-field">
+						<label> Hora inicio Agendamento </label>
 							<input type="time" class="form-control" id="horaInicioAgendamento"
 								name="horaInicioAgendamento" required>
+					</div>
+				</div>
 
-						</div>
-						<div class="form-group">
-							<label> Hora Final Agendamento </label>
+				<div class="input-box">
+					<div class="input-field">
+						<label> Hora Final Agendamento </label>
 							<input type="time" class="form-control" id="horaFinalAgendamento"
 								name="horaFinalAgendamento" required>
-
-						</div>
-
-
-						<button type="submit" class="col-12 btn">salvar</button>
-					</form>
+					</div>
 				</div>
+
+				<!-- FORGOT PASSWORD -->
+				<div id="forgot_password">
+					<a href="/cliente">
+						Cliente
+					</a>
+				</div>
+
 			</div>
-		</div>
-	</div>
 
 
+			<button type="submit" class="btn nav_btn" id="login_button">Cadastrar</button>
+		</form>
+	</main>
 
+	<!-- JAVASCRIPT -->
+	<script>
+		const mode = document.getElementById('mode_icon');
 
+		mode.addEventListener('click', () => {
+			const form = document.getElementById('login_form');
 
+			if (mode.classList.contains('fa-moon')) {
+				mode.classList.remove('fa-moon');
+				mode.classList.add('fa-sun');
 
-	<div th:insert="~{layout/rodape}"></div>
+				form.classList.add('dark');
+				return;
+			}
+
+			mode.classList.remove('fa-sun');
+			mode.classList.add('fa-moon');
+
+			form.classList.remove('dark');
+		});
+	</script>
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400&display=swap');
+
+		/** Variables - colors **/
+		:root {
+			/* Light */
+			--color-light-50: #f8fafc;
+
+			/* Dark */
+			--color-dark-50: #797984;
+			--color-dark-100: #312d37;
+			--color-dark-900: #000;
+
+			/* Purple */
+			--color-purple-50: #bc1c5c;
+			--color-purple-100: #e23e80;
+			--color-purple-200: #e82574;
+
+			/* Gradient */
+			--color-gradient: linear-gradient(90deg, var(--color-purple-50), var(--color-purple-100), var(--color-purple-200));
+		}
+
+		/* General */
+		* {
+			font-family: 'Poppins', sans-serif;
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		#container {
+			height: 100vh;
+			width: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background: var(--color-dark-50);
+		}
+
+		#login_form {
+			display: flex;
+			flex-direction: column;
+			height: fit-content;
+			width: 80vw;
+			background-color: var(--color-light-50);
+			padding: 30px 40px;
+			border-radius: 8px;
+			gap: 30px;
+			box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.336);
+			animation: dark-to-light-background 0.3s ease-in-out;
+		}
+
+		/* Form Header */
+		#form_header {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+		}
+
+		#form_header h1 {
+			font-size: 40px;
+			position: relative;
+		}
+
+		#form_header h1::before {
+			position: absolute;
+			content: '';
+			width: 40%;
+			height: 3px;
+			background-color: var(--color-purple-50);
+			bottom: 10px;
+			border-radius: 5px;
+		}
+
+		#mode_icon {
+			cursor: pointer;
+			font-size: 20px;
+		}
+
+		/* Social Media */
+		#social_media {
+			display: flex;
+			justify-content: space-around;
+		}
+
+		#social_media img {
+			width: 35px;
+		}
+
+		#social_media img:hover {
+			transform: scale(1.2);
+		}
+
+		/* Inputs */
+		#inputs {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex-direction: column;
+			gap: 20px;
+		}
+
+		.input-box>label {
+			font-size: 14px;
+			color: var(--color-dark-50);
+		}
+
+		.input-field {
+			display: flex;
+			align-items: flex-start;
+			gap: 15px;
+			padding: 3px;
+			border-bottom: 1px solid var(--color-purple-50);
+			cursor: text;
+		}
+
+		.input-field i {
+			font-size: 18px;
+			cursor: text;
+			color: var(--color-dark-900);
+		}
+
+		.input-field input {
+			border: none;
+			width: 260px;
+			background-color: transparent;
+			font-size: 18px;
+			padding: 0px 5px;
+		}
+
+		.input-field input:focus {
+			outline: none;
+		}
+
+		/* Forgot password */
+		#forgot_password a {
+			text-decoration: none;
+			color: var(--color-dark-50);
+			font-size: 12px;
+		}
+
+		#forgot_password a:hover {
+			color: var(--color-purple-50);
+		}
+
+		/* Login Button */
+		#login_button {
+			border: none;
+			background: var(--color-gradient);
+			padding: 7px;
+			border-radius: 3px;
+			color: var(--color-light-50);
+			font-weight: bold;
+			font-size: 18px;
+			cursor: pointer;
+		}
+
+		#login_button:hover {
+			transform: scale(1.05);
+		}
+
+		i {
+			color: #000;
+		}
+
+		/* Dark Mode */
+		.dark#login_form {
+			color: var(--color-light-50);
+			background-color: var(--color-dark-100);
+			animation: light-to-dark-background 0.3s ease-in-out;
+		}
+
+		.dark#login_form .input-field input,
+		.dark#login_form .input-field i {
+			color: var(--color-light-50);
+		}
+
+		@keyframes dark-to-light-background {
+			0% {
+				background-color: var(--color-dark-100);
+			}
+
+			100.0% {
+				background-color: var(--color-light-50);
+			}
+		}
+
+		@keyframes light-to-dark-background {
+			0% {
+				background-color: var(--color-light-50);
+			}
+
+			100.0% {
+				background-color: var(--color-dark-100);
+			}
+		}
+	</style>
 </body>
 
 </html>
