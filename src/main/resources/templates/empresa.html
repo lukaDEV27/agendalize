@@ -24,7 +24,7 @@
 					<div class="card">
 						<div class="card-head">
 							<h2 th:text></h2>
-							<span class="las la-user-friends"></span>
+							<span class="ri-folder-user-line"></span>
 						</div>
 						<div class="card-progress">
 							<small>Clientes Cadastrados</small>
@@ -37,8 +37,7 @@
 					<div class="card">
 						<div class="card-head">
 							<h2 th:text></h2>
-							<span class="las la-envelope"></span>
-
+							<span class="ri-calendar-line"></span>
 						</div>
 						<div class="card-progress">
 							<small>Agendamentos Castrados</small>
@@ -51,7 +50,7 @@
 					<div class="card">
 						<div class="card-head">
 							<h2 th:text></h2>
-							<span class="las la-shopping-cart"></span>
+							<span class="ri-calendar-check-line"></span>
 						</div>
 						<div class="card-progress">
 							<small>Agendamentos Concluidos</small>
@@ -64,8 +63,7 @@
 					<div class="card">
 						<div class="card-head">
 							<h2 th:text></h2>
-							<span class="las la-eye"></span>
-
+							<span class="ri-calendar-schedule-line"></span>
 						</div>
 						<div class="card-progress">
 							<small>Agentamentos em Andamento</small>
@@ -117,18 +115,22 @@
 		--color-dark: #34425A;
 		--text-grey: #B0B0B0;
 	}
+
 	.layout {
-	    display: flex;
-	    height: 100vh; /* Altura total da janela de visualização */
+		display: flex;
+		height: 100vh;
+		/* Altura total da janela de visualização */
 	}
-	
-	
-	
+
+
+
 	.main-content {
-	    flex: 1;
-	    overflow-y: auto; /* Permite rolagem vertical na seção principal */
-	    padding: 20px;
-	    background-color: #ecf0f1; /* Cor de fundo da seção principal */
+		flex: 1;
+		overflow-y: auto;
+		/* Permite rolagem vertical na seção principal */
+		padding: 20px;
+		background-color: #ecf0f1;
+		/* Cor de fundo da seção principal */
 	}
 
 	/*section {
@@ -422,9 +424,7 @@
 <script>
 
 	new DataTable('#example', {
-		language: {
-			url: '//cdn.datatables.net/plug-ins/2.0.8/i18n/pt-BR.json',
-		},
+
 
 	});
 
