@@ -6,11 +6,60 @@
 </head>
 
 <body>
+
 	<div th:insert="~{layout/menuEmpresa}"></div>
 
-	<main>
-		<h1>clientes</h1>
-	</main>
+	<h1>Gerencie seus Clientes</h1>
+	<br>
+
+	<div>
+		<p>Cadastre aqui as seus clientes!</p>
+		<button class="btn"><a class="link-description" href="/cadastro_cliente">Cadastrar Agenda</a></button>
+	</div>
+	<br>
+
+
+	<!--Começa lista de docentes -->
+	<br>
+	<h5 class="card-title">Clientes cadastrados</h5>
+	<table class="table table-sm table-striped table-hover table-bordered">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>CPF do cliente</th>
+				<th>Nome</th>
+				<th>Email</th>
+				<th>Endereço</th>
+				<th>Telefone</th>
+				<th class="col-1"></th>
+				<th class="col-1"></th>
+				
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="cliente : ${clientes}">
+				<td th:text="${cliente.IdCliente}"></td>
+				<td th:text="${cliente.CpfCliente}"></td>
+				<td th:text="${cliente.NomeCliente + ' ' + cliente.SobrenomeCliente}"></td>
+				<td th:text="${cliente.EmailContatoCliente}"></td>
+				<td th:text="${cliente.EnderecoCliente + ' ' + cliente.CepCliente}"></td>
+				<td th:text="${cliente.TelefoneCliente}"></td>
+				<td><a class="btn btn-sm btn-warning"
+						th:href="@{alterar_cliente/{idCliente}(idCliente=${cliente.idCliente})}">Alterar</a></td>
+				<td>
+					<a class="delete btn btn-sm btn-danger"
+						th:href="@{excluir_cliente/{idCliente}(idCliente=${cliente.IdCliente})}"
+						onclick="if (confirm('Deseja realmente excluir o cliente?')){return true;}else{event.stopPropagation(); event.preventDefault();};">
+						Excluir
+					</a>
+				</td>
+				<td><a class="btn btn-sm btn-warning"
+						th:href="@{cadastro_agendamento/{idCliente}(idCliente=${cliente.idCliente})}">Realizar Agendamento</a></td>
+			</tr>
+		</tbody>
+	</table>
+	<!--Termina lista de docentes -->
+
 
 </body>
 

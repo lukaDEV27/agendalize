@@ -1,14 +1,16 @@
 package br.com.agendalize.entity;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -19,8 +21,11 @@ public class ClienteEntity implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_cliente")
+	private Long idCliente;
+	
 	@Column(name = "cpf_cliente")
-	private String idCliente;
+	private String cpfCliente;
 
 	@Column(name = "nome_cliente")
 	private String nomeCliente;
@@ -40,13 +45,48 @@ public class ClienteEntity implements Serializable{
 	@Column(name = "telefone_cliente")
 	private String telefoneCliente;
 	
+	@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "empresa_cliente_id")
+    private EmpresaEntity empresa;
 	
+	@Override
+	public int hashCode() {
+		return Objects.hash(idCliente);
+	}
 
-	public String getIdCliente() {
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ClienteEntity other = (ClienteEntity) obj;
+		return Objects.equals(idCliente, other.idCliente);
+	}
+
+	public EmpresaEntity getEmpresa() {
+		return empresa;
+	}
+
+	public void setEmpresa(EmpresaEntity empresa) {
+		this.empresa = empresa;
+	}
+
+	public String getCpfCliente() {
+		return cpfCliente;
+	}
+
+	public void setCpfCliente(String cpfCliente) {
+		this.cpfCliente = cpfCliente;
+	}
+
+	public Long getIdCliente() {
 		return idCliente;
 	}
 
-	public void setIdCliente(String idCliente) {
+	public void setIdCliente(Long idCliente) {
 		this.idCliente = idCliente;
 	}
 

@@ -56,6 +56,17 @@ public class EmpresaEntity implements Serializable{
 	@OneToMany(mappedBy = "empresa", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<AgendaEntity> agendas;
 	
+	@OneToMany(mappedBy = "empresa", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<ClienteEntity> clientes;
+	
+
+	public List<ClienteEntity> getClientes() {
+		return clientes;
+	}
+
+	public void setClientes(List<ClienteEntity> clientes) {
+		this.clientes = clientes;
+	}
 
 	public String getCepEmpresa() {
 		return cepEmpresa;

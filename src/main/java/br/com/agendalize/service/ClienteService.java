@@ -6,10 +6,10 @@ import br.com.agendalize.entity.ClienteEntity;
 
 public interface ClienteService {
 	
-	ClienteEntity getOneByIdCliente(String idCliente);
+	ClienteEntity getOneByIdCliente(Long idCliente);
 	String save(ClienteEntity clienteEntity) throws Exception;
 	List<ClienteEntity> findAll();
-	String deleteById(String idCliente) throws Exception;
+	String deleteById(Long idCliente) throws Exception;
 
 	
 }
