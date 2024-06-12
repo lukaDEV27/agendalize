@@ -35,7 +35,7 @@ public class UsuarioEntity implements Serializable,UserDetails{
 	@Column(name = "senha_usuario") 
 	private String password;
 
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany()
 	@JoinTable(name="usuario_permissao",
     joinColumns={@JoinColumn(name="usuario_id_usuario", referencedColumnName = "id_usuario")},
     inverseJoinColumns={@JoinColumn(name="permissao_id_permissao", referencedColumnName = "id_permissao")})
