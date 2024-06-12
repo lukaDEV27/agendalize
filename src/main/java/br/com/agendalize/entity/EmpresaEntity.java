@@ -49,7 +49,7 @@ public class EmpresaEntity implements Serializable{
 	private String cepEmpresa;
 	
 
-	@OneToOne()
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "usuario_empresa_id", referencedColumnName = "id_usuario")
     private UsuarioEntity usuarioEmpresaLogin;
 	

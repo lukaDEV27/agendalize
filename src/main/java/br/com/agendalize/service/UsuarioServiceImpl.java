@@ -37,9 +37,16 @@ public class UsuarioServiceImpl implements UsuarioService{
 	}
 
 	@Override
-	public String deleteById(String idUsuario) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+	public String deleteById(Long idUsuario) throws Exception {
+		try 
+		{
+			usuarioRepository.deleteById(idUsuario);
+			this.mensagem = "Conta excluída com sucesso.";
+			
+		} catch (Exception e) {
+			throw new Exception(e.getMessage());
+		}
+		return mensagem;
 	}
 
 }
