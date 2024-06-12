@@ -11,4 +11,5 @@ public interface AgendamentoService {
 	List<AgendamentoEntity> findAll();
 	String deleteById(Long idAgendamento) throws Exception;
 
+
 }
