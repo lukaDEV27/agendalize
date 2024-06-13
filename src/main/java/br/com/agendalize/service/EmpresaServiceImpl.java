@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.agendalize.entity.ClienteEntity;
 import br.com.agendalize.entity.EmpresaEntity;
 import br.com.agendalize.entity.UsuarioEntity;
 import br.com.agendalize.repository.EmpresaRepository;

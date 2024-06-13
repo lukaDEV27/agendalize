@@ -2,74 +2,78 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head th:insert="~{layout/cabecalho}">
-	<title>Login Empresa</title>
+	<title>Alterar Agendameto</title>
 </head>
+
+<div th:insert="~{layout/menuEmpresa}"></div>
 
 
 <body>
-
-	<header class="header-form">
-		<div th:insert="~{layout/menuCadastro}"></div>
-
-		<div class="section_container header_container" id="home">
-
-			<form id="login_form" name="alterar_agendamento" class="form-horizontal" method="POST"
+	<main id="container">
+		<form id="login_form" name="alterar_agendamento" class="form-horizontal" method="POST"
 				th:action="@{/alterar_agendamento}" th:object="${agendamentoEntity}">
-				
-				
+			<!-- FORM HEADER -->
+			<div id="form_header">
+				<h1>Alterar Agendamento</h1>
+
+			</div>
 
 
-				<div id="form_header">
-					<h1 class="titulo-h1">Alterar Agendamento</h1>
 
-				</div>
 
-				<div id="inputs">
 
-					<input type="hidden" name="idAgenda" id="idAgenda" th:value="${agendamento.agenda.idAgenda}">
+
+			<!-- INPUTS -->
+			<div id="inputs">
+				<input type="hidden" name="idAgenda" id="idAgenda" th:value="${agendamento.agenda.idAgenda}">
 					<input type="hidden" name="idAgendamento" id="idAgendamento" th:value="${agendamento.idAgendamento}">
 					<input type="hidden" name="cliente" id="cliente" th:value="${agendamento.cliente.idCliente}">
 					<input type="hidden" name="statusAgendamento" id="statusAgendamento" th:value="${agendamento.statusAgendamento.idStatusAgendamento}">
-					
-					<div class="alert alert-sucess" th:text="${mensagem}" th:if="${not #strings.isEmpty(mensagem)}">
-					</div>
+				<div class="alert alert-sucess" th:text="${mensagem}" th:if="${not #strings.isEmpty(mensagem)}">
+				</div>
 
-					<h1>Altere a data indisponivel</h1>
 
-					<div class="form-group">
-							<label> Data do agendamento </label>
+				<!-- EMAIL -->
+				<div class="input-box">
+					<div class="input-field">
+						<label> Data do agendamento </label>
 							<input type="date" class="form-control" id="dataAgendamento" name="dataAgendamento" th:value="${agendamento.dataAgendamento}"
 								required>
 
-						</div>
-						<div class="form-group">
-							<label> Hora inicio Agendamento </label>
+					</div>
+				</div>
+
+				<div class="input-box">
+					<div class="input-field">
+						<label> Hora inicio Agendamento </label>
 							<input type="time" class="form-control" id="horaInicioAgendamento"
 								name="horaInicioAgendamento" th:value="${agendamento.horaInicioAgendamento}" required>
+					</div>
+				</div>
 
-						</div>
-						<div class="form-group">
-							<label> Hora Final Agendamento </label>
+				<div class="input-box">
+					<div class="input-field">
+						<label> Hora Final Agendamento </label>
 							<input type="time" class="form-control" id="horaFinalAgendamento"
 								name="horaFinalAgendamento" th:value="${agendamento.horaFinalAgendamento}" required>
-
-						</div>
-
-
-
+					</div>
 				</div>
-		</div>
-		<br>
 
-		<button type="submit" class=" btn nav_btn" id="login_button">Cadastrar</button>
+				
 
+				<!-- FORGOT PASSWORD -->
+				<div id="forgot_password">
+					<a href="/agenda">
+						Agenda
+					</a>
+				</div>
+
+			</div>
+
+
+			<button type="submit" class="btn nav_btn" id="login_button">alterar</button>
 		</form>
-		
-		
-		</div>
-		
-	</header>
-
+	</main>
 
 	<!-- JAVASCRIPT -->
 	<script>
@@ -122,26 +126,20 @@
 			box-sizing: border-box;
 		}
 
-		.header-form {
-			background-image: url(https://i.pinimg.com/474x/b0/07/e0/b007e08eb23b802a48d919a2dba97fea.jpg);
-			background-position: center center;
-			background-size: cover;
-			background-repeat: no-repeat;
-		}
-
 		#container {
 			height: 100vh;
 			width: 100%;
 			display: flex;
 			justify-content: center;
 			align-items: center;
-			background: var(--color-gradient);
+			background: var(--color-dark-50);
 		}
 
 		#login_form {
 			display: flex;
 			flex-direction: column;
 			height: fit-content;
+			width: 80vw;
 			background-color: var(--color-light-50);
 			padding: 30px 40px;
 			border-radius: 8px;
@@ -160,10 +158,6 @@
 		#form_header h1 {
 			font-size: 40px;
 			position: relative;
-		}
-
-		.titulo-h1 {
-			color: black;
 		}
 
 		#form_header h1::before {
@@ -198,7 +192,7 @@
 		/* Inputs */
 		#inputs {
 			display: flex;
-			align-items: baseline;
+			align-items: center;
 			justify-content: center;
 			flex-direction: column;
 			gap: 20px;
@@ -211,7 +205,7 @@
 
 		.input-field {
 			display: flex;
-			align-items: center;
+			align-items: flex-start;
 			gap: 15px;
 			padding: 3px;
 			border-bottom: 1px solid var(--color-purple-50);
@@ -263,6 +257,10 @@
 			transform: scale(1.05);
 		}
 
+		i {
+			color: #000;
+		}
+
 		/* Dark Mode */
 		.dark#login_form {
 			color: var(--color-light-50);
@@ -295,11 +293,6 @@
 			}
 		}
 	</style>
-
-
-
-	<div th:insert="~{layout/rodape}"></div>
-
 </body>
 
 </html>

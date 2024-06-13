@@ -24,6 +24,8 @@
 				<thead>
 					<tr>
 						<th>ID</th>
+						<th>Nome do Cliente</th>
+						
 						<th>Data</th>
 						<th>Hora inicial</th>
 						<th>Hora Final</th>
@@ -40,6 +42,7 @@
 				<tbody>
 					<tr th:each="agenda : ${agenda.agendamentos}">
 						<td th:text="${agenda.IdAgendamento}"></td>
+						<td th:text="${agenda.Cliente.NomeCliente + ' ' + agenda.Cliente.SobrenomeCliente}"></td>
 						<td th:text="${agenda.DataAgendamento}"></td>
 						<td th:text="${agenda.HoraInicioAgendamento}"></td>
 						<td th:text="${agenda.HoraFinalAgendamento}"></td>

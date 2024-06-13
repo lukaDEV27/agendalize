@@ -1,10 +1,6 @@
 package br.com.agendalize.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,14 +10,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import br.com.agendalize.entity.AgendaEntity;
 import br.com.agendalize.entity.AgendamentoEntity;
 import br.com.agendalize.entity.ClienteEntity;
 import br.com.agendalize.entity.EmpresaEntity;
-import br.com.agendalize.entity.PermissaoEntity;
 import br.com.agendalize.entity.StatusAgendamentoEntity;
 import br.com.agendalize.entity.UsuarioEntity;
-import br.com.agendalize.entity.ePermissao;
 import br.com.agendalize.entity.eStatusAgendamento;
 import br.com.agendalize.service.AgendamentoService;
 import br.com.agendalize.service.ClienteService;
@@ -168,7 +161,7 @@ public class ClienteController {
 		
 		agendamentoEntity.setStatusAgendamento(status);
 		ModelAndView mv = new ModelAndView("redirect:/cliente");
-		
+		 
 		atributes.addFlashAttribute("mensagem", agendamentoService.save(agendamentoEntity));
 
 		return mv;

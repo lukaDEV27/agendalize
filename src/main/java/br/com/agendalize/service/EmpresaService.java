@@ -2,7 +2,6 @@ package br.com.agendalize.service;
 
 import java.util.List;
 
-import br.com.agendalize.entity.ClienteEntity;
 import br.com.agendalize.entity.EmpresaEntity;
 import br.com.agendalize.entity.UsuarioEntity;
 
