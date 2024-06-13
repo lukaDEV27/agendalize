@@ -10,67 +10,72 @@
 	<div th:insert="~{layout/menuEmpresa}"></div>
 
 
-	<main id="container">
-
-		<div>
-			<h1>Gerencie suas Agendas</h1>
-			<p>Cadastre aqui as suas agendas!</p>
-			<button class="btn"><a class="link-description" href="/cadastroAgenda">Cadastrar Agenda</a></button>
-		</div>
+	<main>
 
 
 		<!--Começa lista de docentes -->
+
+		<form class="form-horizontal" id="login_form">
+			<div>
+				<h1>Gerencie suas Agendas</h1>
+				<br>
+				<p>Cadastre aqui as suas agendas!</p>
+
+				<button class="btn"><a class="link-description" href="/cadastroAgenda">Cadastrar Agenda</a></button>
+			</div>
+		</form>
 		<br>
-		<h5 class="card-title">Agendas cadastrados</h5>
-		<table id="example" class="display" style="width:90%">
-			<thead>
-				<tr>
-					<th>ID</th>
-					<th>Nome</th>
-					<th>Data inicial</th>
-					<th>Data final</th>
-					<th>Descrição</th>
-					<th class="col-1">Alterar</th>
-					<th class="col-1"> Excluir</th>
-					<th class="col-1">Ajustar semana</th>
-					<th class="col-1"> Indisponibilizar datas</th>
-					<th class="col-1"> Consultar
-						Agendamentos</th>
+		<form class="form-horizontal" id="login_form">
+			<h3 class="card-title">Agendas cadastrados</h3>
+			<table id="example" class="display" style="width:100%">
+				<thead class="table_head">
+					<tr>
+						<th>ID</th>
+						<th>Nome</th>
+						<th>Data inicial</th>
+						<th>Data final</th>
+						<th>Descrição</th>
+						<th class="col-1">Alterar</th>
+						<th class="col-1">Excluir</th>
+						<th class="col-1">Ajustar Semana</th>
+						<th class="col-1">Indisponibilizar Datas</th>
+						<th class="col-1">Consultar Agendamentos</th>
 
 
 
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:each="agenda : ${agendas}">
-					<td th:text="${agenda.IdAgenda}"></td>
-					<td th:text="${agenda.NomeAgenda}"></td>
-					<td th:text="${agenda.DataDisponivelInicial}"></td>
-					<td th:text="${agenda.DataDisponivelFinal}"></td>
-					<td th:text="${agenda.DescricaoAgenda}"></td>
-					<td><a class="btn" id="btn1"
-							th:href="@{alterar_agenda/{idAgenda}(idAgenda=${agenda.IdAgenda})}">Alterar</a>
-					</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="agenda : ${agendas}">
+						<td th:text="${agenda.IdAgenda}"></td>
+						<td th:text="${agenda.NomeAgenda}"></td>
+						<td th:text="${agenda.DataDisponivelInicial}"></td>
+						<td th:text="${agenda.DataDisponivelFinal}"></td>
+						<td th:text="${agenda.DescricaoAgenda}"></td>
+						<td><a class="btn" id="btn1"
+								th:href="@{alterar_agenda/{idAgenda}(idAgenda=${agenda.IdAgenda})}">Alterar</a>
+						</td>
 
-					<td>
-						<a class="btn" id="btn4" th:href="@{excluir_agenda/{idAgenda}(idAgenda=${agenda.IdAgenda})}"
-							onclick="if (confirm('Deseja realmente excluir a agenda?')){return true;}else{event.stopPropagation(); event.preventDefault();};">
-							Excluir
-						</a>
-					</td>
-					<td><a class="btn" id="btn2"
-							th:href="@{configurar_semana/{idAgenda}(idAgenda=${agenda.IdAgenda})}">Ajustar</a>
-					</td>
-					<td><a class="btn" id="btn3"
-							th:href="@{configurar_data_indisponivel/{idAgenda}(idAgenda=${agenda.IdAgenda})}">Ajustar</a>
-					</td>
+						<td>
+							<a class="btn" id="btn1" th:href="@{excluir_agenda/{idAgenda}(idAgenda=${agenda.IdAgenda})}"
+								onclick="if (confirm('Deseja realmente excluir a agenda?')){return true;}else{event.stopPropagation(); event.preventDefault();};">
+								Excluir
+							</a>
+						</td>
+						<td><a class="btn" id="btn1"
+								th:href="@{configurar_semana/{idAgenda}(idAgenda=${agenda.IdAgenda})}">Ajustar</a>
+						</td>
+						<td><a class="btn" id="btn1"
+								th:href="@{configurar_data_indisponivel/{idAgenda}(idAgenda=${agenda.IdAgenda})}">Ajustar</a>
+						</td>
 
-					<td><a class="btn" id="btn5"
-							th:href="@{consultar_agendamentos/{idAgenda}(idAgenda=${agenda.IdAgenda})}">Consultar</a>
-					</td>
-				</tr>
-			</tbody>
-		</table>
+						<td><a class="btn" id="btn1"
+								th:href="@{consultar_agendamentos/{idAgenda}(idAgenda=${agenda.IdAgenda})}">Consultar</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</form>
 		<!--Termina lista de agenda -->
 
 
@@ -83,11 +88,9 @@
 				buttons: [
 					{
 						extend: 'print',
-						exportOptions: {
-							columns: ':visible'
-						}
+
 					},
-					'colvis'
+
 				]
 			}
 		},
@@ -101,38 +104,262 @@
 </script>
 <style>
 	.btn {
-		font-size: 15px;
+		display: inline-block;
+		padding: 8px 12px;
+		font-size: 14px;
+		font-family: 'Poppins', sans-serif;
+		text-align: center;
+		text-decoration: none;
+		border-radius: 4px;
+		transition: background-color 0.3s, transform 0.3s;
 	}
+
+	.btn {
+		font-size: 15px;
+
+	}
+
+	.btn a {
+		color: white;
+	}
+
+
 
 	#btn1 {
-		
-	}
 
-	#btn {
-		background-color: green;
-		color: black;
+
+		padding-top: 5px;
 
 	}
 
-	#btn {
-		background-color: blue;
-		color: black;
-
-
-	}
-
-	#btn4 {
-
-	}
-
-	#btn {
-		background-color: blue;
-		color: black;
-
-	}
 
 	main {
 		padding: 10px;
+	}
+
+
+
+
+	thead {
+		font-size: 15px;
+
+	}
+
+	th {
+		font-weight: 100;
+		background-color: whitesmoke;
+		border-radius: 10px;
+
+
+	}
+
+	tbody {
+		font-size: 13px
+	}
+
+	table {
+		border-collapse: collapse;
+		width: 100%;
+	}
+
+	th,
+	td {
+		border: 1px solid #ddd;
+		padding: 10px;
+		text-align: left;
+		position: relative;
+	}
+
+	th::after,
+	td::after {
+		content: '';
+		display: inline-flex;
+		width: 60px;
+		/* Espaçamento desejado */
+	}
+</style>
+<style>
+	@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400&display=swap');
+
+	/** Variables - colors **/
+	:root {
+		/* Light */
+		--color-light-50: #f8fafc;
+
+		/* Dark */
+		--color-dark-50: #797984;
+		--color-dark-100: #312d37;
+		--color-dark-900: #000;
+
+		/* Purple */
+		--color-purple-50: #bc1c5c;
+		--color-purple-100: #e23e80;
+		--color-purple-200: #e82574;
+
+		/* Gradient */
+		--color-gradient: linear-gradient(90deg, var(--color-purple-50), var(--color-purple-100), var(--color-purple-200));
+	}
+
+	/* General */
+	* {
+		font-family: 'Poppins', sans-serif;
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+	#container {
+		height: 100vh;
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background: var(--color-dark-50);
+	}
+
+	#login_form {
+		display: flex;
+		flex-direction: column;
+		height: fit-content;
+		width: 100vw;
+		background-color: var(--color-light-50);
+		padding: 30px 40px;
+		border-radius: 8px;
+		gap: 30px;
+		box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.336);
+		animation: dark-to-light-background 0.3s ease-in-out;
+	}
+
+	/* Form Header */
+	#form_header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	#form_header h1 {
+		font-size: 40px;
+		position: relative;
+	}
+
+	#form_header h1::before {
+		position: absolute;
+		content: '';
+		width: 40%;
+		height: 3px;
+		background-color: var(--color-purple-50);
+		bottom: 10px;
+		border-radius: 5px;
+	}
+
+	#mode_icon {
+		cursor: pointer;
+		font-size: 20px;
+	}
+
+
+	/* Inputs */
+	#inputs {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		gap: 20px;
+	}
+
+	.input-box>label {
+		font-size: 14px;
+		color: var(--color-dark-50);
+	}
+
+	.input-field {
+		display: flex;
+		align-items: flex-start;
+		gap: 15px;
+		padding: 3px;
+		border-bottom: 1px solid var(--color-purple-50);
+		cursor: text;
+	}
+
+	.input-field i {
+		font-size: 18px;
+		cursor: text;
+		color: var(--color-dark-900);
+	}
+
+	.input-field input {
+		border: none;
+		width: 260px;
+		background-color: transparent;
+		font-size: 18px;
+		padding: 0px 5px;
+	}
+
+	.input-field input:focus {
+		outline: none;
+	}
+
+	/* Forgot password */
+	#forgot_password a {
+		text-decoration: none;
+		color: var(--color-dark-50);
+		font-size: 12px;
+	}
+
+	#forgot_password a:hover {
+		color: var(--color-purple-50);
+	}
+
+	/* Login Button */
+	#login_button {
+		border: none;
+		background: var(--color-gradient);
+		padding: 7px;
+		border-radius: 3px;
+		color: var(--color-light-50);
+		font-weight: bold;
+		font-size: 18px;
+		cursor: pointer;
+	}
+
+	#login_button:hover {
+		transform: scale(1.05);
+	}
+
+	i {
+		color: #000;
+	}
+
+	/* Dark Mode */
+	.dark#login_form {
+		color: var(--color-light-50);
+		background-color: var(--color-dark-100);
+		animation: light-to-dark-background 0.3s ease-in-out;
+	}
+
+	.dark#login_form .input-field input,
+	.dark#login_form .input-field i {
+		color: var(--color-light-50);
+	}
+
+	@keyframes dark-to-light-background {
+		0% {
+			background-color: var(--color-dark-100);
+		}
+
+		100.0% {
+			background-color: var(--color-light-50);
+		}
+	}
+
+	@keyframes light-to-dark-background {
+		0% {
+			background-color: var(--color-light-50);
+		}
+
+		100.0% {
+			background-color: var(--color-dark-100);
+		}
 	}
 </style>
 
