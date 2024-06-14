@@ -49,8 +49,8 @@
 					<tr th:each="agenda : ${agendas}">
 						<td th:text="${agenda.IdAgenda}"></td>
 						<td th:text="${agenda.NomeAgenda}"></td>
-						<td th:text="${agenda.DataDisponivelInicial}"></td>
-						<td th:text="${agenda.DataDisponivelFinal}"></td>
+						<td th:text="${#dates.format(agenda.DataDisponivelInicial, 'dd/MM/yyyy')}"></td>
+						<td th:text="${#dates.format(agenda.DataDisponivelFinal, 'dd/MM/yyyy')}"></td>
 						<td th:text="${agenda.DescricaoAgenda}"></td>
 						<td><a class="btn" id="btn1"
 								th:href="@{alterar_agenda/{idAgenda}(idAgenda=${agenda.IdAgenda})}">Alterar</a>

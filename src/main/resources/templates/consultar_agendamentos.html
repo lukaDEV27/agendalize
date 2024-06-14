@@ -25,7 +25,7 @@
 					<tr>
 						<th>ID</th>
 						<th>Nome do Cliente</th>
-
+						<th>CPF</th>
 						<th>Data</th>
 						<th>Hora inicial</th>
 						<th>Hora Final</th>
@@ -43,7 +43,8 @@
 					<tr th:each="agenda : ${agenda.agendamentos}">
 						<td th:text="${agenda.IdAgendamento}"></td>
 						<td th:text="${agenda.Cliente.NomeCliente + ' ' + agenda.Cliente.SobrenomeCliente}"></td>
-						<td th:text="${agenda.DataAgendamento}"></td>
+						<td th:text="${agenda.Cliente.CpfCliente}"></td>
+						<td th:text="${#dates.format(agenda.DataAgendamento, 'dd/MM/yyyy')}"></td>
 						<td th:text="${agenda.HoraInicioAgendamento}"></td>
 						<td th:text="${agenda.HoraFinalAgendamento}"></td>
 						<td th:text="${agenda.StatusAgendamento.Descricao}"></td>

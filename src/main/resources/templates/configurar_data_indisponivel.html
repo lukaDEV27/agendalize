@@ -88,7 +88,7 @@
 				<tbody>
 					<tr th:each="agenda : ${agendas.datasIndisponiveis}">
 						<td th:text="${agenda.IdDataIndisponivel}"></td>
-						<td th:text="${agenda.Data}"></td>
+						<td th:text="${#dates.format(agenda.Data, 'dd/MM/yyyy')}"></td>
 						<td th:text="${agenda.Descricao}"></td>
 
 

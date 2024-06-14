@@ -10,58 +10,65 @@
 	<div th:insert="~{layout/menuEmpresa}"></div>
 
 
-	<main id="container">
+	<main>
+		<form class="form-horizontal" id="login_form">
+			<div>
+				<h1>Gerencie seus Clientes</h1>
+				<br>
+				<p>Cadastre aqui as seus clientes!</p>
+				<button class="btn"><a class="link-description" href="/cadastro_cliente">Cadastrar Cliente</a></button>
+			</div>
 
-		<div>
-			<h1>Gerencie seus Clientes</h1>
-			<p>Cadastre aqui as seus clientes!</p>
-			<button class="btn"><a class="link-description" href="/cadastro_cliente">Cadastrar Cliente</a></button>
-		</div>
+		</form>
+		<br>
 
 		<div class="alert alert-sucess" th:text="${mensagem}" th:if="${not #strings.isEmpty(mensagem)}"></div>
 		<!--Começa lista de clientes -->
 		<br>
-		<h5 class="card-title">Clientes cadastrados</h5>
-		<table id="example" class="display" style="width:90%">
-			<thead>
-				<tr>
-					<th>ID</th>
-					<th>CPF do cliente</th>
-					<th>Nome</th>
-					<th>Email</th>
-					<th>Endereço</th>
-					<th>Telefone</th>
+		<form class="form-horizontal" id="login_form">
+			<h3 class="card-title">Clientes cadastrados</h3>
+			<table id="example" class="display" style="width:100%">
+				<thead class="table_head">
+					<tr>
+						<th>ID</th>
+						<th>CPF do cliente</th>
+						<th>Nome</th>
+						<th>Email</th>
+						<th>Endereço</th>
+						<th>Telefone</th>
 
-					<th class="col-1">Alterar Cliente</th>
-					<th class="col-1">Excluir Cliente</th>
-					<th class="col-1">Realizar Agendamento</th>
+						<th class="col-1">Alterar Cliente</th>
+						<th class="col-1">Excluir Cliente</th>
+						<th class="col-1">Realizar Agendamento</th>
 
 
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:each="cliente : ${clientes}">
-					<td th:text="${cliente.IdCliente}"></td>
-					<td th:text="${cliente.CpfCliente}"></td>
-					<td th:text="${cliente.NomeCliente + ' ' + cliente.SobrenomeCliente}"></td>
-					<td th:text="${cliente.EmailContatoCliente}"></td>
-					<td th:text="${cliente.EnderecoCliente + ' ' + cliente.CepCliente}"></td>
-					<td th:text="${cliente.TelefoneCliente}"></td>
-					<td><a class="btn btn-sm btn-warning"
-							th:href="@{alterar_cliente/{idCliente}(idCliente=${cliente.idCliente})}">Alterar</a></td>
-					<td>
-						<a class="delete btn btn-sm btn-danger"
-							th:href="@{excluir_cliente/{idCliente}(idCliente=${cliente.IdCliente})}"
-							onclick="if (confirm('Deseja realmente excluir o cliente?')){return true;}else{event.stopPropagation(); event.preventDefault();};">
-							Excluir
-						</a>
-					</td>
-					<td><a class="btn btn-sm btn-warning"
-							th:href="@{cadastro_agendamento/{idCliente}(idCliente=${cliente.idCliente})}">Realizar</a>
-					</td>
-				</tr>
-			</tbody>
-		</table>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="cliente : ${clientes}">
+						<td th:text="${cliente.IdCliente}"></td>
+						<td th:text="${cliente.CpfCliente}"></td>
+						<td th:text="${cliente.NomeCliente + ' ' + cliente.SobrenomeCliente}"></td>
+						<td th:text="${cliente.EmailContatoCliente}"></td>
+						<td th:text="${cliente.EnderecoCliente + ' ' + cliente.CepCliente}"></td>
+						<td th:text="${cliente.TelefoneCliente}"></td>
+						<td><a class="btn" id="btn1"
+								th:href="@{alterar_cliente/{idCliente}(idCliente=${cliente.idCliente})}">Alterar</a>
+						</td>
+						<td>
+							<a class="btn" id="btn1"
+								th:href="@{excluir_cliente/{idCliente}(idCliente=${cliente.IdCliente})}"
+								onclick="if (confirm('Deseja realmente excluir o cliente?')){return true;}else{event.stopPropagation(); event.preventDefault();};">
+								Excluir
+							</a>
+						</td>
+						<td><a class="btn" id="btn1"
+								th:href="@{cadastro_agendamento/{idCliente}(idCliente=${cliente.idCliente})}">Realizar</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</form>
 		<!--Termina lista de cliente -->
 
 
@@ -74,11 +81,8 @@
 				buttons: [
 					{
 						extend: 'print',
-						exportOptions: {
-							columns: ':visible'
-						}
+
 					},
-					'colvis'
 				]
 			}
 		},
@@ -91,8 +95,263 @@
 	});
 </script>
 <style>
+	.btn {
+		display: inline-block;
+		padding: 8px 12px;
+		font-size: 14px;
+		font-family: 'Poppins', sans-serif;
+		text-align: center;
+		text-decoration: none;
+		border-radius: 4px;
+		transition: background-color 0.3s, transform 0.3s;
+	}
+
+	.btn {
+		font-size: 15px;
+
+	}
+
+	.btn a {
+		color: white;
+	}
+
+
+
+	#btn1 {
+
+
+		padding-top: 5px;
+
+	}
+
+
 	main {
-		padding: 15px;
+		padding: 10px;
+	}
+
+
+
+
+	thead {
+		font-size: 15px;
+
+	}
+
+	th {
+		font-weight: 100;
+		background-color: whitesmoke;
+		border-radius: 10px;
+
+
+	}
+
+	tbody {
+		font-size: 13px
+	}
+
+	table {
+		border-collapse: collapse;
+		width: 100%;
+	}
+
+	th,
+	td {
+		border: 1px solid #ddd;
+		padding: 10px;
+		text-align: left;
+		position: relative;
+	}
+
+	th::after,
+	td::after {
+		content: '';
+		display: inline-flex;
+		width: 60px;
+		/* Espaçamento desejado */
+	}
+</style>
+<style>
+	@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400&display=swap');
+
+	/** Variables - colors **/
+	:root {
+		/* Light */
+		--color-light-50: #f8fafc;
+
+		/* Dark */
+		--color-dark-50: #797984;
+		--color-dark-100: #312d37;
+		--color-dark-900: #000;
+
+		/* Purple */
+		--color-purple-50: #bc1c5c;
+		--color-purple-100: #e23e80;
+		--color-purple-200: #e82574;
+
+		/* Gradient */
+		--color-gradient: linear-gradient(90deg, var(--color-purple-50), var(--color-purple-100), var(--color-purple-200));
+	}
+
+	/* General */
+	* {
+		font-family: 'Poppins', sans-serif;
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+	#container {
+		height: 100vh;
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background: var(--color-dark-50);
+	}
+
+	#login_form {
+		display: flex;
+		flex-direction: column;
+		height: fit-content;
+		width: 100vw;
+		background-color: var(--color-light-50);
+		padding: 30px 40px;
+		border-radius: 8px;
+		gap: 30px;
+		box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.336);
+		animation: dark-to-light-background 0.3s ease-in-out;
+	}
+
+	/* Form Header */
+	#form_header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	#form_header h1 {
+		font-size: 40px;
+		position: relative;
+	}
+
+	#form_header h1::before {
+		position: absolute;
+		content: '';
+		width: 40%;
+		height: 3px;
+		background-color: var(--color-purple-50);
+		bottom: 10px;
+		border-radius: 5px;
+	}
+
+	#mode_icon {
+		cursor: pointer;
+		font-size: 20px;
+	}
+
+
+	/* Inputs */
+	#inputs {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		gap: 20px;
+	}
+
+	.input-box>label {
+		font-size: 14px;
+		color: var(--color-dark-50);
+	}
+
+	.input-field {
+		display: flex;
+		align-items: flex-start;
+		gap: 15px;
+		padding: 3px;
+		border-bottom: 1px solid var(--color-purple-50);
+		cursor: text;
+	}
+
+	.input-field i {
+		font-size: 18px;
+		cursor: text;
+		color: var(--color-dark-900);
+	}
+
+	.input-field input {
+		border: none;
+		width: 260px;
+		background-color: transparent;
+		font-size: 18px;
+		padding: 0px 5px;
+	}
+
+	.input-field input:focus {
+		outline: none;
+	}
+
+	/* Forgot password */
+	#forgot_password a {
+		text-decoration: none;
+		color: var(--color-dark-50);
+		font-size: 12px;
+	}
+
+	#forgot_password a:hover {
+		color: var(--color-purple-50);
+	}
+
+	/* Login Button */
+	#login_button {
+		border: none;
+		background: var(--color-gradient);
+		padding: 7px;
+		border-radius: 3px;
+		color: var(--color-light-50);
+		font-weight: bold;
+		font-size: 18px;
+		cursor: pointer;
+	}
+
+	#login_button:hover {
+		transform: scale(1.05);
+	}
+
+	i {
+		color: #000;
+	}
+
+	/* Dark Mode */
+	.dark#login_form {
+		color: var(--color-light-50);
+		background-color: var(--color-dark-100);
+		animation: light-to-dark-background 0.3s ease-in-out;
+	}
+
+	.dark#login_form .input-field input,
+	.dark#login_form .input-field i {
+		color: var(--color-light-50);
+	}
+
+	@keyframes dark-to-light-background {
+		0% {
+			background-color: var(--color-dark-100);
+		}
+
+		100.0% {
+			background-color: var(--color-light-50);
+		}
+	}
+
+	@keyframes light-to-dark-background {
+		0% {
+			background-color: var(--color-light-50);
+		}
+
+		100.0% {
+			background-color: var(--color-dark-100);
+		}
 	}
 </style>
 
