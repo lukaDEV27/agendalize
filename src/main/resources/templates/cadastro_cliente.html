@@ -23,7 +23,7 @@
 
 
 
-<br>
+			<br>
 
 			<!-- INPUTS -->
 			<div id="inputs">
@@ -35,6 +35,7 @@
 				<!-- EMAIL -->
 				<div class="input-box">
 					<div class="input-field">
+
 						<label> CPF do cliente </label>
 						<input type="text" class="form-control" id="cpfCliente" name="cpfCliente"
 							placeholder="Digite somente números">
@@ -100,6 +101,50 @@
 	</main>
 
 	<!-- JAVASCRIPT -->
+	<script>
+		function validaCPF(cpfCliente) {
+			cpfCliente = cpfCliente.replace(/\D+/g, '');
+			if (cpfCliente.length !== 11) return false;
+
+			let soma = 0;
+			let resto;
+			if (/^(\d)\1{10}$/.test(cpfCliente)) return false;
+
+			for (let i = 1; i <= 9; i++) soma += parseInt(cpfCliente.substring(i - 1, i)) * (11 - i);
+			resto = (soma * 10) % 11;
+			if ((resto === 10) || (resto === 11)) resto = 0;
+			if (resto !== parseInt(cpfCliente.substring(9, 10))) return false;
+
+			soma = 0;
+			for (let i = 1; i <= 10; i++) soma += parseInt(cpfCliente.substring(i - 1, i)) * (12 - i);
+			resto = (soma * 10) % 11;
+			if ((resto === 10) || (resto === 11)) resto = 0;
+			if (resto !== parseInt(cpfCliente.substring(10, 11))) return false;
+
+			return true;
+		}
+
+		document.addEventListener('DOMContentLoaded', function () {
+			document.getElementById('login_form').addEventListener('submit', function (e) {
+				var cpfCliente = document.getElementById('cpfCliente').value;
+				if (!validaCPF(cpfCliente)) {
+					e.preventDefault();
+					alert('CPF inválido. Verifique o número digitado.');
+					document.getElementById('cpfCliente').focus();
+				}
+			});
+
+			document.getElementById('cpfCliente').addEventListener('input', function (e) {
+				var value = e.target.value;
+				var cpfPattern = value.replace(/\D/g, '')
+					.replace(/(\d{3})(\d)/, '$1.$2')
+					.replace(/(\d{3})(\d)/, '$1.$2')
+					.replace(/(\d{3})(\d)/, '$1-$2')
+					.replace(/(-\d{2})\d+?$/, '$1');
+				e.target.value = cpfPattern;
+			});
+		});
+	</script>
 	<script>
 		const mode = document.getElementById('mode_icon');
 
