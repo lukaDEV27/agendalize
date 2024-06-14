@@ -27,7 +27,8 @@
 				<input type="hidden" name="idAgenda" id="idAgenda" th:value="${agendas.idAgenda}">
 
 
-				<div class="alert alert-sucess" id="alert" th:text="${mensagem}" th:if="${not #strings.isEmpty(mensagem)}">
+				<div class="alert alert-sucess" id="alert" th:text="${mensagem}"
+					th:if="${not #strings.isEmpty(mensagem)}">
 				</div>
 
 				<small>Coloque a data que não deseja realizar agendamento</small>
@@ -106,6 +107,16 @@
 						</td>
 					</tr>
 				</tbody>
+				<tfoot>
+					<tr>
+						<th>ID</th>
+						<th>Data</th>
+						<th>Descrição</th>
+						<th class="col-1">Alterar</th>
+						<th class="col-1">Excluir</th>
+
+					</tr>
+				</tfoot>
 			</table>
 		</form>
 
@@ -119,11 +130,15 @@
 						buttons: [
 							{
 								extend: 'print',
+								title: 'Datas Indisponiveis'
 
 							},
 
 						]
 					}
+				},
+				language: {
+					url: 'https://cdn.datatables.net/plug-ins/2.0.2/i18n/pt-BR.json',
 				},
 				columnDefs: [
 					{

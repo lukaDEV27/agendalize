@@ -23,12 +23,13 @@
 
 
 			</div>
-			<div th:if="${param.error}">
+			<div id="erro" th:if="${param.error}">
 				Email ou Senha Incorretos.</div>
-			<div th:if="${param.logout}">
+			<div id="desconect" th:if="${param.logout}">
 				Você foi Desconectado.</div>
 
-			<div class="alert alert-sucess" th:text="${mensagem}" th:if="${not #strings.isEmpty(mensagem)}"></div>
+			<div class="alert alert-sucess" id="alert" th:text="${mensagem}" th:if="${not #strings.isEmpty(mensagem)}">
+			</div>
 
 
 
@@ -117,6 +118,19 @@
 			/* Gradient */
 			--color-gradient: linear-gradient(90deg, var(--color-purple-50), var(--color-purple-100), var(--color-purple-200));
 		}
+
+		#alert {
+			color: green;
+			font-size: 20px;
+
+		}
+		#desconect{
+			color: yellow;
+		}
+		#erro{
+			color: red;
+		}
+		
 
 		/* General */
 		* {

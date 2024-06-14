@@ -15,14 +15,15 @@
 			<div>
 				<h1>Gerencie seus Clientes</h1>
 				<br>
+				<div class="alert alert-sucess" id="alert" th:text="${mensagem}"
+					th:if="${not #strings.isEmpty(mensagem)}"></div>
 				<p>Cadastre aqui as seus clientes!</p>
 				<button class="btn"><a class="link-description" href="/cadastro_cliente">Cadastrar Cliente</a></button>
 			</div>
 
 		</form>
-		<br>
 
-		<div class="alert alert-sucess" th:text="${mensagem}" th:if="${not #strings.isEmpty(mensagem)}"></div>
+
 		<!--Começa lista de clientes -->
 		<br>
 		<form class="form-horizontal" id="login_form">
@@ -67,6 +68,21 @@
 						</td>
 					</tr>
 				</tbody>
+				<tfoot>
+					<tr>
+						<th>ID</th>
+						<th>CPF do cliente</th>
+						<th>Nome</th>
+						<th>Email</th>
+						<th>Endereço</th>
+						<th>Telefone</th>
+
+						<th class="col-1">Alterar Cliente</th>
+						<th class="col-1">Excluir Cliente</th>
+						<th class="col-1">Realizar Agendamento</th>
+
+					</tr>
+				</tfoot>
 			</table>
 		</form>
 		<!--Termina lista de cliente -->
@@ -81,10 +97,14 @@
 				buttons: [
 					{
 						extend: 'print',
+						title: 'Clientes Cadastrados'
 
 					},
 				]
 			}
+		},
+		language: {
+			url: 'https://cdn.datatables.net/plug-ins/2.0.2/i18n/pt-BR.json',
 		},
 		columnDefs: [
 			{
@@ -135,6 +155,7 @@
 	thead {
 		font-size: 15px;
 
+
 	}
 
 	th {
@@ -146,7 +167,9 @@
 	}
 
 	tbody {
-		font-size: 13px
+		font-size: 13px;
+
+
 	}
 
 	table {
@@ -198,6 +221,12 @@
 		margin: 0;
 		padding: 0;
 		box-sizing: border-box;
+	}
+
+	#alert {
+		color: green;
+		font-size: 20px;
+
 	}
 
 	#container {

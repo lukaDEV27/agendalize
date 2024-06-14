@@ -119,6 +119,18 @@
 						</td>
 					</tr>
 				</tbody>
+				<tfoot>
+					<tr>
+						<th>ID</th>
+						<th>Dia da Semana</th>
+						<th>Hora inicial</th>
+						<th>Hora final</th>
+
+						<th class="col-1">Alterar</th>
+						<th class="col-1">Excluir</th>
+
+					</tr>
+				</tfoot>
 			</table>
 		</form>
 		<!--Termina lista de docentes -->
@@ -134,11 +146,15 @@
 						buttons: [
 							{
 								extend: 'print',
+								title: 'Configuração da Semana'
 
 							},
 
 						]
 					}
+				},
+				language: {
+					url: 'https://cdn.datatables.net/plug-ins/2.0.2/i18n/pt-BR.json',
 				},
 				columnDefs: [
 					{

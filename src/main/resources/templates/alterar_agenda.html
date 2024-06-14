@@ -28,7 +28,7 @@
 				<input type="hidden" name="empresa" id="empresa" th:value="${agenda.empresa.idEmpresa}">
 				<input type="hidden" name="idAgenda" id="idAgenda" th:value="${agenda.idAgenda}">
 
-				<div class="alert alert-sucess" th:text="${mensagem}" th:if="${not #strings.isEmpty(mensagem)}">
+				<div class="alert alert-sucess" id="alert" th:text="${mensagem}" th:if="${not #strings.isEmpty(mensagem)}">
 				</div>
 
 

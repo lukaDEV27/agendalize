@@ -57,6 +57,21 @@
 
 					</tr>
 				</tbody>
+				<tfoot>
+					<tr>
+						<th>ID</th>
+						<th>Nome do Cliente</th>
+						<th>CPF</th>
+						<th>Data</th>
+						<th>Hora inicial</th>
+						<th>Hora Final</th>
+						<th>Status</th>
+
+						<th class="col-1"> Alterar Status</th>
+						<th class="col-1"> Alterar Agendamento</th>
+
+					</tr>
+				</tfoot>
 			</table>
 			<!--Termina lista de agendamentos -->
 
@@ -69,11 +84,15 @@
 						buttons: [
 							{
 								extend: 'print',
+								title: 'Agendamentos'
 
 							},
 
 						]
 					}
+				},
+				language: {
+					url: 'https://cdn.datatables.net/plug-ins/2.0.2/i18n/pt-BR.json',
 				},
 				columnDefs: [
 					{

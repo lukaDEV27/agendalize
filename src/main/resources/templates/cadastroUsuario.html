@@ -17,7 +17,8 @@
 
 				<i id="mode_icon" class="fa-solid fa-moon"></i>
 			</div>
-			<div class="alert alert-sucess" th:text="${mensagem}" th:if="${not #strings.isEmpty(mensagem)}"></div>
+			<div class="alert alert-sucess" id="alert" th:text="${mensagem}" th:if="${not #strings.isEmpty(mensagem)}">
+			</div>
 
 
 
@@ -104,6 +105,12 @@
 
 			/* Gradient */
 			--color-gradient: linear-gradient(90deg, var(--color-purple-50), var(--color-purple-100), var(--color-purple-200));
+		}
+
+		#alert {
+			color: green;
+			font-size: 20px;
+
 		}
 
 		/* General */

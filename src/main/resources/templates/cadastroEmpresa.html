@@ -21,6 +21,9 @@
 					<h1 class="titulo-h1">Cadastrar Empresa</h1>
 
 				</div>
+				<div class="alert alert-sucess" id="alert" th:text="${mensagem}"
+					th:if="${not #strings.isEmpty(mensagem)}">
+				</div>
 
 				<div id="inputs">
 
@@ -28,8 +31,9 @@
 						th:value="${empresa.usuarioEmpresaLogin.idUsuario}">
 
 
-					<div class="alert alert-sucess" th:text="${mensagem}" th:if="${not #strings.isEmpty(mensagem)}">
-					</div>
+
+
+
 
 					<div class="input-box">
 						<div class="input-field">
@@ -139,6 +143,12 @@
 			margin: 0;
 			padding: 0;
 			box-sizing: border-box;
+		}
+
+		#alert {
+			color: green;
+			font-size: 20px;
+
 		}
 
 		.header-form {

@@ -17,26 +17,27 @@
 				<h1>Cadastrar Clientes</h1>
 
 			</div>
+			<div class="alert alert-sucess" id="alert" th:text="${mensagem}" th:if="${not #strings.isEmpty(mensagem)}">
+			</div>
 
 
 
 
-
+<br>
 
 			<!-- INPUTS -->
 			<div id="inputs">
 				<input type="hidden" name="empresa" id="empresa" th:value="${empresa.idEmpresa}">
 
-				<div class="alert alert-sucess" th:text="${mensagem}" th:if="${not #strings.isEmpty(mensagem)}">
-				</div>
+
 
 
 				<!-- EMAIL -->
 				<div class="input-box">
 					<div class="input-field">
 						<label> CPF do cliente </label>
-							<input type="text" class="form-control" id="cpfCliente" name="cpfCliente"
-								placeholder="Digite somente números">
+						<input type="text" class="form-control" id="cpfCliente" name="cpfCliente"
+							placeholder="Digite somente números">
 
 					</div>
 				</div>
@@ -44,43 +45,43 @@
 				<div class="input-box">
 					<div class="input-field">
 						<label> Nome </label>
-							<input type="text" class="form-control" id="nomeCliente" name="nomeCliente">
+						<input type="text" class="form-control" id="nomeCliente" name="nomeCliente">
 					</div>
 				</div>
 
 				<div class="input-box">
 					<div class="input-field">
 						<label> Sobrenome </label>
-							<input type="text" class="form-control" id="sobrenomeCliente" name="sobrenomeCliente">
+						<input type="text" class="form-control" id="sobrenomeCliente" name="sobrenomeCliente">
 					</div>
 				</div>
 
 				<div class="input-box">
 					<div class="input-field">
 						<label> Email pra contato(Opcional) </label>
-							<input type="email" class="form-control" id="emailContatoCliente" name="emailContatoCliente"
-								placeholder="exemplo@exemplo.com">
+						<input type="email" class="form-control" id="emailContatoCliente" name="emailContatoCliente"
+							placeholder="exemplo@exemplo.com">
 					</div>
 				</div>
-				
+
 				<div class="input-box">
 					<div class="input-field">
 						<label> Endereço do cliente </label>
-							<input type="text" class="form-control" id="enderecoCliente" name="enderecoCliente">
+						<input type="text" class="form-control" id="enderecoCliente" name="enderecoCliente">
 					</div>
 				</div>
-				
+
 				<div class="input-box">
 					<div class="input-field">
 						<label> CEP do cliente </label>
-							<input type="text" class="form-control" id="cepCliente" name="cepCliente">
+						<input type="text" class="form-control" id="cepCliente" name="cepCliente">
 					</div>
 				</div>
-				
+
 				<div class="input-box">
 					<div class="input-field">
 						<label> Telefone do cliente </label>
-							<input type="text" class="form-control" id="telefoneCliente" name="telefoneCliente">
+						<input type="text" class="form-control" id="telefoneCliente" name="telefoneCliente">
 					</div>
 				</div>
 
@@ -147,6 +148,12 @@
 			margin: 0;
 			padding: 0;
 			box-sizing: border-box;
+		}
+
+		#alert {
+			color: green;
+			font-size: 20px;
+
 		}
 
 		#container {

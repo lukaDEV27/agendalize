@@ -74,6 +74,23 @@
 						</td>
 					</tr>
 				</tbody>
+				<tfoot>
+					<tr>
+						<th>ID</th>
+						<th>Nome</th>
+						<th>Data inicial</th>
+						<th>Data final</th>
+						<th>Descrição</th>
+						<th class="col-1">Alterar</th>
+						<th class="col-1">Excluir</th>
+						<th class="col-1">Ajustar Semana</th>
+						<th class="col-1">Indisponibilizar Datas</th>
+						<th class="col-1">Consultar Agendamentos</th>
+
+					</tr>
+				</tfoot>
+				
+
 			</table>
 		</form>
 		<!--Termina lista de agenda -->
@@ -88,18 +105,23 @@
 				buttons: [
 					{
 						extend: 'print',
+						title: 'Agendas Cadastradas'
 
 					},
 
 				]
 			}
 		},
+		language: {        
+			url: 'https://cdn.datatables.net/plug-ins/2.0.2/i18n/pt-BR.json',
+		   },
 		columnDefs: [
 			{
 				targets: 0,
 				visible: false
 			}
 		]
+		
 	});
 </script>
 <style>
@@ -136,19 +158,13 @@
 	main {
 		padding: 10px;
 	}
-
-
-
-
-	thead {
-		font-size: 15px;
-
-	}
+	
 
 	th {
 		font-weight: 100;
 		background-color: whitesmoke;
 		border-radius: 10px;
+		
 
 
 	}

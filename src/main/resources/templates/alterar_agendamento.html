@@ -29,7 +29,7 @@
 					<input type="hidden" name="idAgendamento" id="idAgendamento" th:value="${agendamento.idAgendamento}">
 					<input type="hidden" name="cliente" id="cliente" th:value="${agendamento.cliente.idCliente}">
 					<input type="hidden" name="statusAgendamento" id="statusAgendamento" th:value="${agendamento.statusAgendamento.idStatusAgendamento}">
-				<div class="alert alert-sucess" th:text="${mensagem}" th:if="${not #strings.isEmpty(mensagem)}">
+				<div class="alert alert-sucess" id="alert" th:text="${mensagem}" th:if="${not #strings.isEmpty(mensagem)}">
 				</div>
 
 
